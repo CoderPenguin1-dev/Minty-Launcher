@@ -13,4 +13,6 @@ No dependencies are required besides DiscordRichPresence (aka discord-rpc-csharp
 Open the solution in Visual Studio 2022.
 Create a `Resources.resx` file in the `Properties` folder with a key called `DiscordAPI` and put in your own Discord application ID for its value.
 
+In the Discord Developer Portal, make a new Rich Presence resource titled `icon`.
+
 Build the solution from VS2022 from there.
