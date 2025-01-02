@@ -60,7 +60,7 @@
             rcpBox.TabIndex = 0;
             rcpBox.Text = "Discord Rich Presence";
             rcpBox.UseVisualStyleBackColor = true;
-            rcpBox.CheckedChanged += rcpBox_CheckedChanged;
+            rcpBox.CheckedChanged += DiscordRichPresence;
             // 
             // closeBox
             // 
@@ -72,7 +72,7 @@
             closeBox.TabIndex = 1;
             closeBox.Text = "Close on Play";
             closeBox.UseVisualStyleBackColor = false;
-            closeBox.CheckedChanged += closeBox_CheckedChanged;
+            closeBox.CheckedChanged += CloseOnPlay;
             // 
             // button1
             // 
@@ -82,7 +82,7 @@
             button1.TabIndex = 2;
             button1.Text = "About";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Click += AboutMenu;
             // 
             // openPresetsLocation
             // 
@@ -103,7 +103,7 @@
             topMostBox.TabIndex = 4;
             topMostBox.Text = "Show Window After Quit";
             topMostBox.UseVisualStyleBackColor = true;
-            topMostBox.CheckedChanged += topMostBox_CheckedChanged;
+            topMostBox.CheckedChanged += ShowWindowAfterQuit;
             // 
             // defaultBox
             // 
@@ -114,7 +114,7 @@
             defaultBox.TabIndex = 5;
             defaultBox.Text = "[*] Load \"Default\" on launch";
             defaultBox.UseVisualStyleBackColor = true;
-            defaultBox.CheckedChanged += defaultBox_CheckedChanged;
+            defaultBox.CheckedChanged += DefaultPreset;
             // 
             // customPresetBox
             // 
@@ -125,7 +125,7 @@
             customPresetBox.TabIndex = 6;
             customPresetBox.Text = "[*] Ask For Preset Location";
             customPresetBox.UseVisualStyleBackColor = true;
-            customPresetBox.CheckedChanged += customPresetBox_CheckedChanged;
+            customPresetBox.CheckedChanged += CustomPresetLocation;
             // 
             // label1
             // 
@@ -144,7 +144,7 @@
             button2.TabIndex = 8;
             button2.Text = "Make Settings Portable";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            button2.Click += EnablePortableSettings;
             // 
             // groupBox1
             // 
@@ -187,7 +187,7 @@
             button3.TabIndex = 12;
             button3.Text = "Set IWADs Folder";
             button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            button3.Click += SetIWADFolder;
             // 
             // Settings
             // 

@@ -70,42 +70,42 @@ namespace Doom_Loader
         }
 
         #region Settings
-        private void rcpBox_CheckedChanged(object sender, EventArgs e)
+        private void DiscordRichPresence(object sender, EventArgs e)
         {
             ApplicationVariables.rcp = rcpBox.Checked;
             string path = CheckForWhichConfig();
             RewriteAppDataConfig(path);
         }
 
-        private void closeBox_CheckedChanged(object sender, EventArgs e)
+        private void CloseOnPlay(object sender, EventArgs e)
         {
             ApplicationVariables.closeOnPlay = closeBox.Checked;
             string path = CheckForWhichConfig();
             RewriteAppDataConfig(path);
         }
 
-        private void topMostBox_CheckedChanged(object sender, EventArgs e)
+        private void ShowWindowAfterQuit(object sender, EventArgs e)
         {
             ApplicationVariables.topMost = topMostBox.Checked;
             string path = CheckForWhichConfig();
             RewriteAppDataConfig(path);
         }
 
-        private void defaultBox_CheckedChanged(object sender, EventArgs e)
+        private void DefaultPreset(object sender, EventArgs e)
         {
             ApplicationVariables.useDefault = defaultBox.Checked;
             string path = CheckForWhichConfig();
             RewriteAppDataConfig(path);
         }
 
-        private void customPresetBox_CheckedChanged(object sender, EventArgs e)
+        private void CustomPresetLocation(object sender, EventArgs e)
         {
             ApplicationVariables.customPreset = customPresetBox.Checked;
             string path = CheckForWhichConfig();
             RewriteAppDataConfig(path);
         }
 
-        public void button3_Click(object sender, EventArgs e)
+        public void SetIWADFolder(object sender, EventArgs e)
         {
             if (iwadFolderDialog.ShowDialog() != DialogResult.Cancel)
             {
@@ -117,13 +117,13 @@ namespace Doom_Loader
 
         #endregion
 
-        private void button2_Click(object sender, EventArgs e) // Portable Settings Button
+        private void EnablePortableSettings(object sender, EventArgs e)
         {
             RewriteAppDataConfig("mintyLauncher.PortableSettings");
             button2.Enabled = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AboutMenu(object sender, EventArgs e)
         {
             new About().ShowDialog();
         }

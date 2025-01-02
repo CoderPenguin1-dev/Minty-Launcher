@@ -13,7 +13,7 @@ namespace Doom_Loader
             InitializeComponent();
         }
 
-        private static bool boot = true; // Used for calling LoadPresets() in AppDataInit() to prevent some odd bug
+        private static bool boot = true; // Used for calling LoadPresets() in AppDataInit() to prevent some odd bug.
 
         private void ComplevelChanged(object sender, EventArgs e)
         {
@@ -75,7 +75,7 @@ namespace Doom_Loader
                 {
                     foreach (string portData in File.ReadAllLines("mintyLauncher.portDatabase"))
                     {
-                        if (portData.StartsWith('#')) continue; // Check for comments
+                        if (portData.StartsWith('#')) continue; // Check for comment lines.
                         string[] data = portData.Split(';');
                         if (Path.GetFileName(sourcePortDialog.FileName) == data[0])
                         {
@@ -308,16 +308,18 @@ namespace Doom_Loader
             ApplicationVariables.arguments = extraParamsTextBox.Text;
         }
 
+        // Update the time since started for the Discord RPC.
         private void UpdateRPCTimestamp(object sender, EventArgs e)
         {
             RPCClient.client.UpdateStartTime();
         }
 
-        private void AppDataInit(object sender, EventArgs e) // Loads in the settings, it also does initalize the complevel selector and tooltips
+        private void AppDataInit(object sender, EventArgs e) // Loads in the settings. It also initalizes the complevel selector and tooltips.
         {
             string appdata = "%appdata%";
             appdata = Environment.ExpandEnvironmentVariables(appdata);
 
+            // Create the Port Database file, usually only done on first run.
             if (!File.Exists("mintyLauncher.portDatabase"))
                 File.WriteAllText("mintyLauncher.portDatabase", "# This is the Port Database file for The Minty Launcher" +
                     "\n# To create a new entry, do this for each port (one port per line!): [port filename].exe;[port name]" +
@@ -333,6 +335,8 @@ namespace Doom_Loader
                     if (File.Exists("mintyLauncher.PortableSettings")) 
                         lines = File.ReadAllLines("mintyLauncher.PortableSettings");
                     else lines = File.ReadAllLines($"{appdata}\\MintyLauncher\\settings.txt");
+
+                    // Set the settings.
                     ApplicationVariables.rcp = bool.Parse(lines[0]);
                     ApplicationVariables.closeOnPlay = bool.Parse(lines[1]);
                     ApplicationVariables.topMost = bool.Parse(lines[2]);
@@ -359,9 +363,9 @@ namespace Doom_Loader
 
                 // Presets
                 if (!Directory.Exists($"{appdata}\\MintyLauncher\\Presets")) Directory.CreateDirectory($"{appdata}\\MintyLauncher\\Presets");
-                else if (File.Exists($"{appdata}\\MintyLauncher\\Presets\\Default.mlPreset") && ApplicationVariables.useDefault) // Check if there is the Default preset
+                else if (File.Exists($"{appdata}\\MintyLauncher\\Presets\\Default.mlPreset") && ApplicationVariables.useDefault) // Check if there is the Default preset.
                 {
-                    // Little hack to make loading the custom preset work. Why did I do this?
+                    // Little hack to make loading the default preset work. Why did I do this?
                     loadPresetBox.Items.Add("Default");
                     loadPresetBox.SelectedItem = "Default";
                     LoadPreset(sender, e);

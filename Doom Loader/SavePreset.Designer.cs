@@ -51,7 +51,7 @@
             button1.TabStop = false;
             button1.Text = "Save";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Click += SavePresetButton;
             // 
             // SavePreset
             // 
