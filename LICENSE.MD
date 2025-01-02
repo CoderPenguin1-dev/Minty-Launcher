@@ -16,6 +16,7 @@ However, you are not allowed to:
 * Publically share modified versions of Minty Launcher without also having the source code easily obtainable free of charge.
 
 [1] Exceptions include video ad revenue on online video streaming platforms such as YouTube.
+
 [2] Software name, copyright year, and copyright holder information are allowed to be modifed.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
