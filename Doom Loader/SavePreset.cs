@@ -25,11 +25,13 @@ namespace Doom_Loader
                 string path = $"%appdata%\\MintyLauncher\\Presets\\{textBox1.Text}.mlPreset";
                 path = Environment.ExpandEnvironmentVariables(path);
 
+                // Save extra paramaters, source port, and selected complevel.
                 string file = @"";
                 file += $"{ApplicationVariables.arguments}\n";
                 file += $"{ApplicationVariables.exe}\n";
                 file += $"{ApplicationVariables.complevel}\n";
 
+                // Save the External File list to line index 5.
                 if (ApplicationVariables.PWAD.Length != 0)
                 {
                     if (ApplicationVariables.PWAD.Length == 1) file += $"{ApplicationVariables.PWAD[0]}";
