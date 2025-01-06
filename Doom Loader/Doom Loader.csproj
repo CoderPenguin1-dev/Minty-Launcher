@@ -36,4 +36,10 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="LICENSE.MD">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
