@@ -7,7 +7,7 @@ You can get prebuilt, Framework-Dependant Win86 bins from the Google Drive, as w
 https://drive.google.com/drive/folders/1WFhlLlC_Ka0N-Fk6tTlCKcxksYwFRNg4?usp=sharing
 
 # Building
-No dependencies are required besides DiscordRichPresence [https://github.com/Lachee/discord-rpc-csharp]((GitHub)) from NuGet and its dependencies as well as WinForms and .NET 6.
+No dependencies are required besides DiscordRichPresence ([GitHub](https://github.com/Lachee/discord-rpc-csharp)) from NuGet and its dependencies as well as WinForms and .NET 6.
 Open the solution in Visual Studio 2022.
 Create a `Resources.resx` file in the `Properties` folder with a key called `DiscordAPI` and put in your own Discord application ID for its value.
 
