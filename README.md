@@ -1,4 +1,4 @@
-![screenshot](logo512.png)
+![logo](Images/logo512.png)
 # The Minty Launcher
 A C# WinForms Doom launcher I made as I hadn't liked others like ZDL or Doom Launcher.
 This is build for my purposes and features will usually be added when I need/want them. I will, however, gladly take suggestions and implement them if possible within my lackluster skill level.
