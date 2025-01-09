@@ -8,7 +8,7 @@ Minty Launcher only targets Windows, and only has been tested on Windows 10 and 
 # Downloading
 You can get prebuilt, Framework-Dependant Win32 bins from the [Google Drive](https://drive.google.com/drive/folders/1WFhlLlC_Ka0N-Fk6tTlCKcxksYwFRNg4?usp=sharing), as well as a premade port database file and the user manual.
 
-You can also get Win64 and Win32 bins (both Framework-Dependant and Standalone) as well as the premade port database file here on the repo. 
+You can also get Win64 and Win32 bins (both Framework-Dependant and Standalone) as well as the premade port database file [here on the repo](https://github.com/PENGUINCODER1/Minty-Launcher/releases). 
 
 # Building
 No dependencies are required besides DiscordRichPresence ([GitHub](https://github.com/Lachee/discord-rpc-csharp)) from NuGet and its dependencies as well as WinForms and .NET 6.
