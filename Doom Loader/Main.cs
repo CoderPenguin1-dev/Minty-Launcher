@@ -145,6 +145,15 @@ namespace Doom_Loader
                 foreach (string pwad in ApplicationVariables.PWAD) start += $"\"{pwad}\" ";
             }
             else start += $"-iwad \"{ApplicationVariables.IWAD}\"";
+            
+            // Check if there was a DeHacked patch
+            foreach (string file in ApplicationVariables.PWAD)
+            {
+                if (file.EndsWith(".deh"))
+                    start += $"-deh \"{file}\"";
+                else if (file.EndsWith(".bex"))
+                    start += $"-bex \"{file}\"";
+            }
 
             startInfo.Arguments = start; // Put Arguments Into startInfo
 
