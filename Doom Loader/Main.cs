@@ -150,9 +150,9 @@ namespace Doom_Loader
             foreach (string file in ApplicationVariables.PWAD)
             {
                 if (file.EndsWith(".deh"))
-                    start += $"-deh \"{file}\"";
+                    start += $"-deh \"{file}\" ";
                 else if (file.EndsWith(".bex"))
-                    start += $"-bex \"{file}\"";
+                    start += $"-bex \"{file}\" ";
             }
 
             startInfo.Arguments = start; // Put Arguments Into startInfo
