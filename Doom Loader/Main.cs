@@ -97,13 +97,13 @@ namespace Doom_Loader
                 RPCClient.Initialize();
                 // State Setup
                 string state;
-                switch (ApplicationVariables.PWAD.Length)
+                switch (ApplicationVariables.externalFiles.Length)
                 {
                     case 0:
                         state = $"{Path.GetFileName(ApplicationVariables.IWAD)}";
                         break;
                     case 1:
-                        state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | {Path.GetFileName(ApplicationVariables.PWAD[0])}";
+                        state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | {Path.GetFileName(ApplicationVariables.externalFiles[0])}";
                         break;
                     default:
                         state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | Multiple Files";
@@ -139,15 +139,15 @@ namespace Doom_Loader
             if (extraParamsTextBox.Text != "") start += ApplicationVariables.arguments + " "; // Extra Paramaters
             if (ApplicationVariables.complevel != 0) start += $"-complevel {ApplicationVariables.complevel} "; // Complevel
             // Check if PWAD was selected
-            if (ApplicationVariables.PWAD.Length != 0)
+            if (ApplicationVariables.externalFiles.Length != 0)
             {
                 start += $"-iwad \"{ApplicationVariables.IWAD}\" -file ";
-                foreach (string pwad in ApplicationVariables.PWAD) start += $"\"{pwad}\" ";
+                foreach (string pwad in ApplicationVariables.externalFiles) start += $"\"{pwad}\" ";
             }
             else start += $"-iwad \"{ApplicationVariables.IWAD}\"";
             
             // Check if there was a DeHacked patch
-            foreach (string file in ApplicationVariables.PWAD)
+            foreach (string file in ApplicationVariables.externalFiles)
             {
                 if (file.EndsWith(".deh"))
                     start += $"-deh \"{file}\" ";
@@ -264,13 +264,13 @@ namespace Doom_Loader
             #endregion
 
             // PWAD
-            ApplicationVariables.PWAD = Array.Empty<string>();
+            ApplicationVariables.externalFiles = Array.Empty<string>();
             if (args.Length == 4)
             {
-                ApplicationVariables.PWAD = args[3].Split(',');
-                if (ApplicationVariables.PWAD.Length == 1) // I can't honestly remember why this if statement was put into here.
+                ApplicationVariables.externalFiles = args[3].Split(',');
+                if (ApplicationVariables.externalFiles.Length == 1) // I can't honestly remember why this if statement was put into here.
                 {                                         // Will not remove to prevent it possibly breaking like a Jenga tower.
-                    ApplicationVariables.PWAD[0] = args[3];
+                    ApplicationVariables.externalFiles[0] = args[3];
                 }
             }
         }
@@ -295,14 +295,14 @@ namespace Doom_Loader
                     file += $"{ApplicationVariables.exe}\n";
                     file += $"{ApplicationVariables.complevel}\n";
 
-                    if (ApplicationVariables.PWAD.Length != 0)
+                    if (ApplicationVariables.externalFiles.Length != 0)
                     {
-                        if (ApplicationVariables.PWAD.Length == 1) file += $"{ApplicationVariables.PWAD[0]}";
+                        if (ApplicationVariables.externalFiles.Length == 1) file += $"{ApplicationVariables.externalFiles[0]}";
                         else
                         {
-                            for (int i = 0; i < ApplicationVariables.PWAD.Length - 1; i++)
-                                file += $"{ApplicationVariables.PWAD[i]},";
-                            file += ApplicationVariables.PWAD[^1];
+                            for (int i = 0; i < ApplicationVariables.externalFiles.Length - 1; i++)
+                                file += $"{ApplicationVariables.externalFiles[i]},";
+                            file += ApplicationVariables.externalFiles[^1];
                         }
                     }
                     File.WriteAllText(path, file);

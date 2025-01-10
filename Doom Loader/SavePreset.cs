@@ -32,14 +32,14 @@ namespace Doom_Loader
                 file += $"{ApplicationVariables.complevel}\n";
 
                 // Save the External File list to line index 5.
-                if (ApplicationVariables.PWAD.Length != 0)
+                if (ApplicationVariables.externalFiles.Length != 0)
                 {
-                    if (ApplicationVariables.PWAD.Length == 1) file += $"{ApplicationVariables.PWAD[0]}";
+                    if (ApplicationVariables.externalFiles.Length == 1) file += $"{ApplicationVariables.externalFiles[0]}";
                     else
                     {
-                        for (int i = 0; i < ApplicationVariables.PWAD.Length - 1; i++)
-                            file += $"{ApplicationVariables.PWAD[i]},";
-                        file += ApplicationVariables.PWAD[^1];
+                        for (int i = 0; i < ApplicationVariables.externalFiles.Length - 1; i++)
+                            file += $"{ApplicationVariables.externalFiles[i]},";
+                        file += ApplicationVariables.externalFiles[^1];
                     }
                 }
                 File.WriteAllText(path, file);

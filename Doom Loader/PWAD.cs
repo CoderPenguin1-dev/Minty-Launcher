@@ -20,8 +20,8 @@ namespace Doom_Loader
         private void ManagerSetup(object sender, EventArgs e)
         {
             // Load PWADs into list
-            if (ApplicationVariables.PWAD.Length != 0)
-                foreach (string PWAD in ApplicationVariables.PWAD)
+            if (ApplicationVariables.externalFiles.Length != 0)
+                foreach (string PWAD in ApplicationVariables.externalFiles)
                     pwadList.Items.Add(Path.GetFileName(PWAD));
 
             // Setup tool tips
@@ -38,7 +38,7 @@ namespace Doom_Loader
         private static void Reload(ListBox listBox)
         {
             listBox.Items.Clear();
-            foreach (string PWAD in ApplicationVariables.PWAD)
+            foreach (string PWAD in ApplicationVariables.externalFiles)
             {
                 listBox.Items.Add(Path.GetFileName(PWAD));
             }
@@ -51,8 +51,8 @@ namespace Doom_Loader
             {
                 foreach (string PWAD in addPWADDialog.FileNames)
                 {
-                    List<string> PWADs = new(ApplicationVariables.PWAD.ToList()) { PWAD }; // Turn the original array into a usable list and add in the PWAD.
-                    ApplicationVariables.PWAD = PWADs.ToArray(); // Merge the list into the array.
+                    List<string> PWADs = new(ApplicationVariables.externalFiles.ToList()) { PWAD }; // Turn the original array into a usable list and add in the PWAD.
+                    ApplicationVariables.externalFiles = PWADs.ToArray(); // Merge the list into the array.
                 }
                 Reload(pwadList);
             }
@@ -62,7 +62,7 @@ namespace Doom_Loader
         {
             try // Here to prevent crashing when no index was selected
             {
-                List<string> PWADs = new(ApplicationVariables.PWAD.ToList()); // Turn the original array into a usable list.
+                List<string> PWADs = new(ApplicationVariables.externalFiles.ToList()); // Turn the original array into a usable list.
                 for (int i = pwadList.Items.Count - 1; i >= 0; i--)
                 {
                     if (pwadList.GetSelected(i)) // If the PWAD in the PWAD Listbox is apart of the selected items, remove it.
@@ -70,7 +70,7 @@ namespace Doom_Loader
                         PWADs.RemoveAt(i);
                     }
                 }
-                ApplicationVariables.PWAD = PWADs.ToArray(); // Turn the edited list back into an array
+                ApplicationVariables.externalFiles = PWADs.ToArray(); // Turn the edited list back into an array
                 Reload(pwadList);
             }
             catch { }
@@ -82,15 +82,15 @@ namespace Doom_Loader
         {
             if (pwadList.SelectedIndices.Count == 1)
             {
-                string data = ApplicationVariables.PWAD[pwadList.SelectedIndex];
+                string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
                 int index = pwadList.SelectedIndex;
                 if (index != 0) // Check if the item is not already at the top
                 {
-                    List<string> PWADs = new List<string>(ApplicationVariables.PWAD.ToList());
+                    List<string> PWADs = new List<string>(ApplicationVariables.externalFiles.ToList());
                     // Move the item
                     PWADs.RemoveAt(index);
                     PWADs.Insert(index - 1, data);
-                    ApplicationVariables.PWAD = PWADs.ToArray();
+                    ApplicationVariables.externalFiles = PWADs.ToArray();
                     Reload(pwadList);
                     pwadList.SelectedIndex = index - 1; // Set the cursor to the new position
                 }
@@ -101,15 +101,15 @@ namespace Doom_Loader
         {
             if (pwadList.SelectedIndices.Count == 1)
             {
-                string data = ApplicationVariables.PWAD[pwadList.SelectedIndex];
+                string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
                 int index = pwadList.SelectedIndex;
                 if (index != pwadList.Items.Count - 1) // Check if the item is not already at the bottom
                 {
-                    List<string> PWADs = new List<string>(ApplicationVariables.PWAD.ToList());
+                    List<string> PWADs = new List<string>(ApplicationVariables.externalFiles.ToList());
                     // Move the item
                     PWADs.RemoveAt(index);
                     PWADs.Insert(index + 1, data);
-                    ApplicationVariables.PWAD = PWADs.ToArray();
+                    ApplicationVariables.externalFiles = PWADs.ToArray();
                     Reload(pwadList);
                     pwadList.SelectedIndex = index + 1; // Set the cursor to the new position
                 }
@@ -121,7 +121,7 @@ namespace Doom_Loader
         private void PWADDragDrop(object sender, DragEventArgs e)
         {
             string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
-            List<string> PWADs = new(ApplicationVariables.PWAD.ToList());
+            List<string> PWADs = new(ApplicationVariables.externalFiles.ToList());
             foreach (string item in items)
             {
                 if (Directory.Exists(item)) continue; // Ignore item if it's a folder
@@ -130,7 +130,7 @@ namespace Doom_Loader
                     PWADs.Add(item);
                 }
             }
-            ApplicationVariables.PWAD = PWADs.ToArray();
+            ApplicationVariables.externalFiles = PWADs.ToArray();
             Reload(pwadList);
         }
 
