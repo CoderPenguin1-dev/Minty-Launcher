@@ -75,7 +75,7 @@
             // 
             // addPWADDialog
             // 
-            addPWADDialog.Filter = "All Files|*.*|WADs|*.wad|PK3s|*.pk3";
+            addPWADDialog.Filter = "All Files|*.*|WADs|*.wad|PK3s|*.pk3|DeHackED|*.deh|BEX|*.bex";
             addPWADDialog.Multiselect = true;
             addPWADDialog.Title = "Add External File(s)";
             // 
