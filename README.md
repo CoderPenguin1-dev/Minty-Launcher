@@ -11,7 +11,7 @@ You can get prebuilt, Framework-Dependant Win32 bins from the [Google Drive](htt
 You can also get Win64 and Win32 bins (both Framework-Dependant and Standalone) as well as the premade port database file [here on the repo](https://github.com/PENGUINCODER1/Minty-Launcher/releases). 
 
 # Building
-No dependencies are required besides DiscordRichPresence ([GitHub](https://github.com/Lachee/discord-rpc-csharp)) from NuGet and its dependencies as well as WinForms and .NET 6.
+No dependencies are required besides DiscordRichPresence ([GitHub](https://github.com/Lachee/discord-rpc-csharp)) from NuGet and its dependencies as well as WinForms and .NET 9.
 Open the solution in Visual Studio 2022.
 Create a `Resources.resx` file in the `Properties` folder with a key called `DiscordAPI` and put in your own Discord application ID for its value.
 
