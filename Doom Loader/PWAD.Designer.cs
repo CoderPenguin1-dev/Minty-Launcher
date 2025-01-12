@@ -43,7 +43,6 @@
             // 
             pwadList.FormattingEnabled = true;
             pwadList.HorizontalScrollbar = true;
-            pwadList.ItemHeight = 15;
             pwadList.Location = new Point(13, 13);
             pwadList.Name = "pwadList";
             pwadList.SelectionMode = SelectionMode.MultiExtended;
@@ -53,7 +52,7 @@
             // button1
             // 
             button1.AccessibleName = "";
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button1.Location = new Point(13, 203);
             button1.Name = "button1";
             button1.Size = new Size(41, 39);
@@ -64,7 +63,7 @@
             // 
             // button2
             // 
-            button2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
             button2.Location = new Point(60, 203);
             button2.Name = "button2";
             button2.Size = new Size(41, 39);
@@ -75,13 +74,13 @@
             // 
             // addPWADDialog
             // 
-            addPWADDialog.Filter = "All Files|*.*|WADs|*.wad|PK3s|*.pk3|DeHackED|*.deh|BEX|*.bex";
+            addPWADDialog.Filter = "All Supported Files|*.wad;*.pk3;*.deh;*bex|WADs|*.wad|PK3s|*.pk3|DeHackED|*.deh|BEX|*.bex|All Files|*.*";
             addPWADDialog.Multiselect = true;
             addPWADDialog.Title = "Add External File(s)";
             // 
             // button3
             // 
-            button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button3.Location = new Point(169, 203);
             button3.Name = "button3";
             button3.Size = new Size(41, 39);
@@ -92,7 +91,7 @@
             // 
             // button4
             // 
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button4.Location = new Point(216, 203);
             button4.Name = "button4";
             button4.Size = new Size(41, 39);
