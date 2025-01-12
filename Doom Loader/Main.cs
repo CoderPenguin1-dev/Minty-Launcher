@@ -129,8 +129,7 @@ namespace Doom_Loader
             ProcessStartInfo startInfo = new(ApplicationVariables.exe)
             {
                 CreateNoWindow = false,
-                UseShellExecute = false,
-                WindowStyle = ProcessWindowStyle.Hidden
+                UseShellExecute = false
             };
 
             // Argument Setup
