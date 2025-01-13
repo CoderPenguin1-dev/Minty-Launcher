@@ -3,7 +3,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Publish Files
 publish.bat
+MintyLauncher-FrameworkDependent-win64.zip
+MintyLauncher-FrameworkDependent-win86.zip
+MintyLauncher-SelfContained-win64.zip
+MintyLauncher-SelfContained-win86.zip
 
 # User-specific files
 *.rsuser
