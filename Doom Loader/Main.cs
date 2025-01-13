@@ -332,7 +332,7 @@ namespace Doom_Loader
                 File.WriteAllText("mintyLauncher.portDatabase", "# This is the Port Database file for The Minty Launcher" +
                     "\n# To create a new entry, do this for each port (one port per line!): [port filename].exe;[port name]" +
                     "\n# Example: gzdoom.exe;GZDoom" +
-                    "\n# You can download official database updates on the Google Drive");
+                    "\n# You can download official database updates on the GitHub Repo under each Release: https://github.com/PENGUINCODER1/Minty-Launcher");
 
             if (Directory.Exists($"{appdata}\\MintyLauncher") || File.Exists("mintyLauncher.PortableSettings"))
             {
