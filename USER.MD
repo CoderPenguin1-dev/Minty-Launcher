@@ -1,88 +1,83 @@
-# **The Minty Launcher**
+# The Minty Launcher User's Guide
 
-Minty Launcher is a Doom launcher for Windows (tested on 10/11) that was made for my own wants and needs. I have decided to publish it and any updates I make to it as an alternative to launchers like ZDL or Doom Launcher. 
+You can obtain source code for Minty Launcher [here](https://github.com/PENGUINCODER1/Minty-Launcher)
 
-Want source code? [Here ya go!](https://github.com/PENGUINCODER1/Minty-Launcher)
+## 1. Setting Up
+For Framework Dependent Only: Make sure you've installed the .NET 9.0 Runtimes before running.
 
+You'll need to set where your IWADs folder is. To do so, you can either click on the *IWAD Selector Box* or by going into *Settings* and clicking on *Set IWADs Folder.* 
+With either method, you'll need to naviage to where the folder containing your IWADs are and then selecting that folder.
 
-# Features
+Then, you'll need to select a source port. On the main window, click on *Select Port* and navigate to the executable file of your desired port.
+Now, select your desired IWAD and complevel and hit *Play* and it should boot you into the game!
 
-* An easy-to-use External File Manager (as of 2.0.0)
-* Preset Saving and Loading
-    * Presets save
-        * Complevel
-        * PWADs
-        * Extra Parameters
-        * Sourceport used
-    * Default Preset Support (as of 3.1.0)
-        * Just name a preset “Default” in your Roaming AppData folder when saving and make sure the ***“Use ‘Default’ as default preset”*** option in the ***Settings*** menu is enabled!
-* Discord Rich Presence (as of 2.5.0)
-    * Shows
-        * Sourceport used
-        * IWAD and PWAD
-            * Shows the PWAD filename if only one is loaded in
-            * Shows “Multiple PWADs” if more than one are loaded in at once
-        * Time elapsed
-* The Port Database (as of 3.9.0)
-    * Allows you to change the visual name of the port you are using in both the RPC and on the *“Select Port”* button (as of 3.10.0).
+Also, it'd be a good idea (however not required) to download `mintyLauncher.portDatabse` from the GitHub repository and sticking it in the same folder as your Minty Launcher executable.
+This will swap out the name of the executable file of the source port over to something more pleasing to look at. You can also add in your own source ports or edit the list as you'd like.
 
+## 2. The Interface
 
-# Setting Up & Playing
+### 2a. The Main Window
+The main window has several buttons and hidden gimmicks so it may be confusing at first.
 
-For starters, if you chose the **Framework Dependent** option when downloading, you'll need to install the .NET 9.0 runtimes onto your system.
+The IWAD and Complevel selectors allow you to select which IWAD and engine you wish to emulate. Please note the latter is only usable in ports that supoort such feature like DSDA-Doom.
 
-The setup process is overall simple. However, where the IWADs go is different depending on what version you’re using.
+The *Extra Paramaters* box allows you to type in any extra parameters you wish to pass along to the source port, such as `-playdemo` to play a recorded demo.
+You can also right-click the box to insert a file path easier.
 
+The *Select Port* button allows you to select which port you wish to use.
 
-### **For Minty Launcher v4 and above**
+The *External Files* button opens up the External File Manager window, which allows you to sort load orders of maps, mods, and dehacked/bex patches.
 
-Go into ***Settings*** and select the *“Set IWAD Folder”* button. In the dialog, select the folder your IWADs are in.
+*Ask For Preset Location* Setting **OFF**: The Selector Box will allow you to quickly select from your saved presets.
 
+*Ask For Preset Location* Setting **ON**: The *Load Preset* button will allow you to load in a preset.
 
-### **For Minty Launcher v3 and below**
+The *Save Preset* button will allow you to save a preset. If the *Ask For Preset Location* setting is **OFF**, it will pop up with a small box that'll allow you to put in a preset name. These are saved in your AppData folder.
 
-Put your IWADs into the *same folder as your sourceport’s executable* so the launcher can detect the IWADs when you select the port.
+### 2b. The External File Manager
+You can drag files onto this window to quickly add them to your External File list. You can also hit the **+** button to add in an external file to the list as well.
 
+You can select multiple files at once to delete them with the **-** button. You can also select a single file.
 
-### **Playing**
+You can reorder single files in the list with the Up and Down arrow buttons.
 
-To launch into a game, open up Minty Launcher and press *“Select Port”* and navigate to where you have your port installed to and select the port’s executable. You then have to select which IWAD to use with the **IWAD List**, once you have done that, you may add in any maps/mods you wish to use by pressing the “*External Files”* button and using the controls in the manager. You can then hit the *“Play”* button.
+## 3. Settings Overview
 
+### 3a. Presets
+These are settings relating to presets.
 
-# Descriptions of Each Setting
+*Load "Default" Preset on launch*: 
 
-## Presets
-* **Use “Default” as default preset**
-    * If you have this setting enabled *and* have a preset saved in your Roaming AppData folder (the default place for presets) called “Default”, Minty Launcher will load that preset on startup.
-        * **Requires restart of Minty Launcher to take effect.**
-
-
-## Portability
-* **Ask For Preset Location**
-    * Mimics how older versions of Minty Launcher worked with presets.
-        * Replaces the Preset List with a “Load Preset Button” which when clicked, asks you where the preset file is located. It replaces the “Save Preset” window with a similar dialog to what the new button shows.
-        * **Requires restart of Minty Launcher to take effect.**
-* **Make Settings Portable**
-    * When clicked, it produces a “.Minty LauncherPortableSettings” file that replaces the settings file in your Minty Launcher Roaming AppData folder. This file *must* be in the same folder as the executable to be detected. Settings are both saved and read here.
-        * The setting can be reversed by deleting, renaming, or moving the file.
-
-## Window
-* **Close On Play**
-    * Despite its name, the setting closes the launcher after the port has been shut down.
-* **Show Window After Quit**
-    * Makes Minty Launcher the top window after the port has been shut down.
+	This will check for a preset named "Default" and load it automatically. Please note it will only check the AppData folder.
 	
-## Ungrouped
-* **Discord Rich Presence**
-    * Enables/Disables support for Discord RPC. Details on what it shows on your Discord profile are shown in Features.
+### 3b. Portability
+These are settings related to being able to more easily use the same executable across multiple computers, like on a thumb drive.
 
-# Versioning
-The versioning of Minty Launcher is a **major.minor.patch.prerelease** system.
+*Ask For Preset Location*:
 
-* **Major** mainly being massive overhauls in UI, compatibility-breaking feature additions, or what I consider to be major additions (like the addition of the PWAD Manager menu)
+	This will replace the Load Preset Box with a button instead. Both the Load and Save buttons will pop up with a file dialog instead.
+	
+*Make Settings Portable*:
+	
+	This will create a portable settings file in the directory of Minty Launcher's executable.
+	
+### 3c. Window
+These are settings relating to Minty Launcher's main window.
 
-* **Minor** consisting of standard updates (like the addition of Discord Rich Presence)
+*Close On Play*:
 
-* **Patch** being mainly bug fixes or rarely used to indicate very small updates
+	This will close the launcher after the source port has been closed.
+	
+*Show Window On Quit*:
 
-* **Prerelease** being an indicator if a version was meant to be shared for testing purposes before release. 0 meaning it’s a release version, 1 being a prerelease.
+	This will make the window appear above all windows once the source port has been closed.
+	
+### 3d. Ungrouped
+
+*Discord Rich Presence*:
+
+	This will enable/disable the Discord RPC feature of the launcher.
+	
+*Set IWADs Folder*:
+
+	This will allow you to change where your IWADs folder is located.
