@@ -15,7 +15,7 @@ Want source code? [Here ya go!](https://github.com/PENGUINCODER1/Minty-Launcher)
         * Extra Parameters
         * Sourceport used
     * Default Preset Support (as of 3.1.0)
-        * Just name a preset “Default” in your Roaming AppData folder when saving and make sure the ***“Use ‘Default’ as default preset”*** option in the ***Settings ***menu is enabled!
+        * Just name a preset “Default” in your Roaming AppData folder when saving and make sure the ***“Use ‘Default’ as default preset”*** option in the ***Settings*** menu is enabled!
 * Discord Rich Presence (as of 2.5.0)
     * Shows
         * Sourceport used
@@ -24,7 +24,7 @@ Want source code? [Here ya go!](https://github.com/PENGUINCODER1/Minty-Launcher)
             * Shows “Multiple PWADs” if more than one are loaded in at once
         * Time elapsed
 * The Port Database (as of 3.9.0)
-    * Allows you to change the visual name of the port you are using in both the RPC and on the *“Select Port” *button (as of 3.10.0).
+    * Allows you to change the visual name of the port you are using in both the RPC and on the *“Select Port”* button (as of 3.10.0).
 
 
 # Setting Up & Playing
@@ -36,7 +36,7 @@ The setup process is overall simple. However, where the IWADs go is different de
 
 ### **For Minty Launcher v4 and above**
 
-Go into ***Settings* **and select the “*Set IWAD Folder” *button. In the dialog, select the folder your IWADs are in.
+Go into ***Settings*** and select the *“Set IWAD Folder”* button. In the dialog, select the folder your IWADs are in.
 
 
 ### **For Minty Launcher v3 and below**
@@ -73,9 +73,8 @@ To launch into a game, open up Minty Launcher and press *“Select Port”* and 
     * Makes Minty Launcher the top window after the port has been shut down.
 	
 ## Ungrouped
-* **Discord Rich Presence **
+* **Discord Rich Presence**
     * Enables/Disables support for Discord RPC. Details on what it shows on your Discord profile are shown in Features.
-
 
 # Versioning
 The versioning of Minty Launcher is a **major.minor.patch.prerelease** system.
