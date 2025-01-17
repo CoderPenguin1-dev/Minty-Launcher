@@ -6,9 +6,9 @@
 # Publish Files
 publish.bat
 MintyLauncher-FrameworkDependent-win64.zip
-MintyLauncher-FrameworkDependent-win86.zip
+MintyLauncher-FrameworkDependent-win32.zip
 MintyLauncher-SelfContained-win64.zip
-MintyLauncher-SelfContained-win86.zip
+MintyLauncher-SelfContained-win32.zip
 
 # User-specific files
 *.rsuser
