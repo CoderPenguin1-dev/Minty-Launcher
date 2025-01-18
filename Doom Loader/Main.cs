@@ -379,6 +379,8 @@ namespace Doom_Loader
                     LoadPreset(sender, e);
                 }
             }
+
+            // No AppData folder detected, generate the folder.
             else
             {
                 Directory.CreateDirectory($"{appdata}\\MintyLauncher");
@@ -440,7 +442,7 @@ namespace Doom_Loader
                 // Find the IWADs from the folder path.
                 foreach (string wad in IWADs)
                 {
-                    if (Path.GetExtension(wad).ToLower() == ".wad" || Path.GetExtension(wad).ToLower() == ".ipk3")
+                    if (Path.GetExtension(wad).Equals(".wad", StringComparison.CurrentCultureIgnoreCase) || Path.GetExtension(wad).Equals(".ipk3", StringComparison.CurrentCultureIgnoreCase))
                     {
                         iwadBox.Items.Add(Path.GetFileName(wad));
                     }
