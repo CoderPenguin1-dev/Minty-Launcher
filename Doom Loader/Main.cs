@@ -137,23 +137,27 @@ namespace Doom_Loader
 
             if (extraParamsTextBox.Text != "") start += ApplicationVariables.arguments + " "; // Extra Paramaters
             if (ApplicationVariables.complevel != 0) start += $"-complevel {ApplicationVariables.complevel} "; // Complevel
-            // Check if PWAD was selected
-            if (ApplicationVariables.externalFiles.Length != 0)
-            {
-                start += $"-iwad \"{ApplicationVariables.IWAD}\" -file ";
-                foreach (string pwad in ApplicationVariables.externalFiles) start += $"\"{pwad}\" ";
-            }
-            else start += $"-iwad \"{ApplicationVariables.IWAD}\"";
-            
+
             // Check if there was a DeHacked patch
-            foreach (string file in ApplicationVariables.externalFiles)
+            List<string> extFileStore = new(); // Used so the PWAD adder code doesn't need to iterate through the useless DEH and BEX files later.
+            for (int i = 0; i < ApplicationVariables.externalFiles.Length; i++)
             {
-                if (file.EndsWith(".deh"))
-                    start += $"-deh \"{file}\" ";
-                else if (file.EndsWith(".bex"))
-                    start += $"-bex \"{file}\" ";
+                if (ApplicationVariables.externalFiles[i].EndsWith(".deh", StringComparison.CurrentCultureIgnoreCase))
+                    start += $"-deh \"{ApplicationVariables.externalFiles[i]}\" ";
+                else if (ApplicationVariables.externalFiles[i].EndsWith(".bex", StringComparison.CurrentCultureIgnoreCase))
+                    start += $"-bex \"{ApplicationVariables.externalFiles[i]}\" ";
+                else 
+                    extFileStore.Add(ApplicationVariables.externalFiles[i]);
             }
 
+            // Check if PWAD was selected
+            if (extFileStore.Count != 0)
+            {
+                start += $"-iwad \"{ApplicationVariables.IWAD}\" -file ";
+                foreach (string pwad in extFileStore) start += $"\"{pwad}\" ";
+            }
+            else start += $"-iwad \"{ApplicationVariables.IWAD}\"";
+           
             startInfo.Arguments = start; // Put Arguments Into startInfo
 
             // Start Process
