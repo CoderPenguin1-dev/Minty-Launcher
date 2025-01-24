@@ -16,11 +16,16 @@ You can also get Win64 and Win32 bins (both Framework-Dependant and Standalone) 
 Note that there's a user manual you should read, titled `USER.MD`.
 
 # Building
-No dependencies are required besides DiscordRichPresence ([GitHub](https://github.com/Lachee/discord-rpc-csharp)) from NuGet and its dependencies as well as WinForms and .NET 9.
+No dependencies are required besides DiscordRichPresence ([GitHub](https://github.com/Lachee/discord-rpc-csharp) from NuGet and its dependencies as well as WinForms and .NET 9.
 
-Open the solution in Visual Studio 2022.
-Create a `Resources.resx` file in the `Properties` folder with a key called `DiscordAPI` and put in your own Discord application ID for its value.
+You can clone the repo by running the following.
 
-In the Discord Developer Portal, make a new Rich Presence resource titled `icon`.
+`git clone https://github.com/PENGUINCODER1/Minty-Launcher.git`
 
-Build the solution from VS2022 from there.
+If you wish to replace the RPC ID, it's located in the `Doom Launcher\Doom Loader\Properties\Resources.resx` file.
+
+Build Debug build with the following in `Doom Loader/Doom Loader`.
+
+`dotnet run`
+
+You should now have a sucessful build afterwards!'
