@@ -20,12 +20,16 @@ No dependencies are required besides DiscordRichPresence ([GitHub](https://githu
 
 You can clone the repo by running the following.
 
-`git clone https://github.com/PENGUINCODER1/Minty-Launcher.git`
+	git clone https://github.com/PENGUINCODER1/Minty-Launcher.git
 
-If you wish to replace the RPC ID, it's located in the `Doom Launcher\Doom Loader\Properties\Resources.resx` file.
+If you wish to replace the RPC ID, it's located in the `Doom Loader\Properties\Resources.resx` file.
 
-Build Debug build with the following in `Doom Loader/Doom Loader`.
+Build Debug build with the following in the `Doom Loader` folder.
 
-`dotnet run`
+	dotnet run
 
-You should now have a sucessful build afterwards!'
+You should now have a sucessful build afterwards!
+
+If you want a more streamline script to follow, you *could* also copy this.
+
+	git clone https://github.com/PENGUINCODER1/Minty-Launcher.git && cd "Minty-Launcher/Doom Loader" && dotnet run
