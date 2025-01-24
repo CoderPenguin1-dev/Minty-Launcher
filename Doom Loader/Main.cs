@@ -146,7 +146,7 @@ namespace Doom_Loader
                     start += $"-deh \"{ApplicationVariables.externalFiles[i]}\" ";
                 else if (ApplicationVariables.externalFiles[i].EndsWith(".bex", StringComparison.CurrentCultureIgnoreCase))
                     start += $"-bex \"{ApplicationVariables.externalFiles[i]}\" ";
-                else 
+                else
                     extFileStore.Add(ApplicationVariables.externalFiles[i]);
             }
 
@@ -157,7 +157,7 @@ namespace Doom_Loader
                 foreach (string pwad in extFileStore) start += $"\"{pwad}\" ";
             }
             else start += $"-iwad \"{ApplicationVariables.IWAD}\"";
-           
+
             startInfo.Arguments = start; // Put Arguments Into startInfo
 
             // Start Process
@@ -344,7 +344,7 @@ namespace Doom_Loader
                 try
                 {
                     string[] lines = Array.Empty<string>();
-                    if (File.Exists("mintyLauncher.PortableSettings")) 
+                    if (File.Exists("mintyLauncher.PortableSettings"))
                         lines = File.ReadAllLines("mintyLauncher.PortableSettings");
                     else lines = File.ReadAllLines($"{appdata}\\MintyLauncher\\settings.txt");
 
@@ -365,12 +365,12 @@ namespace Doom_Loader
                 }
                 catch
                 {
-                    File.WriteAllLines($"{appdata}\\MintyLauncher\\settings.txt", new string[] { ApplicationVariables.rcp.ToString(),
+                    File.WriteAllLines($"{appdata}\\MintyLauncher\\settings.txt", [ ApplicationVariables.rcp.ToString(),
                         ApplicationVariables.closeOnPlay.ToString(),
                         ApplicationVariables.topMost.ToString(),
                         ApplicationVariables.useDefault.ToString(),
                         ApplicationVariables.customPreset.ToString()
-                    });
+                    ]);
                 }
 
                 // Presets
@@ -388,12 +388,12 @@ namespace Doom_Loader
             else
             {
                 Directory.CreateDirectory($"{appdata}\\MintyLauncher");
-                File.WriteAllLines($"{appdata}\\MintyLauncher\\settings.txt", new string[] { ApplicationVariables.rcp.ToString(),
+                File.WriteAllLines($"{appdata}\\MintyLauncher\\settings.txt", [ ApplicationVariables.rcp.ToString(),
                     ApplicationVariables.closeOnPlay.ToString(),
                     ApplicationVariables.topMost.ToString(),
                     ApplicationVariables.useDefault.ToString(),
                     ApplicationVariables.customPreset.ToString()
-                });
+                ]);
                 Directory.CreateDirectory($"{appdata}\\MintyLauncher\\Presets");
             }
 
@@ -422,7 +422,7 @@ namespace Doom_Loader
             else loadPresetBox.SelectedItem = null;
         }
 
-        private void extraParamsTextBox_MouseDown(object sender, MouseEventArgs e)
+        private void ExtraParametersInsertFilePath(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {

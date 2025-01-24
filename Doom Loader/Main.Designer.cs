@@ -112,7 +112,7 @@
             extraParamsTextBox.TabStop = false;
             extraParamsTextBox.TextAlign = HorizontalAlignment.Center;
             extraParamsTextBox.TextChanged += ExtraParamsChanged;
-            extraParamsTextBox.MouseDown += extraParamsTextBox_MouseDown;
+            extraParamsTextBox.MouseDown += ExtraParametersInsertFilePath;
             // 
             // savePresetButton
             // 
