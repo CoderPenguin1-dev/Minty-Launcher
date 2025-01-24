@@ -24,12 +24,12 @@ You can clone the repo by running the following.
 
 If you wish to replace the RPC ID, it's located in the `Doom Loader\Properties\Resources.resx` file.
 
-Build Debug build with the following in the `Doom Loader` folder.
+Build Debug build with the following in the `Minty-Launcher/Doom Loader` folder.
 
 	dotnet run
 
 You should now have a sucessful build afterwards!
 
-If you want a more streamline script to follow, you *could* also copy this.
+If you want a more streamline script to follow, you *could* also copy and run this.
 
 	git clone https://github.com/PENGUINCODER1/Minty-Launcher.git && cd "Minty-Launcher/Doom Loader" && dotnet run
