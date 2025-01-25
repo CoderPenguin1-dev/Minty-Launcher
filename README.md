@@ -16,7 +16,7 @@ You can also get Win64 and Win32 bins (both Framework-Dependant and Standalone) 
 Note that there's a user manual you should read, titled `USER.MD`.
 
 # Building
-No dependencies are required besides DiscordRichPresence ([GitHub](https://github.com/Lachee/discord-rpc-csharp) from NuGet and its dependencies as well as WinForms and .NET 9.
+No dependencies are required besides [DiscordRichPresence](https://github.com/Lachee/discord-rpc-csharp) from NuGet and its dependencies as well as WinForms and .NET 9.
 
 You can clone the repo by running the following.
 
