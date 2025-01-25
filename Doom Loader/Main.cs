@@ -120,8 +120,13 @@ namespace Doom_Loader
                     },
                     Assets = new Assets()
                     {
-                        LargeImageKey = "icon"
-                    }
+                        LargeImageKey = "icon",
+                        LargeImageText = $"Minty Launcher v{GetType().Assembly.GetName().Version.Major}.{GetType().Assembly.GetName().Version.Minor}.{GetType().Assembly.GetName().Version.Build}"
+                    },
+                    Buttons =
+                    [
+                        new DiscordRPC.Button() { Label = "View On GitHub", Url = "https://github.com/PENGUINCODER1/Minty-Launcher" }
+                    ]
                 });
             }
             #endregion
@@ -323,7 +328,7 @@ namespace Doom_Loader
         // Update the time since started for the Discord RPC.
         private void UpdateRPCTimestamp(object sender, EventArgs e)
         {
-            RPCClient.client.UpdateStartTime();
+            RPCClient.client.Invoke();
         }
 
         private void AppDataInit(object sender, EventArgs e) // Loads in the settings. It also initalizes the complevel selector and tooltips.
