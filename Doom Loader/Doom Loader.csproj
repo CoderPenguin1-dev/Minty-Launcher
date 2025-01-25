@@ -9,7 +9,7 @@
     <PackageId>The Minty Launcher</PackageId>
     <Authors>CoderPenguin1</Authors>
     <Product>The Minty Launcher</Product>
-    <Version>5.2.3.0</Version>
+    <Version>5.3.0.0</Version>
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <AssemblyName>MintyLauncher</AssemblyName>
   </PropertyGroup>
