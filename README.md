@@ -15,7 +15,6 @@ You can also get Win64 and Win32 bins (both Framework-Dependant and Standalone) 
 
 Note that there's a user manual you should read, titled `USER.MD`.
 
-Please note older versions than what's available on the repo aren't publically accessible anymore. At some point I'll get them back up.
 
 # Building
 No dependencies are required besides [DiscordRichPresence](https://github.com/Lachee/discord-rpc-csharp) from NuGet and its dependencies as well as WinForms and .NET 9.
