@@ -25,12 +25,12 @@ namespace Doom_Loader
         /// <param name="path"></param>
         private static void RewriteAppDataConfig(string path)
         {
-            File.WriteAllLines(path, new string[] { ApplicationVariables.rcp.ToString(),
+            File.WriteAllLines(path, [ ApplicationVariables.rcp.ToString(),
                 ApplicationVariables.closeOnPlay.ToString(),
                 ApplicationVariables.topMost.ToString(),
                 ApplicationVariables.useDefault.ToString(),
                 ApplicationVariables.customPreset.ToString(),
-                ApplicationVariables.IWADFolderPath.ToString() });
+                ApplicationVariables.IWADFolderPath.ToString() ]);
         }
 
         /// <summary>

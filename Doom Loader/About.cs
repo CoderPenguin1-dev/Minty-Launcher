@@ -28,7 +28,7 @@ namespace Doom_Loader
         }
 
         // Little Easter Egg
-        private void label2_Click(object sender, EventArgs e)
+        private void EasterEgg(object sender, EventArgs e)
         {
             new extraCredits().ShowDialog();
         }

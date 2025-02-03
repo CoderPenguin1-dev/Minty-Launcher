@@ -72,7 +72,7 @@
             label2.Size = new Size(178, 15);
             label2.TabIndex = 3;
             label2.Text = "Programmed by CoderPenguin1";
-            label2.Click += label2_Click;
+            label2.Click += EasterEgg;
             // 
             // About
             // 
