@@ -77,7 +77,7 @@ namespace Doom_Loader
                     {
                         if (portData.StartsWith('#')) continue; // Check for comment lines.
                         string[] data = portData.Split(';');
-                        if (Path.GetFileName(sourcePortDialog.FileName) == data[0])
+                        if (string.Equals(Path.GetFileName(sourcePortDialog.FileName), data[1], StringComparison.CurrentCultureIgnoreCase))
                         {
                             portButton.Text = $"{data[1]}";
                             dataFound = true;
