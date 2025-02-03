@@ -3,8 +3,8 @@
 public static class ApplicationVariables
 {
     public static string presetFilePath = string.Empty;
-    public static string exe = string.Empty;
-    public static string[] externalFiles = Array.Empty<string>();
+    public static string sourcePort = string.Empty;
+    public static string[] externalFiles = [];
     public static string IWAD = string.Empty;
     public static string IWADFolderPath = string.Empty;
     public static string arguments = "";

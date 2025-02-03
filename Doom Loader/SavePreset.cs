@@ -28,7 +28,7 @@ namespace Doom_Loader
                 // Save extra paramaters, source port, and selected complevel.
                 string file = @"";
                 file += $"{ApplicationVariables.arguments}\n";
-                file += $"{ApplicationVariables.exe}\n";
+                file += $"{ApplicationVariables.sourcePort}\n";
                 file += $"{ApplicationVariables.complevel}\n";
 
                 // Save the External File list to line index 5.

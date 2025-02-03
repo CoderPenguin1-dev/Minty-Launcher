@@ -68,7 +68,7 @@ namespace Doom_Loader
         {
             if (sourcePortDialog.ShowDialog() != DialogResult.Cancel)
             {
-                ApplicationVariables.exe = "\"" + sourcePortDialog.FileName + "\"";
+                ApplicationVariables.sourcePort = "\"" + sourcePortDialog.FileName + "\"";
 
                 bool dataFound = false;
                 if (File.Exists("mintyLauncher.portDatabase"))
@@ -131,7 +131,7 @@ namespace Doom_Loader
             }
             #endregion
 
-            ProcessStartInfo startInfo = new(ApplicationVariables.exe)
+            ProcessStartInfo startInfo = new(ApplicationVariables.sourcePort)
             {
                 CreateNoWindow = false,
                 UseShellExecute = false
@@ -144,7 +144,7 @@ namespace Doom_Loader
             if (ApplicationVariables.complevel != 0) start += $"-complevel {ApplicationVariables.complevel} "; // Complevel
 
             // Check if there was a DeHacked patch
-            List<string> extFileStore = new(); // Used so the PWAD adder code doesn't need to iterate through the useless DEH and BEX files later.
+            List<string> extFileStore = []; // Used so the PWAD adder code doesn't need to iterate through the useless DEH and BEX files later.
             for (int i = 0; i < ApplicationVariables.externalFiles.Length; i++)
             {
                 if (ApplicationVariables.externalFiles[i].EndsWith(".deh", StringComparison.CurrentCultureIgnoreCase))
@@ -250,8 +250,8 @@ namespace Doom_Loader
             extraParamsTextBox.Text = args[0]; // Arguments
 
             #region Sourceport and IWADs
-            ApplicationVariables.exe = Regex.Replace(args[1], @"[^\w\\.@: -]", string.Empty);
-            FileInfo port = new(ApplicationVariables.exe);
+            ApplicationVariables.sourcePort = Regex.Replace(args[1], @"[^\w\\.@: -]", string.Empty);
+            FileInfo port = new(ApplicationVariables.sourcePort);
             string directory = port.Directory.ToString();
             bool dataFound = false;
             if (File.Exists("mintyLauncher.portDatabase"))
@@ -260,7 +260,7 @@ namespace Doom_Loader
                 {
                     if (portData.StartsWith('#')) continue; // Check for comments
                     string[] data = portData.Split(';');
-                    if (Path.GetFileName(ApplicationVariables.exe) == data[0])
+                    if (Path.GetFileName(ApplicationVariables.sourcePort) == data[0])
                     {
                         portButton.Text = $"{data[1]}";
                         dataFound = true;
@@ -268,7 +268,7 @@ namespace Doom_Loader
                     }
                 }
             }
-            if (!dataFound) portButton.Text = Path.GetFileNameWithoutExtension(ApplicationVariables.exe);
+            if (!dataFound) portButton.Text = Path.GetFileNameWithoutExtension(ApplicationVariables.sourcePort);
             #endregion
 
             // PWAD
@@ -300,7 +300,7 @@ namespace Doom_Loader
 
                     string file = @"";
                     file += $"{ApplicationVariables.arguments}\n";
-                    file += $"{ApplicationVariables.exe}\n";
+                    file += $"{ApplicationVariables.sourcePort}\n";
                     file += $"{ApplicationVariables.complevel}\n";
 
                     if (ApplicationVariables.externalFiles.Length != 0)
@@ -348,7 +348,7 @@ namespace Doom_Loader
                 // Settings
                 try
                 {
-                    string[] lines = Array.Empty<string>();
+                    string[] lines = [];
                     if (File.Exists("mintyLauncher.PortableSettings"))
                         lines = File.ReadAllLines("mintyLauncher.PortableSettings");
                     else lines = File.ReadAllLines($"{appdata}\\MintyLauncher\\settings.txt");
