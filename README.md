@@ -1,4 +1,4 @@
-<img src="Images/logo.png" width="250" height="250">
+<img src="Images/logoREADME.png" width="250" height="250">
 
 # The Minty Launcher
 A C# WinForms Doom launcher I made as I hadn't liked others like ZDL or Doom Launcher.
