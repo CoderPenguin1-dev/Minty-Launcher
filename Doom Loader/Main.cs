@@ -441,12 +441,15 @@ namespace Doom_Loader
                     {
                         case "--preset-path":
                             i++;
+                            loadPresetBox.Items.Add("External Preset");
+                            loadPresetBox.SelectedItem = "External Preset";
                             LoadPreset(args[i]);
                             break;
 
                         case "--preset":
                             i++;
                             RefreshPresetBox(sender, e);
+                            loadPresetBox.SelectedItem = args[i];
                             LoadPreset($"{appdata}\\MintyLauncher\\Presets\\{args[i]}.mlPreset");
                             break;
 
