@@ -91,8 +91,6 @@ Note that all of your settings (and your Default preset, if enabled) are loaded 
 
 `--iwad` loads in the IWAD file from your IWADs folder. Must include the file extension.
 
-`--info` shows the current version of Minty Launcher.
-
 `--no-gui` is meant to be combined with the above arguments. Automatically starts the sourceport from the preset with the desired IWAD without ever showing the GUI.
 
 `--no-gui-rpc` is identical to `--no-gui` but allows you to override your RPC setting. Use [1, true, on] to enable RPC, [0, false, off] to disable RPC.
