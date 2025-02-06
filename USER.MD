@@ -81,3 +81,16 @@ These are settings relating to Minty Launcher's main window.
 *Set IWADs Folder*:
 
 	This will allow you to change where your IWADs folder is located.
+	
+## 4. Command-line Arguments
+`--preset [preset name]` loads in the preset from your AppData folder. Exclude the file extension from the name.
+
+`--preset-path [path]` loads in a preset from the desired path. Must be an `.mlPreset` file.
+
+`--iwad` loads in the IWAD file from your IWADs folder. Must include the file extension.
+
+`--info` shows the current version of Minty Launcher.
+
+`--no-gui` is meant to be combined with the above arguments. Automatically starts the sourceport from the preset with the desired IWAD without ever showing the GUI.
+
+`--info` shows the current version of Minty Launcher.
