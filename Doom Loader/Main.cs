@@ -452,6 +452,7 @@ namespace Doom_Loader
                             if (!loadPresetBox.Items.Contains(args[i]))
                             {
                                 MessageBox.Show("Given preset does not exist. Check to see if your capitalization is wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Environment.Exit(1);
                             }
                             loadPresetBox.SelectedItem = args[i];
                             LoadPreset($"{appdata}\\MintyLauncher\\Presets\\{args[i]}.mlPreset");
