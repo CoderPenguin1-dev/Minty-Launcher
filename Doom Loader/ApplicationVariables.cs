@@ -2,7 +2,6 @@
 
 public static class ApplicationVariables
 {
-    public static string presetFilePath = string.Empty;
     public static string sourcePort = string.Empty;
     public static string[] externalFiles = [];
     public static string IWAD = string.Empty;

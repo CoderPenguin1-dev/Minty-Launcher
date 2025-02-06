@@ -269,6 +269,13 @@ namespace Doom_Loader
         private void LoadPresetComboBox(object sender, EventArgs e)
         {
             string path;
+            // Reset variables, mainly for when --preset-path was used.
+            ApplicationVariables.arguments = string.Empty;
+            extraParamsTextBox.Text = "";
+            ApplicationVariables.complevel = 0;
+            ApplicationVariables.externalFiles = [];
+            ApplicationVariables.sourcePort = string.Empty;
+            portButton.Text = "Select Port";
 
             if (!ApplicationVariables.customPreset || ApplicationVariables.useDefault && boot)
             {
