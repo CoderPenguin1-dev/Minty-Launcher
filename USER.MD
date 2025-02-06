@@ -89,7 +89,7 @@ Note that all of your settings (and your Default preset, if enabled) are loaded 
 
 `--preset-path [path]` loads in a preset from the desired path. Must be an `.mlPreset` file.
 
-`--iwad` loads in the IWAD file from your IWADs folder. Must include the file extension.
+`--iwad` loads in the IWAD file from your IWADs folder. Must include the file extension. Case sensitive.
 
 `--no-gui` is meant to be combined with the above arguments. Automatically starts the sourceport from the preset with the desired IWAD without ever showing the GUI.
 
