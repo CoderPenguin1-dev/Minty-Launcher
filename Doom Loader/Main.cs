@@ -151,7 +151,7 @@ namespace Doom_Loader
                     start += $"-deh \"{ApplicationVariables.externalFiles[i]}\" ";
                 else if (ApplicationVariables.externalFiles[i].EndsWith(".bex", StringComparison.CurrentCultureIgnoreCase))
                     start += $"-bex \"{ApplicationVariables.externalFiles[i]}\" ";
-                else
+                else // Not an DEH/BEX patch? Shove it along with the external files.
                     extFileStore.Add(ApplicationVariables.externalFiles[i]);
             }
 
