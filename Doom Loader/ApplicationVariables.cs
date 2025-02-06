@@ -12,7 +12,7 @@ public static class ApplicationVariables
 
     // Settings
     public static bool closeOnPlay = false;
-    public static bool rcp = true;
+    public static bool rpc = true;
     public static bool topMost = false;
     public static bool useDefault = true;
     public static bool customPreset = false;

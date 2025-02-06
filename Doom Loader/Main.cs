@@ -92,7 +92,7 @@ namespace Doom_Loader
         private void Play(object sender, EventArgs e)
         {
             #region Discord RPC
-            if (ApplicationVariables.rcp)
+            if (ApplicationVariables.rpc)
             {
                 RPCClient.Initialize();
                 // State Setup
@@ -175,12 +175,12 @@ namespace Doom_Loader
                 exeProcess.WaitForExit();
                 if (ApplicationVariables.closeOnPlay)
                 {
-                    if (ApplicationVariables.rcp) RPCClient.client.Dispose(); // Kill RPC Connection
+                    if (ApplicationVariables.rpc) RPCClient.client.Dispose(); // Kill RPC Connection
                     Environment.Exit(0);
                 }
             }
             catch { }
-            if (ApplicationVariables.rcp) RPCClient.client.Dispose(); // Kill RPC Connection
+            if (ApplicationVariables.rpc) RPCClient.client.Dispose(); // Kill RPC Connection
 
             // Move window visible above all windows
             if (ApplicationVariables.topMost)
@@ -358,7 +358,7 @@ namespace Doom_Loader
                     else lines = File.ReadAllLines($"{appdata}\\MintyLauncher\\settings.txt");
 
                     // Set the settings.
-                    ApplicationVariables.rcp = bool.Parse(lines[0]);
+                    ApplicationVariables.rpc = bool.Parse(lines[0]);
                     ApplicationVariables.closeOnPlay = bool.Parse(lines[1]);
                     ApplicationVariables.topMost = bool.Parse(lines[2]);
                     ApplicationVariables.useDefault = bool.Parse(lines[3]);
@@ -374,7 +374,7 @@ namespace Doom_Loader
                 }
                 catch
                 {
-                    File.WriteAllLines($"{appdata}\\MintyLauncher\\settings.txt", [ ApplicationVariables.rcp.ToString(),
+                    File.WriteAllLines($"{appdata}\\MintyLauncher\\settings.txt", [ ApplicationVariables.rpc.ToString(),
                         ApplicationVariables.closeOnPlay.ToString(),
                         ApplicationVariables.topMost.ToString(),
                         ApplicationVariables.useDefault.ToString(),
@@ -397,7 +397,7 @@ namespace Doom_Loader
             else
             {
                 Directory.CreateDirectory($"{appdata}\\MintyLauncher");
-                File.WriteAllLines($"{appdata}\\MintyLauncher\\settings.txt", [ ApplicationVariables.rcp.ToString(),
+                File.WriteAllLines($"{appdata}\\MintyLauncher\\settings.txt", [ ApplicationVariables.rpc.ToString(),
                     ApplicationVariables.closeOnPlay.ToString(),
                     ApplicationVariables.topMost.ToString(),
                     ApplicationVariables.useDefault.ToString(),

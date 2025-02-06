@@ -25,7 +25,7 @@ namespace Doom_Loader
         /// <param name="path"></param>
         private static void RewriteAppDataConfig(string path)
         {
-            File.WriteAllLines(path, [ ApplicationVariables.rcp.ToString(),
+            File.WriteAllLines(path, [ ApplicationVariables.rpc.ToString(),
                 ApplicationVariables.closeOnPlay.ToString(),
                 ApplicationVariables.topMost.ToString(),
                 ApplicationVariables.useDefault.ToString(),
@@ -50,7 +50,7 @@ namespace Doom_Loader
 
         private void Settings_Load(object sender, EventArgs e)
         {
-            rcpBox.Checked = ApplicationVariables.rcp;
+            rcpBox.Checked = ApplicationVariables.rpc;
             closeBox.Checked = ApplicationVariables.closeOnPlay;
             topMostBox.Checked = ApplicationVariables.topMost;
             defaultBox.Checked = ApplicationVariables.useDefault;
@@ -72,7 +72,7 @@ namespace Doom_Loader
         #region Settings
         private void DiscordRichPresence(object sender, EventArgs e)
         {
-            ApplicationVariables.rcp = rcpBox.Checked;
+            ApplicationVariables.rpc = rcpBox.Checked;
             string path = CheckForWhichConfig();
             RewriteAppDataConfig(path);
         }
