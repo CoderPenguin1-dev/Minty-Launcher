@@ -322,6 +322,23 @@ namespace Doom_Loader
             }
             else new SavePreset().ShowDialog();
         }
+
+        private void RefreshPresetBox(object sender, EventArgs e)
+        {
+            string presetName = null;
+            if (loadPresetBox.SelectedItem != null) presetName = loadPresetBox.SelectedItem.ToString();
+            loadPresetBox.Items.Clear();
+            string path = "%appdata%\\MintyLauncher\\Presets";
+            path = Environment.ExpandEnvironmentVariables(path);
+            string[] presets = Directory.GetFiles(path);
+
+            foreach (string preset in presets)
+            {
+                loadPresetBox.Items.Add(Path.GetFileNameWithoutExtension(preset));
+            }
+            if (loadPresetBox.Items.Contains(presetName)) loadPresetBox.SelectedItem = presetName;
+            else loadPresetBox.SelectedItem = null;
+        }
         #endregion
 
         private void ExtraParamsChanged(object sender, EventArgs e)
@@ -479,23 +496,6 @@ namespace Doom_Loader
                 Play(sender, e);
                 this.Close();
             }
-        }
-
-        private void RefreshPresetBox(object sender, EventArgs e)
-        {
-            string presetName = null;
-            if (loadPresetBox.SelectedItem != null) presetName = loadPresetBox.SelectedItem.ToString();
-            loadPresetBox.Items.Clear();
-            string path = "%appdata%\\MintyLauncher\\Presets";
-            path = Environment.ExpandEnvironmentVariables(path);
-            string[] presets = Directory.GetFiles(path);
-
-            foreach (string preset in presets)
-            {
-                loadPresetBox.Items.Add(Path.GetFileNameWithoutExtension(preset));
-            }
-            if (loadPresetBox.Items.Contains(presetName)) loadPresetBox.SelectedItem = presetName;
-            else loadPresetBox.SelectedItem = null;
         }
 
         private void ExtraParametersInsertFilePath(object sender, MouseEventArgs e)
