@@ -389,7 +389,7 @@ namespace Doom_Loader
                     // Little hack to make loading the default preset work. Why did I do this?
                     loadPresetBox.Items.Add("Default");
                     loadPresetBox.SelectedItem = "Default";
-                    LoadPresetComboBox(sender, e);
+                    LoadPreset($"{appdata}\\MintyLauncher\\Presets\\Default.mlPreset");
                 }
             }
 
