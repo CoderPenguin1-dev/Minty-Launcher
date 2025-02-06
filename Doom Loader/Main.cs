@@ -437,6 +437,7 @@ namespace Doom_Loader
                 string[] args = Environment.GetCommandLineArgs();
                 for (int i = 0; i < args.Length; i++)
                 {
+                    // Anything with i++ takes in an argument of its own. Put there to skip the argument on the next pass.
                     switch (args[i])
                     {
                         case "--preset-path":
@@ -449,6 +450,7 @@ namespace Doom_Loader
                         case "--preset":
                             i++;
                             RefreshPresetBox(sender, e);
+                            // Here due to how ComboBoxes work with capitalization.
                             if (!loadPresetBox.Items.Contains(args[i]))
                             {
                                 MessageBox.Show("Given preset does not exist. Check to see if your capitalization is wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -461,6 +463,7 @@ namespace Doom_Loader
                         case "--iwad":
                             i++;
                             RefreshIWAD(sender, e);
+                            // Here due to how ComboBoxes work with capitalization.
                             if (!iwadBox.Items.Contains(args[i]))
                             {
                                 MessageBox.Show("Given IWAD does not exist. Check to see if your capitalization is wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
