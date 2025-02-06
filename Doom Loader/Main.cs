@@ -383,7 +383,7 @@ namespace Doom_Loader
                 }
 
                 // Presets
-                if (!Directory.Exists($"{appdata}\\MintyLauncher\\Presets")) Directory.CreateDirectory($"{appdata}\\MintyLauncher\\Presets");
+                if (!Directory.Exists($"{appdata}\\MintyLauncher\\Presets")) Directory.CreateDirectory($"{appdata}\\MintyLauncher\\Presets"); //Check if there's the presets folder.
                 else if (File.Exists($"{appdata}\\MintyLauncher\\Presets\\Default.mlPreset") && ApplicationVariables.useDefault) // Check if there is the Default preset.
                 {
                     // Load Default preset. Also add it to the list and select it.
