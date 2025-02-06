@@ -260,7 +260,7 @@ namespace Doom_Loader
             {
                 ApplicationVariables.externalFiles = args[3].Split(',');
                 if (ApplicationVariables.externalFiles.Length == 1) // I can't honestly remember why this if statement was put into here.
-                {                                         // Will not remove to prevent it possibly breaking like a Jenga tower.
+                {                                                   // Will not remove to prevent it possibly breaking like a Jenga tower.
                     ApplicationVariables.externalFiles[0] = args[3];
                 }
             }
@@ -412,6 +412,44 @@ namespace Doom_Loader
             toolTips.SetToolTip(pwadManagerButton, "External File Manager");
             toolTips.SetToolTip(complevelSelector, "For ports that have compatibilty levels");
             toolTips.SetToolTip(extraParamsTextBox, "Right click to import file path to the end of the textbox");
+
+            bool noGUI = false;
+            if (Environment.GetCommandLineArgs().Length > 0)
+            {
+                string[] args = Environment.GetCommandLineArgs();
+                for (int i = 0; i < args.Length; i++)
+                {
+                    switch (args[i])
+                    {
+                        case "--preset-path":
+                            i++;
+                            LoadPreset(args[i]);
+                            break;
+                        case "--preset":
+                            i++;
+                            RefreshPresetBox(sender, e);
+                            LoadPreset($"{appdata}\\MintyLauncher\\Presets\\{args[i]}.mlPreset");
+                            break;
+                        case "--iwad":
+                            i++;
+                            RefreshIWAD(sender, e);
+                            iwadBox.SelectedItem = args[i];
+                            break;
+                        case "--no-gui":
+                            noGUI = true;
+                            break;
+                        case "--info":
+                            Console.WriteLine($"Minty Launcher v{GetType().Assembly.GetName().Version.Major}.{GetType().Assembly.GetName().Version.Minor}.{GetType().Assembly.GetName().Version.Build}");
+                            Console.WriteLine("By CoderPenguin1");
+                            break;
+                    }
+                }
+            }
+            if (noGUI)
+            {
+                Play(sender, e);
+                this.Close();
+            }
         }
 
         private void RefreshPresetBox(object sender, EventArgs e)
