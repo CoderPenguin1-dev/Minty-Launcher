@@ -461,6 +461,11 @@ namespace Doom_Loader
                         case "--iwad":
                             i++;
                             RefreshIWAD(sender, e);
+                            if (!iwadBox.Items.Contains(args[i]))
+                            {
+                                MessageBox.Show("Given IWAD does not exist. Check to see if your capitalization is wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Environment.Exit(1);
+                            }
                             iwadBox.SelectedItem = args[i];
                             break;
 
