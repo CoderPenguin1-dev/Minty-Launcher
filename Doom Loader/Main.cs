@@ -413,6 +413,7 @@ namespace Doom_Loader
             toolTips.SetToolTip(complevelSelector, "For ports that have compatibilty levels");
             toolTips.SetToolTip(extraParamsTextBox, "Right click to import file path to the end of the textbox");
 
+            // Command Line Arguments
             bool noGUI = false;
             if (Environment.GetCommandLineArgs().Length > 0)
             {
@@ -425,19 +426,23 @@ namespace Doom_Loader
                             i++;
                             LoadPreset(args[i]);
                             break;
+
                         case "--preset":
                             i++;
                             RefreshPresetBox(sender, e);
                             LoadPreset($"{appdata}\\MintyLauncher\\Presets\\{args[i]}.mlPreset");
                             break;
+
                         case "--iwad":
                             i++;
                             RefreshIWAD(sender, e);
                             iwadBox.SelectedItem = args[i];
                             break;
+
                         case "--no-gui":
                             noGUI = true;
                             break;
+
                         case "--no-gui-rpc":
                             i++;
                             if (args[i] == "0" 
@@ -460,6 +465,7 @@ namespace Doom_Loader
 
                             noGUI = true;
                             break;
+
                         case "--info":
                             MessageBox.Show($"Minty Launcher v{GetType().Assembly.GetName().Version.Major}.{GetType().Assembly.GetName().Version.Minor}.{GetType().Assembly.GetName().Version.Build}\nProgrammed By CoderPenguin1", 
                                 "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
