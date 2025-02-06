@@ -454,15 +454,16 @@ namespace Doom_Loader
                             }
                             else
                             {
-                                Console.WriteLine("Invalid input for --no-gui-rpc. Refer to USER.MD for details.");
+                                MessageBox.Show("Invalid input for --no-gui-rpc. Refer to USER.MD for details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 Environment.Exit(1);
                             }
 
                             noGUI = true;
                             break;
                         case "--info":
-                            Console.WriteLine($"Minty Launcher v{GetType().Assembly.GetName().Version.Major}.{GetType().Assembly.GetName().Version.Minor}.{GetType().Assembly.GetName().Version.Build}");
-                            Console.WriteLine("By CoderPenguin1");
+                            MessageBox.Show($"Minty Launcher v{GetType().Assembly.GetName().Version.Major}.{GetType().Assembly.GetName().Version.Minor}.{GetType().Assembly.GetName().Version.Build}\nProgrammed By CoderPenguin1", 
+                                "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Environment.Exit(0);
                             break;
                     }
                 }
