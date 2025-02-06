@@ -438,6 +438,28 @@ namespace Doom_Loader
                         case "--no-gui":
                             noGUI = true;
                             break;
+                        case "--no-gui-rpc":
+                            i++;
+                            if (args[i] == "0" 
+                                || args[i].Equals("off", StringComparison.CurrentCultureIgnoreCase) 
+                                || args[i].Equals("false", StringComparison.CurrentCultureIgnoreCase))
+                            {
+                                ApplicationVariables.rpc = false;
+                            }
+                            else if (args[i] == "1"
+                                || args[i].Equals("on", StringComparison.CurrentCultureIgnoreCase)
+                                || args[i].Equals("true", StringComparison.CurrentCultureIgnoreCase))
+                            {
+                                ApplicationVariables.rpc = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid input for --no-gui-rpc. Refer to USER.MD for details.");
+                                Environment.Exit(1);
+                            }
+
+                            noGUI = true;
+                            break;
                         case "--info":
                             Console.WriteLine($"Minty Launcher v{GetType().Assembly.GetName().Version.Major}.{GetType().Assembly.GetName().Version.Minor}.{GetType().Assembly.GetName().Version.Build}");
                             Console.WriteLine("By CoderPenguin1");
