@@ -440,7 +440,7 @@ namespace Doom_Loader
                     // Anything with i++ takes in an argument of its own. Put there to skip the argument on the next pass.
                     switch (args[i])
                     {
-                        case "--preset-path":
+                        case "--preset-path" or "-p":
                             i++;
                             loadPresetBox.Items.Add("External Preset");
                             loadPresetBox.SelectedItem = "External Preset";
@@ -460,7 +460,7 @@ namespace Doom_Loader
                             LoadPreset($"{appdata}\\MintyLauncher\\Presets\\{args[i]}.mlPreset");
                             break;
 
-                        case "--iwad":
+                        case "--iwad" or "-w":
                             i++;
                             RefreshIWAD(sender, e);
                             // Here due to how ComboBoxes work with capitalization.
@@ -476,7 +476,7 @@ namespace Doom_Loader
                             noGUI = true;
                             break;
 
-                        case "--no-gui-rpc":
+                        case "--no-gui-rpc" or "-n":
                             i++;
                             if (args[i] == "0"
                                 || args[i].Equals("off", StringComparison.CurrentCultureIgnoreCase)
@@ -499,7 +499,7 @@ namespace Doom_Loader
                             noGUI = true;
                             break;
 
-                        case "--info":
+                        case "--info" or "-i":
                             MessageBox.Show($"Minty Launcher v{GetType().Assembly.GetName().Version.Major}.{GetType().Assembly.GetName().Version.Minor}.{GetType().Assembly.GetName().Version.Build}\nProgrammed By CoderPenguin1",
                                 "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Environment.Exit(0);
