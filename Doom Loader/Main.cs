@@ -269,13 +269,6 @@ namespace Doom_Loader
         private void LoadPresetComboBox(object sender, EventArgs e)
         {
             string path;
-            // Reset variables, mainly for when --preset-path was used.
-            ApplicationVariables.arguments = string.Empty;
-            extraParamsTextBox.Text = "";
-            ApplicationVariables.complevel = 0;
-            ApplicationVariables.externalFiles = [];
-            ApplicationVariables.sourcePort = string.Empty;
-            portButton.Text = "Select Port";
 
             if (!ApplicationVariables.customPreset || ApplicationVariables.useDefault && boot)
             {
@@ -477,8 +470,8 @@ namespace Doom_Loader
 
                         case "--no-gui-rpc":
                             i++;
-                            if (args[i] == "0" 
-                                || args[i].Equals("off", StringComparison.CurrentCultureIgnoreCase) 
+                            if (args[i] == "0"
+                                || args[i].Equals("off", StringComparison.CurrentCultureIgnoreCase)
                                 || args[i].Equals("false", StringComparison.CurrentCultureIgnoreCase))
                             {
                                 ApplicationVariables.rpc = false;
@@ -499,7 +492,7 @@ namespace Doom_Loader
                             break;
 
                         case "--info":
-                            MessageBox.Show($"Minty Launcher v{GetType().Assembly.GetName().Version.Major}.{GetType().Assembly.GetName().Version.Minor}.{GetType().Assembly.GetName().Version.Build}\nProgrammed By CoderPenguin1", 
+                            MessageBox.Show($"Minty Launcher v{GetType().Assembly.GetName().Version.Major}.{GetType().Assembly.GetName().Version.Minor}.{GetType().Assembly.GetName().Version.Build}\nProgrammed By CoderPenguin1",
                                 "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Environment.Exit(0);
                             break;
