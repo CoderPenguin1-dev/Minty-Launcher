@@ -191,25 +191,8 @@ namespace Doom_Loader
         }
 
         #region Presets
-        private void LoadPreset(object sender, EventArgs e)
+        private void LoadPreset(string path)
         {
-            string path;
-
-            if (!ApplicationVariables.customPreset || ApplicationVariables.useDefault && boot)
-            {
-                path = $"%appdata%\\MintyLauncher\\Presets\\{loadPresetBox.SelectedItem}.mlPreset";
-                path = Environment.ExpandEnvironmentVariables(path);
-                boot = false;
-            }
-            else if (openPresetDialog.ShowDialog() != DialogResult.Cancel)
-            {
-                path = openPresetDialog.FileName;
-            }
-            else
-            {
-                return; // Should not end here under normal usage, hopefully
-            }
-
             string[] args = File.ReadAllLines(path);
 
             #region Complevel
@@ -272,7 +255,7 @@ namespace Doom_Loader
             #endregion
 
             // PWAD
-            ApplicationVariables.externalFiles = Array.Empty<string>();
+            ApplicationVariables.externalFiles = [];
             if (args.Length == 4)
             {
                 ApplicationVariables.externalFiles = args[3].Split(',');
@@ -283,9 +266,30 @@ namespace Doom_Loader
             }
         }
 
+        private void LoadPresetComboBox(object sender, EventArgs e)
+        {
+            string path;
+
+            if (!ApplicationVariables.customPreset || ApplicationVariables.useDefault && boot)
+            {
+                path = $"%appdata%\\MintyLauncher\\Presets\\{loadPresetBox.SelectedItem}.mlPreset";
+                path = Environment.ExpandEnvironmentVariables(path);
+                boot = false;
+            }
+            else
+            {
+                return; // Should not end here under normal usage, hopefully
+            }
+
+            LoadPreset(path);
+        }
+
         private void LoadCustomPreset(object sender, EventArgs e)
         {
-            LoadPreset(sender, e);
+            if (openPresetDialog.ShowDialog() != DialogResult.Cancel)
+            {
+                LoadPreset(openPresetDialog.FileName);
+            }
         }
 
         // If changes are made here, also adapt changes to SavePreset.cs' save button function
@@ -385,7 +389,7 @@ namespace Doom_Loader
                     // Little hack to make loading the default preset work. Why did I do this?
                     loadPresetBox.Items.Add("Default");
                     loadPresetBox.SelectedItem = "Default";
-                    LoadPreset(sender, e);
+                    LoadPresetComboBox(sender, e);
                 }
             }
 

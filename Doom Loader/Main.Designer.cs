@@ -252,7 +252,7 @@
             loadPresetBox.TabIndex = 25;
             loadPresetBox.TabStop = false;
             loadPresetBox.DropDown += RefreshPresetBox;
-            loadPresetBox.SelectionChangeCommitted += LoadPreset;
+            loadPresetBox.SelectionChangeCommitted += LoadPresetComboBox;
             // 
             // Main
             // 
