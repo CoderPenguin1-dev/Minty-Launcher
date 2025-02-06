@@ -85,7 +85,7 @@ These are settings relating to Minty Launcher's main window.
 ## 4. Command-line Arguments
 Note that all of your settings (and your Default preset, if enabled) are loaded before these are checked.
 
-`--preset [preset name]` loads in the preset from your AppData folder. Exclude the file extension from the name.
+`--preset [preset name]` loads in the preset from your AppData folder. Exclude the file extension from the name. Case sensitive.
 
 `--preset-path [path]` loads in a preset from the desired path. Must be an `.mlPreset` file.
 
