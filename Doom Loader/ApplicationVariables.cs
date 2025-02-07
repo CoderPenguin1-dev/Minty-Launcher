@@ -2,7 +2,7 @@
 
 public static class ApplicationVariables
 {
-    public static string presetName = string.Empty;
+    public static string presetName = string.Empty; // Used for the SavePreset window to change the Load Preset ComboBox selected item.
     public static string sourcePort = string.Empty;
     public static string[] externalFiles = [];
     public static string IWAD = string.Empty;
