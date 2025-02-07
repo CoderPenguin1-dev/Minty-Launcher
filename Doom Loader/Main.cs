@@ -52,6 +52,37 @@ namespace Doom_Loader
             catch { }
         }
 
+        private void RefreshIWAD(object sender, EventArgs e)
+        {
+            try
+            {
+                string IWAD = null;
+                if (iwadBox.SelectedItem != null) IWAD = iwadBox.SelectedItem.ToString(); // Check if the user already has an IWAD selected
+                                                                                          // Save it for later if they do.
+                iwadBox.Items.Clear();
+                string[] IWADs = Directory.GetFiles(ApplicationVariables.IWADFolderPath);
+
+                // Find the IWADs from the folder path.
+                foreach (string wad in IWADs)
+                {
+                    if (Path.GetExtension(wad).Equals(".wad", StringComparison.CurrentCultureIgnoreCase) || Path.GetExtension(wad).Equals(".ipk3", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        iwadBox.Items.Add(Path.GetFileName(wad));
+                    }
+                }
+                // Reset the selected IWAD if the user had an IWAD selected.
+                if (iwadBox.Items.Contains(IWAD)) iwadBox.SelectedItem = IWAD;
+                else iwadBox.SelectedItem = null;
+            }
+            // Ask user to set the IWAD folder path if they either don't have one set or the one set is missing.
+            catch
+            {
+                var error = MessageBox.Show("IWADs Folder path missing.\nSet new path now?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (error == DialogResult.Yes) new Settings().SetIWADFolder(sender, e);
+                else if (error == DialogResult.No) MessageBox.Show("Please set new path in settings.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         #region External Windows
         private void PWADManagerOpen(object sender, EventArgs e)
         {
@@ -551,37 +582,6 @@ namespace Doom_Loader
                 {
                     extraParamsTextBox.AppendText($"\"{fileImport.FileName}\"");
                 }
-            }
-        }
-
-        private void RefreshIWAD(object sender, EventArgs e)
-        {
-            try
-            {
-                string IWAD = null;
-                if (iwadBox.SelectedItem != null) IWAD = iwadBox.SelectedItem.ToString(); // Check if the user already has an IWAD selected
-                                                                                          // Save it for later if they do.
-                iwadBox.Items.Clear();
-                string[] IWADs = Directory.GetFiles(ApplicationVariables.IWADFolderPath);
-
-                // Find the IWADs from the folder path.
-                foreach (string wad in IWADs)
-                {
-                    if (Path.GetExtension(wad).Equals(".wad", StringComparison.CurrentCultureIgnoreCase) || Path.GetExtension(wad).Equals(".ipk3", StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        iwadBox.Items.Add(Path.GetFileName(wad));
-                    }
-                }
-                // Reset the selected IWAD if the user had an IWAD selected.
-                if (iwadBox.Items.Contains(IWAD)) iwadBox.SelectedItem = IWAD;
-                else iwadBox.SelectedItem = null;
-            }
-            // Ask user to set the IWAD folder path if they either don't have one set or the one set is missing.
-            catch
-            {
-                var error = MessageBox.Show("IWADs Folder path missing.\nSet new path now?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-                if (error == DialogResult.Yes) new Settings().SetIWADFolder(sender, e);
-                else if (error == DialogResult.No) MessageBox.Show("Please set new path in settings.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
