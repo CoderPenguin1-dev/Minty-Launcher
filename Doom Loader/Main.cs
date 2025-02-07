@@ -337,11 +337,18 @@ namespace Doom_Loader
 
         private void QuickSavePreset(object sender, MouseEventArgs e)
         {
-            if (!ApplicationVariables.customPreset && e.Button == MouseButtons.Right)
+            try
             {
-                string path = Environment.ExpandEnvironmentVariables($"%appdata%\\MintyLauncher\\Presets\\{loadPresetBox.SelectedItem}.mlPreset");
-                SavePreset(path);
-                MessageBox.Show("Preset Saved", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (!ApplicationVariables.customPreset && e.Button == MouseButtons.Right)
+                {
+                    string path = Environment.ExpandEnvironmentVariables($"%appdata%\\MintyLauncher\\Presets\\{loadPresetBox.SelectedItem}.mlPreset");
+                    SavePreset(path);
+                    MessageBox.Show("Preset Saved", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch 
+            {
+                MessageBox.Show("No preset currently selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
