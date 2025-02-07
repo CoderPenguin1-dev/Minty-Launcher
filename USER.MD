@@ -33,6 +33,7 @@ The *External Files* button opens up the External File Manager window, which all
 *Ask For Preset Location* Setting **ON**: The *Load Preset* button will allow you to load in a preset.
 
 The *Save Preset* button will allow you to save a preset. If the *Ask For Preset Location* setting is **OFF**, it will pop up with a small box that'll allow you to put in a preset name. These are saved in your AppData folder.
+If the *Ask For Preset Location* setting is **OFF**, you can right-click the button to quickly save the current preset.
 
 ### 2b. The External File Manager
 You can drag files onto this window to quickly add them to your External File list. You can also hit the **+** button to add in an external file to the list as well.
