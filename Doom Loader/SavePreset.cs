@@ -26,8 +26,14 @@ namespace Doom_Loader
                 path = Environment.ExpandEnvironmentVariables(path);
 
                 Main.SavePreset(path);
+                ApplicationVariables.presetName = textBox1.Text;
                 this.Close();
             }
+        }
+
+        private void SavePreset_Load(object sender, EventArgs e)
+        {
+            ApplicationVariables.presetName = string.Empty;
         }
     }
 }

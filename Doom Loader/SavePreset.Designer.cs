@@ -67,6 +67,7 @@
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Save Preset";
+            Load += SavePreset_Load;
             ResumeLayout(false);
             PerformLayout();
         }

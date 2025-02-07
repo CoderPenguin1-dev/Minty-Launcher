@@ -304,7 +304,15 @@ namespace Doom_Loader
                     SavePreset(path);
                 }
             }
-            else new SavePreset().ShowDialog();
+            else
+            {
+                new SavePreset().ShowDialog();
+                if (ApplicationVariables.presetName != string.Empty)
+                {
+                    loadPresetBox.Items.Add(ApplicationVariables.presetName);
+                    loadPresetBox.SelectedItem = ApplicationVariables.presetName;
+                }
+            }
         }
 
         public static void SavePreset(string path)
