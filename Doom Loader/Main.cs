@@ -292,8 +292,7 @@ namespace Doom_Loader
             }
         }
 
-        // If changes are made here, also adapt changes to SavePreset.cs' save button function
-        private void SavePreset(object sender, EventArgs e)
+        private void SavePresetButton(object sender, EventArgs e)
         {
             if (ApplicationVariables.customPreset)
             {
@@ -302,25 +301,40 @@ namespace Doom_Loader
                     string path = savePresetDialog.FileName;
                     path = Environment.ExpandEnvironmentVariables(path);
 
-                    string file = @"";
-                    file += $"{ApplicationVariables.arguments}\n";
-                    file += $"{ApplicationVariables.sourcePort}\n";
-                    file += $"{ApplicationVariables.complevel}\n";
-
-                    if (ApplicationVariables.externalFiles.Length != 0)
-                    {
-                        if (ApplicationVariables.externalFiles.Length == 1) file += $"{ApplicationVariables.externalFiles[0]}";
-                        else
-                        {
-                            for (int i = 0; i < ApplicationVariables.externalFiles.Length - 1; i++)
-                                file += $"{ApplicationVariables.externalFiles[i]},";
-                            file += ApplicationVariables.externalFiles[^1];
-                        }
-                    }
-                    File.WriteAllText(path, file);
+                    SavePreset(path);
                 }
             }
             else new SavePreset().ShowDialog();
+        }
+
+        public static void SavePreset(string path)
+        {
+            string file = @"";
+            file += $"{ApplicationVariables.arguments}\n";
+            file += $"{ApplicationVariables.sourcePort}\n";
+            file += $"{ApplicationVariables.complevel}\n";
+
+            if (ApplicationVariables.externalFiles.Length != 0)
+            {
+                if (ApplicationVariables.externalFiles.Length == 1) file += $"{ApplicationVariables.externalFiles[0]}";
+                else
+                {
+                    for (int i = 0; i < ApplicationVariables.externalFiles.Length - 1; i++)
+                        file += $"{ApplicationVariables.externalFiles[i]},";
+                    file += ApplicationVariables.externalFiles[^1];
+                }
+            }
+            File.WriteAllText(path, file);
+        }
+
+        private void QuickSavePreset(object sender, MouseEventArgs e)
+        {
+            if (!ApplicationVariables.customPreset && e.Button == MouseButtons.Right)
+            {
+                string path = Environment.ExpandEnvironmentVariables($"%appdata%\\MintyLauncher\\Presets\\{loadPresetBox.SelectedItem}.mlPreset");
+                SavePreset(path);
+                MessageBox.Show("Preset Saved", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void RefreshPresetBox(object sender, EventArgs e)

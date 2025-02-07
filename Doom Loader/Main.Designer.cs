@@ -126,7 +126,8 @@
             savePresetButton.TabStop = false;
             savePresetButton.Text = "Save Preset";
             savePresetButton.UseVisualStyleBackColor = false;
-            savePresetButton.Click += SavePreset;
+            savePresetButton.Click += SavePresetButton;
+            savePresetButton.MouseDown += QuickSavePreset;
             // 
             // savePresetDialog
             // 
