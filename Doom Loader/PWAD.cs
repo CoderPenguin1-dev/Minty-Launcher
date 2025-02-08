@@ -34,13 +34,12 @@ namespace Doom_Loader
         /// <summary>
         /// Used to reload the PWAD Manager's PWAD List with the mods's filenames only
         /// </summary>
-        /// <param name="listBox"></param>
-        private static void Reload(ListBox listBox)
+        private void Reload()
         {
-            listBox.Items.Clear();
+            pwadList.Items.Clear();
             foreach (string PWAD in ApplicationVariables.externalFiles)
             {
-                listBox.Items.Add(Path.GetFileName(PWAD));
+                pwadList.Items.Add(Path.GetFileName(PWAD));
             }
         }
 
@@ -54,7 +53,7 @@ namespace Doom_Loader
                     List<string> PWADs = new(ApplicationVariables.externalFiles.ToList()) { PWAD }; // Turn the original array into a usable list and add in the PWAD.
                     ApplicationVariables.externalFiles = PWADs.ToArray(); // Merge the list into the array.
                 }
-                Reload(pwadList);
+                Reload();
             }
         }
 
@@ -71,7 +70,7 @@ namespace Doom_Loader
                     }
                 }
                 ApplicationVariables.externalFiles = PWADs.ToArray(); // Turn the edited list back into an array
-                Reload(pwadList);
+                Reload();
             }
             catch { }
         }
@@ -91,7 +90,7 @@ namespace Doom_Loader
                     PWADs.RemoveAt(index);
                     PWADs.Insert(index - 1, data);
                     ApplicationVariables.externalFiles = PWADs.ToArray();
-                    Reload(pwadList);
+                    Reload();
                     pwadList.SelectedIndex = index - 1; // Set the cursor to the new position
                 }
             }
@@ -110,7 +109,7 @@ namespace Doom_Loader
                     PWADs.RemoveAt(index);
                     PWADs.Insert(index + 1, data);
                     ApplicationVariables.externalFiles = PWADs.ToArray();
-                    Reload(pwadList);
+                    Reload();
                     pwadList.SelectedIndex = index + 1; // Set the cursor to the new position
                 }
             }
@@ -131,7 +130,7 @@ namespace Doom_Loader
                 }
             }
             ApplicationVariables.externalFiles = PWADs.ToArray();
-            Reload(pwadList);
+            Reload();
         }
 
         private void PWADDragOver(object sender, DragEventArgs e)
