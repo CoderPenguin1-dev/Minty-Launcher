@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PWAD));
             pwadList = new ListBox();
             button1 = new Button();
             button2 = new Button();
@@ -112,7 +111,6 @@
             Controls.Add(button1);
             Controls.Add(pwadList);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "PWAD";
