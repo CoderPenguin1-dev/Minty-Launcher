@@ -25,10 +25,10 @@ namespace Doom_Loader
                     pwadList.Items.Add(Path.GetFileName(PWAD));
 
             // Setup tool tips
-            toolTips.SetToolTip(button1, "Add File(s)");
-            toolTips.SetToolTip(button2, "Remove File(s)");
-            toolTips.SetToolTip(button3, "Reorder Selected Item Up");
-            toolTips.SetToolTip(button4, "Reorder Selected Item Down");
+            toolTips.SetToolTip(button1, "Add File(s).");
+            toolTips.SetToolTip(button2, "Remove File(s).");
+            toolTips.SetToolTip(button3, "Reorder Selected Item Up.");
+            toolTips.SetToolTip(button4, "Reorder Selected Item Down.");
         } // Ran at Startup, sets up tooltips and PWAD list
 
         /// <summary>

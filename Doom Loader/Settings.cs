@@ -59,13 +59,13 @@ namespace Doom_Loader
             if (File.Exists("mintyLauncher.PortableSettings")) button2.Enabled = false; // Disable "Make Settings Portable" button if portable settings file already exists.
 
             #region Tooltips
-            toolTips.SetToolTip(rcpBox, "Discord RPC intergration");
-            toolTips.SetToolTip(button2, "Creates a portable settings file");
-            toolTips.SetToolTip(openPresetsLocation, "Opens the AppData Presets folder");
-            toolTips.SetToolTip(closeBox, "Closes Minty Launcher after the port has been closed");
-            toolTips.SetToolTip(topMostBox, "Makes Minty Launcher the top window after the port has been shut down");
-            toolTips.SetToolTip(customPresetBox, "Provides file dialog when loading/saving presets");
-            toolTips.SetToolTip(defaultBox, @"Makes an AppData preset named ""Default"" load on launch");
+            toolTips.SetToolTip(rcpBox, "Enable Discord Rich Presence intergration.");
+            toolTips.SetToolTip(button2, "Creates a portable settings file in the same directory as Minty Launcher.");
+            toolTips.SetToolTip(openPresetsLocation, "Open the AppData Presets folder.");
+            toolTips.SetToolTip(closeBox, "Closes Minty Launcher after the port has been closed.");
+            toolTips.SetToolTip(topMostBox, "Makes Minty Launcher the top window after the port has been closed.");
+            toolTips.SetToolTip(customPresetBox, "Provide a file dialog when loading/saving presets.");
+            toolTips.SetToolTip(defaultBox, @"Makes an AppData preset titled ""Default"" load on launch of Minty Launcher.");
             #endregion
         }
 
