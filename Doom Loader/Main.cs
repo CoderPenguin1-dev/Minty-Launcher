@@ -162,12 +162,6 @@ namespace Doom_Loader
             }
             #endregion
 
-            ProcessStartInfo startInfo = new(ApplicationVariables.sourcePort)
-            {
-                CreateNoWindow = false,
-                UseShellExecute = false
-            };
-
             // Argument Setup
             string start = "";
 
@@ -194,16 +188,17 @@ namespace Doom_Loader
             }
             else start += $"-iwad \"{ApplicationVariables.IWAD}\"";
 
-            startInfo.Arguments = start; // Put Arguments Into startInfo
-
-            // Start Process
+            // Start Start Port
             try
             {
-                // Code from some Stack Overflow answer. Unable to find it, however.
-                // Start the process with the info specified.
-                // Call WaitForExit and then the using statement will close.
-                using Process exeProcess = Process.Start(startInfo);
-                exeProcess.WaitForExit();
+                Process.Start(
+                    new ProcessStartInfo
+                    { 
+                        CreateNoWindow = false, 
+                        UseShellExecute = false, 
+                        Arguments = start 
+                    })
+                    .WaitForExit();
                 if (ApplicationVariables.closeOnPlay)
                 {
                     if (ApplicationVariables.rpc) RPCClient.client.Dispose(); // Kill RPC Connection
