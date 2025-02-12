@@ -2,6 +2,14 @@
 
 You can obtain source code for Minty Launcher [here](https://github.com/PENGUINCODER1/Minty-Launcher)
 
+## 0. Definitions
+Just a collection of simple definitions you may see throughout here, the launcher, or in other places relating to Doom.
+
+**IWADS:** Your game WADs. Some examples include `DOOM.WAD` and `DOOM2.WAD`.
+**PWADS:** Maps, mods, etc. Same file extension as IWADs, so be aware of the differences.
+**Total Conversions (TCs):** A PWAD that completely replaces every sound, texture, and map, and possibly modifies the behaviour of the original IWADs.
+**Complevel:** Usually indicated by a number, it's a parameter used in some source ports to emulate other source ports.
+
 ## 1. Setting Up
 For Framework Dependent Only: Make sure you've installed the .NET 9.0 Runtimes before running.
 
@@ -22,7 +30,7 @@ This will swap out the name of the executable file of the source port over to so
 ### 2a. The Main Window
 The main window has several buttons and hidden gimmicks so it may be confusing at first.
 
-The IWAD and Complevel selectors allow you to select which IWAD and engine you wish to emulate. Please note the latter is only usable in ports that supoort such feature like DSDA-Doom.
+The IWAD and Complevel selectors allow you to select which IWAD and source port you wish to emulate. Please note the latter is only usable in ports that supoort such feature like DSDA-Doom.
 
 The *Extra Paramaters* box allows you to type in any extra parameters you wish to pass along to the source port, such as `-playdemo` to play a recorded demo.
 You can also right-click the box to insert a file path easier.
