@@ -5,8 +5,11 @@ You can obtain source code for Minty Launcher [here](https://github.com/PENGUINC
 ## 1. Setting Up
 For Framework Dependent Only: Make sure you've installed the .NET 9.0 Runtimes before running.
 
-You'll need to set where your IWADs folder is. To do so, you can either click on the *IWAD Selector Box* or by going into *Settings* and clicking on *Set IWADs Folder.* 
-With either method, you'll need to naviage to where the folder containing your IWADs are and then selecting that folder.
+You'll need to set where your IWADs folder is. It will usually prompt you to do so after opening, but if it doesn't (or you wish to change it later), do one of these methods:
+* Click on the *IWAD Selector Box.* (Use this if you deleted/moved a folder or if you opened the program for the first time.)
+* Go into *Settings* and clicking on *Set IWADs Folder.* (Use this if you just wish to change the folder.)
+
+With either method, you'll need to navigate to where the folder containing your IWADs is and then select that folder.
 
 Then, you'll need to select a source port. On the main window, click on *Select Port* and navigate to the executable file of your desired port.
 Now, select your desired IWAD and complevel and hit *Play* and it should boot you into the game!

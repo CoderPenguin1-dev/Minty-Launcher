@@ -32,6 +32,6 @@ Build Debug build with the following in the `Minty-Launcher/Doom Loader` folder.
 
 You should now have a successful build afterwards!
 
-If you want a more streamline script to follow, you *could* also copy and run this.
+If you want a more streamline script to follow, you could also copy and run this.
 
 	git clone https://github.com/PENGUINCODER1/Minty-Launcher.git && cd "Minty-Launcher/Doom Loader" && dotnet run
