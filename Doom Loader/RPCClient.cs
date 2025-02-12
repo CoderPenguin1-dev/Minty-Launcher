@@ -7,6 +7,8 @@ using System.Resources;
 using Doom_Loader;
 
 /*
+Code adapted from https://github.com/Lachee/discord-rpc-csharp
+
 MIT License
 
 Copyright (c) 2021 Lachee
@@ -30,7 +32,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-// Code taken from https://github.com/Lachee/discord-rpc-csharp
 public static class RPCClient
 {
     public static DiscordRpcClient client;
