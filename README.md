@@ -6,10 +6,12 @@ This is built for my purposes and features will usually be added when I need/wan
 
 Minty Launcher only targets Windows, and only has been tested on Windows 10 and 11. Minty Launcher through Wine has mainly been untested.
 
+**NOTICE** The license for Minty Launcher starting v5.4.1 has been changed over to the MIT License.
+
 ## Useful Links
 * [Downloads](https://github.com/PENGUINCODER1/Minty-Launcher/releases)
 * [User's Guide](USER.MD)
-* [DYNCOS License](LICENSE.MD)
+* [MIT License](LICENSE.MD)
 
 # Downloading
 You can also get Win64 and Win32 bins (both Framework-Dependent and Standalone) as well as the premade port database file [here on the repo](https://github.com/PENGUINCODER1/Minty-Launcher/releases). 
