@@ -163,19 +163,19 @@ namespace Doom_Loader
             #endregion
 
             // Argument Setup
-            string start = "";
+            string portArguments = "";
 
-            if (extraParamsTextBox.Text != "") start += ApplicationVariables.arguments + " "; // Extra Paramaters
-            if (ApplicationVariables.complevel != 0) start += $"-complevel {ApplicationVariables.complevel} "; // Complevel
+            if (extraParamsTextBox.Text != "") portArguments += ApplicationVariables.arguments + " "; // Extra Paramaters
+            if (ApplicationVariables.complevel != 0) portArguments += $"-complevel {ApplicationVariables.complevel} "; // Complevel
 
             // Check if there was a DeHacked patch
             List<string> extFileStore = []; // Used so the PWAD adder code doesn't need to iterate through the useless DEH and BEX files later.
             for (int i = 0; i < ApplicationVariables.externalFiles.Length; i++)
             {
                 if (ApplicationVariables.externalFiles[i].EndsWith(".deh", StringComparison.CurrentCultureIgnoreCase))
-                    start += $"-deh \"{ApplicationVariables.externalFiles[i]}\" ";
+                    portArguments += $"-deh \"{ApplicationVariables.externalFiles[i]}\" ";
                 else if (ApplicationVariables.externalFiles[i].EndsWith(".bex", StringComparison.CurrentCultureIgnoreCase))
-                    start += $"-bex \"{ApplicationVariables.externalFiles[i]}\" ";
+                    portArguments += $"-bex \"{ApplicationVariables.externalFiles[i]}\" ";
                 else // Not an DEH/BEX patch? Shove it along with the external files.
                     extFileStore.Add(ApplicationVariables.externalFiles[i]);
             }
@@ -183,16 +183,16 @@ namespace Doom_Loader
             // Check if PWAD was selected
             if (extFileStore.Count != 0)
             {
-                start += $"-iwad \"{ApplicationVariables.IWAD}\" -file ";
-                foreach (string pwad in extFileStore) start += $"\"{pwad}\" ";
+                portArguments += $"-iwad \"{ApplicationVariables.IWAD}\" -file ";
+                foreach (string pwad in extFileStore) portArguments += $"\"{pwad}\" ";
             }
-            else start += $"-iwad \"{ApplicationVariables.IWAD}\"";
+            else portArguments += $"-iwad \"{ApplicationVariables.IWAD}\"";
 
             // Start Port
             try
             {
                 Process.Start(
-                    new ProcessStartInfo(ApplicationVariables.sourcePort, start)
+                    new ProcessStartInfo(ApplicationVariables.sourcePort, portArguments)
                     {
                         CreateNoWindow = false,
                         UseShellExecute = false,
