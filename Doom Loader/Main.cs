@@ -441,12 +441,6 @@ namespace Doom_Loader
                         loadPresetBox.Visible = false;
                     }
                     ApplicationVariables.IWADFolderPath = lines[5];
-                    if (!Path.Exists(ApplicationVariables.IWADFolderPath))
-                    {
-                        var error = MessageBox.Show("IWADs Folder path missing.\nSet new path now?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-                        if (error == DialogResult.Yes) new Settings().SetIWADFolder(sender, e);
-                        else if (error == DialogResult.No) MessageBox.Show("Please set new path in settings.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
                 }
                 catch
                 {
@@ -479,6 +473,10 @@ namespace Doom_Loader
                     ApplicationVariables.useDefault.ToString(),
                     ApplicationVariables.customPreset.ToString()
                 ]);
+                // Prompt user to select IWADs folder path.
+                var error = MessageBox.Show("IWADs Folder path missing.\nSet new path now?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (error == DialogResult.Yes) new Settings().SetIWADFolder(sender, e);
+                else if (error == DialogResult.No) MessageBox.Show("Please set new path in settings.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Directory.CreateDirectory($"{appdata}\\MintyLauncher\\Presets");
             }
 
