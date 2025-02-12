@@ -11,6 +11,21 @@ namespace Doom_Loader
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+            if (Environment.GetCommandLineArgs().Length > 0)
+            {
+                foreach (string arg in Environment.GetCommandLineArgs())
+                {
+                    if (arg == "--info" || arg == "-i")
+                    {
+                        About about = new()
+                        {
+                            StartPosition = FormStartPosition.CenterScreen
+                        };
+                        Application.Run(about);
+                        Environment.Exit(0);
+                    }
+                }
+            }
             Application.Run(new Main());
         }
     }

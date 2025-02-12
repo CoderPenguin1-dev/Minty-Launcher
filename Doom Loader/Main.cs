@@ -557,12 +557,6 @@ namespace Doom_Loader
 
                             noGUI = true;
                             break;
-
-                        case "--info" or "-i":
-                            MessageBox.Show($"Minty Launcher v{GetType().Assembly.GetName().Version.Major}.{GetType().Assembly.GetName().Version.Minor}.{GetType().Assembly.GetName().Version.Build}\nProgrammed By CoderPenguin1",
-                                "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Environment.Exit(0);
-                            break;
                     }
                 }
             }

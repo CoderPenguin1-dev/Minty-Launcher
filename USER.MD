@@ -99,4 +99,4 @@ Note that all of your settings (and your Default preset, if enabled) are loaded 
 
 `--no-gui-rpc [on/off]` `-n [on/off]` is identical to `--no-gui` but allows you to override your RPC setting. Use [1, true, on] to enable RPC, [0, false, off] to disable RPC.
 
-`--info` `-i` shows the current version of Minty Launcher.
+`--info` `-i` shows the current version of Minty Launcher. Will ignore every other argument if you have this.
