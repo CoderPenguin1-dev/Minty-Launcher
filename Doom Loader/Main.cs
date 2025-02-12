@@ -188,17 +188,15 @@ namespace Doom_Loader
             }
             else start += $"-iwad \"{ApplicationVariables.IWAD}\"";
 
-            // Start Start Port
+            // Start Port
             try
             {
                 Process.Start(
-                    new ProcessStartInfo
-                    { 
-                        CreateNoWindow = false, 
-                        UseShellExecute = false, 
-                        Arguments = start 
-                    })
-                    .WaitForExit();
+                    new ProcessStartInfo(ApplicationVariables.sourcePort, start)
+                    {
+                        CreateNoWindow = false,
+                        UseShellExecute = false,
+                    }).WaitForExit();
                 if (ApplicationVariables.closeOnPlay)
                 {
                     if (ApplicationVariables.rpc) RPCClient.client.Dispose(); // Kill RPC Connection
