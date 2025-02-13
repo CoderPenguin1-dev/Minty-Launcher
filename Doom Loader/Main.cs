@@ -129,16 +129,17 @@ namespace Doom_Loader
                 RPCClient.Initialize();
                 // State Setup
                 string state;
-                switch (ApplicationVariables.externalFiles.Length)
+                if (ApplicationVariables.externalFiles.Length > ApplicationVariables.rpcFilesShown && ApplicationVariables.rpcFilesShown != 0)
+                    state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | Multiple Files";
+                else if (ApplicationVariables.rpcFilesShown == 0)
+                    state = $"{Path.GetFileName(ApplicationVariables.IWAD)}";
+                else switch (ApplicationVariables.externalFiles.Length)
                 {
                     case 0:
                         state = $"{Path.GetFileName(ApplicationVariables.IWAD)}";
                         break;
                     case 1:
                         state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | {Path.GetFileName(ApplicationVariables.externalFiles[0])}";
-                        break;
-                    case > 4:
-                        state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | Multiple Files";
                         break;
                     default:
                         state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | ";
@@ -450,6 +451,7 @@ namespace Doom_Loader
                         loadPresetBox.Visible = false;
                     }
                     ApplicationVariables.IWADFolderPath = lines[5];
+                    ApplicationVariables.rpcFilesShown = int.Parse(lines[6]);
                 }
                 catch
                 {

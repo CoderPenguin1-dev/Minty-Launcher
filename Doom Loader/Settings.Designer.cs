@@ -44,9 +44,16 @@
             toolTips = new ToolTip(components);
             button3 = new Button();
             iwadFolderDialog = new FolderBrowserDialog();
+            rpcFilesTrackBar = new TrackBar();
+            groupBox4 = new GroupBox();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)rpcFilesTrackBar).BeginInit();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // rcpBox
@@ -54,11 +61,11 @@
             rcpBox.AutoSize = true;
             rcpBox.Checked = true;
             rcpBox.CheckState = CheckState.Checked;
-            rcpBox.Location = new Point(208, 101);
+            rcpBox.Location = new Point(6, 23);
             rcpBox.Name = "rcpBox";
-            rcpBox.Size = new Size(142, 19);
+            rcpBox.Size = new Size(151, 19);
             rcpBox.TabIndex = 0;
-            rcpBox.Text = "Discord Rich Presence";
+            rcpBox.Text = "Enable RPC Intergration";
             rcpBox.UseVisualStyleBackColor = true;
             rcpBox.CheckedChanged += DiscordRichPresence;
             // 
@@ -76,7 +83,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(333, 198);
+            button1.Location = new Point(399, 227);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 2;
@@ -130,7 +137,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 206);
+            label1.Location = new Point(12, 238);
             label1.Name = "label1";
             label1.Size = new Size(114, 15);
             label1.TabIndex = 7;
@@ -181,26 +188,78 @@
             // 
             // button3
             // 
-            button3.Location = new Point(208, 126);
+            button3.Location = new Point(12, 212);
             button3.Name = "button3";
-            button3.Size = new Size(142, 23);
+            button3.Size = new Size(116, 23);
             button3.TabIndex = 12;
             button3.Text = "Set IWADs Folder";
             button3.UseVisualStyleBackColor = true;
             button3.Click += SetIWADFolder;
             // 
+            // rpcFilesTrackBar
+            // 
+            rpcFilesTrackBar.LargeChange = 0;
+            rpcFilesTrackBar.Location = new Point(1, 68);
+            rpcFilesTrackBar.Maximum = 5;
+            rpcFilesTrackBar.Name = "rpcFilesTrackBar";
+            rpcFilesTrackBar.Size = new Size(132, 45);
+            rpcFilesTrackBar.TabIndex = 13;
+            rpcFilesTrackBar.Value = 1;
+            rpcFilesTrackBar.Scroll += rpcFilesTrackBar_Scroll;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(label4);
+            groupBox4.Controls.Add(label3);
+            groupBox4.Controls.Add(label2);
+            groupBox4.Controls.Add(rpcFilesTrackBar);
+            groupBox4.Controls.Add(rcpBox);
+            groupBox4.Location = new Point(208, 101);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(163, 120);
+            groupBox4.TabIndex = 14;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Discord RPC";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(113, 98);
+            label4.Name = "label4";
+            label4.Size = new Size(13, 15);
+            label4.TabIndex = 16;
+            label4.Text = "5";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(8, 98);
+            label3.Name = "label3";
+            label3.Size = new Size(13, 15);
+            label3.TabIndex = 15;
+            label3.Text = "0";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(3, 47);
+            label2.Name = "label2";
+            label2.Size = new Size(132, 15);
+            label2.TabIndex = 14;
+            label2.Text = "Amount Of Files Shown";
+            // 
             // Settings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(420, 233);
+            ClientSize = new Size(486, 262);
+            Controls.Add(groupBox4);
             Controls.Add(button3);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Controls.Add(button1);
-            Controls.Add(rcpBox);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -216,6 +275,9 @@
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)rpcFilesTrackBar).EndInit();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -237,5 +299,10 @@
         private ToolTip toolTips;
         private Button button3;
         private FolderBrowserDialog iwadFolderDialog;
+        private TrackBar rpcFilesTrackBar;
+        private GroupBox groupBox4;
+        private Label label2;
+        private Label label4;
+        private Label label3;
     }
 }

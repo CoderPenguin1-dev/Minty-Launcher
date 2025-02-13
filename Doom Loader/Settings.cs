@@ -30,7 +30,8 @@ namespace Doom_Loader
                 ApplicationVariables.topMost.ToString(),
                 ApplicationVariables.useDefault.ToString(),
                 ApplicationVariables.customPreset.ToString(),
-                ApplicationVariables.IWADFolderPath.ToString() ]);
+                ApplicationVariables.IWADFolderPath.ToString(),
+                ApplicationVariables.rpcFilesShown.ToString() ]);
         }
 
         /// <summary>
@@ -55,6 +56,7 @@ namespace Doom_Loader
             topMostBox.Checked = ApplicationVariables.topMost;
             defaultBox.Checked = ApplicationVariables.useDefault;
             customPresetBox.Checked = ApplicationVariables.customPreset;
+            rpcFilesTrackBar.Value = ApplicationVariables.rpcFilesShown;
 
             if (File.Exists("mintyLauncher.PortableSettings")) button2.Enabled = false; // Disable "Make Settings Portable" button if portable settings file already exists.
 
@@ -113,6 +115,14 @@ namespace Doom_Loader
                 string path = CheckForWhichConfig();
                 RewriteAppDataConfig(path);
             }
+        }
+
+
+        private void rpcFilesTrackBar_Scroll(object sender, EventArgs e)
+        {
+            ApplicationVariables.rpcFilesShown = rpcFilesTrackBar.Value;
+            string path = CheckForWhichConfig();
+            RewriteAppDataConfig(path);
         }
 
         #endregion
