@@ -83,7 +83,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(399, 227);
+            button1.Location = new Point(333, 229);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 2;
@@ -252,7 +252,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(486, 262);
+            ClientSize = new Size(418, 262);
             Controls.Add(groupBox4);
             Controls.Add(button3);
             Controls.Add(groupBox3);
