@@ -16,5 +16,5 @@ public static class ApplicationVariables
     public static bool topMost = false;
     public static bool useDefault = true;
     public static bool customPreset = false;
-    public static int rpcFilesShown = 4;
+    public static int rpcFilesShown = 2;
 }
