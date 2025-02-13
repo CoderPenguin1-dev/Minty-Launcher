@@ -84,7 +84,7 @@
             // 
             // sourcePortDialog
             // 
-            sourcePortDialog.Filter = "Sourceport|*.exe";
+            sourcePortDialog.Filter = "Source Port|*.exe|All files|*.*";
             sourcePortDialog.Title = "Select Port";
             // 
             // playButton
