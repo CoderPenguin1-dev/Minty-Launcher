@@ -57,6 +57,8 @@ namespace Doom_Loader
             defaultBox.Checked = ApplicationVariables.useDefault;
             customPresetBox.Checked = ApplicationVariables.customPreset;
             rpcFilesTrackBar.Value = ApplicationVariables.rpcFilesShown;
+            if (!rcpBox.Checked)
+                rpcFilesTrackBar.Enabled = false;
 
             if (File.Exists("mintyLauncher.PortableSettings")) button2.Enabled = false; // Disable "Make Settings Portable" button if portable settings file already exists.
 
@@ -77,6 +79,9 @@ namespace Doom_Loader
             ApplicationVariables.rpc = rcpBox.Checked;
             string path = CheckForWhichConfig();
             RewriteAppDataConfig(path);
+            if (ApplicationVariables.rpc)
+                rpcFilesTrackBar.Enabled = true;
+            else rpcFilesTrackBar.Enabled = false;
         }
 
         private void CloseOnPlay(object sender, EventArgs e)
