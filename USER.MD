@@ -1,6 +1,8 @@
 # The Minty Launcher User's Guide
 
-You can obtain source code for Minty Launcher [here](https://github.com/PENGUINCODER1/Minty-Launcher)
+You can obtain source code for Minty Launcher [here](https://github.com/PENGUINCODER1/Minty-Launcher).
+
+To avoid confusion, please read this whole document before opening Minty Launcher for the first time.
 
 ## 0. Definitions
 Just a collection of simple definitions you may see throughout here, the launcher, or in other places relating to Doom.
@@ -13,7 +15,7 @@ Just a collection of simple definitions you may see throughout here, the launche
 ## 1. Setting Up
 For Framework Dependent Only: Make sure you've installed the .NET 9.0 Runtimes before running.
 
-You'll need to set where your IWADs folder is. It will usually prompt you to do so after opening, but if it doesn't (or you wish to change it later), do one of these methods:
+You'll need to set where your IWADs folder is. It will usually prompt you to do so after opening Minty Launcher for the first time, but if it doesn't (or you wish to change it later), do one of these methods:
 * Click on the *IWAD Selector Box.* (Use this if you deleted/moved a folder or if you opened the program for the first time.)
 * Go into *Settings* and clicking on *Set IWADs Folder.* (Use this if you just wish to change the folder.)
 
