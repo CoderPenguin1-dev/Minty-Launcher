@@ -120,6 +120,7 @@ namespace Doom_Loader
             }
         }
 
+        // You can find the RPC stuff here.
         private void Play(object sender, EventArgs e)
         {
             #region Discord RPC
@@ -136,8 +137,16 @@ namespace Doom_Loader
                     case 1:
                         state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | {Path.GetFileName(ApplicationVariables.externalFiles[0])}";
                         break;
-                    default:
+                    case > 4:
                         state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | Multiple Files";
+                        break;
+                    default:
+                        state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | ";
+                        foreach (string file in ApplicationVariables.externalFiles)
+                        {
+                            state += $"{Path.GetFileName(file)}, ";
+                        }
+                        state = state.Remove(state.Length - 2, 2);
                         break;
                 } // Check for how many external files were loaded in
 
