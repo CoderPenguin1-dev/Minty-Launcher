@@ -84,11 +84,19 @@ These are settings relating to Minty Launcher's main window.
 
 	This will make the window appear above all windows once the source port has been closed.
 	
-### 3d. Ungrouped
+### 3d. Discord Rich Presence
 
-*Discord Rich Presence*:
+*Enable RPC Intergration*
+	
+	Enables the Rich Presence intergration of Minty Launcher. 
+	This will show information such as your source port, IWAD, and loaded files like PWADs.
 
-	This will enable/disable the Discord RPC feature of the launcher.
+*Amount Of Files Shown*
+
+	The limit to how many files can be shown before the RPC Activity show them with "Multiple Files" on Discord.
+	Setting it to 0 disables this functionality.
+	
+### 3e. Ungrouped
 	
 *Set IWADs Folder*:
 

@@ -219,7 +219,7 @@
             groupBox4.Size = new Size(163, 120);
             groupBox4.TabIndex = 14;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Discord RPC";
+            groupBox4.Text = "Discord Rich Presence";
             // 
             // label4
             // 
