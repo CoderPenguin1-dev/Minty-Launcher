@@ -205,7 +205,7 @@
             rpcFilesTrackBar.Size = new Size(132, 45);
             rpcFilesTrackBar.TabIndex = 13;
             rpcFilesTrackBar.Value = 1;
-            rpcFilesTrackBar.Scroll += rpcFilesTrackBar_Scroll;
+            rpcFilesTrackBar.Scroll += RPCAmountOfFilesShown;
             // 
             // groupBox4
             // 

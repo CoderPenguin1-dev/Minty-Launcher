@@ -117,14 +117,12 @@ namespace Doom_Loader
             }
         }
 
-
-        private void rpcFilesTrackBar_Scroll(object sender, EventArgs e)
+        private void RPCAmountOfFilesShown(object sender, EventArgs e)
         {
             ApplicationVariables.rpcFilesShown = rpcFilesTrackBar.Value;
             string path = CheckForWhichConfig();
             RewriteAppDataConfig(path);
         }
-
         #endregion
 
         private void EnablePortableSettings(object sender, EventArgs e)
