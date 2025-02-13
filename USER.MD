@@ -8,8 +8,11 @@ To avoid confusion, please read this whole document before opening Minty Launche
 Just a collection of simple definitions you may see throughout here, the launcher, or in other places relating to Doom.
 
 **IWADS:** Your game WADs. Some examples include `DOOM.WAD` and `DOOM2.WAD`.
+
 **PWADS:** Maps, mods, etc. Same file extension as IWADs, so be aware of the differences.
+
 **Total Conversions (TCs):** A PWAD that completely replaces every sound, texture, and map, and possibly modifies the behaviour of the original IWADs.
+
 **Complevel:** Usually indicated by a number, it's a parameter used in some source ports to emulate other source ports.
 
 ## 1. Setting Up
