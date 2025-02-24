@@ -6,11 +6,11 @@ public static class ApplicationVariables
     public static string sourcePort = string.Empty;
     public static string[] externalFiles = [];
     public static string IWAD = string.Empty;
-    public static string IWADFolderPath = string.Empty;
     public static string arguments = "";
     public static int complevel;
 
     // Settings
+    public static string IWADFolderPath = string.Empty;
     public static bool closeOnPlay = false;
     public static bool rpc = true;
     public static bool topMost = false;
