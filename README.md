@@ -20,7 +20,7 @@ You can also get Win64 and Win32 bins (both Framework-Dependent and Standalone) 
 
 If you use the Framework-Dependent version, you'll need to have the .NET 9 Runtimes installed. You can get there [here](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
 
-Note that there's a user manual you should read, titled `USER.MD`.
+Note that there's a user manual you should read, titled `MANUAL.MD`.
 
 
 # Building
