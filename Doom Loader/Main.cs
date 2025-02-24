@@ -415,7 +415,9 @@ namespace Doom_Loader
             RPCClient.client.Invoke();
         }
 
-        private void AppDataInit(object sender, EventArgs e) // Loads in the settings. It also initalizes the complevel selector and tooltips.
+        // Settings, init complevel ComboBox and tooltips, and check command line arguments.
+        // For --info and -i, check Program.cs
+        private void AppDataInit(object sender, EventArgs e)
         {
             string appdata = "%appdata%";
             appdata = Environment.ExpandEnvironmentVariables(appdata);
