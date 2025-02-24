@@ -70,6 +70,7 @@ namespace Doom_Loader
             toolTips.SetToolTip(topMostBox, "Makes Minty Launcher the top window after the port has been closed.");
             toolTips.SetToolTip(customPresetBox, "Provide a file dialog when loading/saving presets.");
             toolTips.SetToolTip(defaultBox, @"Makes an AppData preset titled ""Default"" load on launch of Minty Launcher.");
+            toolTips.SetToolTip(iwadFolderButton, ApplicationVariables.IWADFolderPath);
             #endregion
         }
 
@@ -119,6 +120,7 @@ namespace Doom_Loader
                 ApplicationVariables.IWADFolderPath = iwadFolderDialog.SelectedPath;
                 string path = CheckForWhichConfig();
                 RewriteAppDataConfig(path);
+                toolTips.SetToolTip(iwadFolderButton, ApplicationVariables.IWADFolderPath);
             }
         }
 

@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             rcpBox = new CheckBox();
             closeBox = new CheckBox();
-            button1 = new Button();
+            aboutButton = new Button();
             openPresetsLocation = new Button();
             topMostBox = new CheckBox();
             defaultBox = new CheckBox();
@@ -42,7 +42,7 @@
             groupBox2 = new GroupBox();
             groupBox3 = new GroupBox();
             toolTips = new ToolTip(components);
-            button3 = new Button();
+            iwadFolderButton = new Button();
             iwadFolderDialog = new FolderBrowserDialog();
             rpcFilesTrackBar = new TrackBar();
             groupBox4 = new GroupBox();
@@ -81,15 +81,15 @@
             closeBox.UseVisualStyleBackColor = false;
             closeBox.CheckedChanged += CloseOnPlay;
             // 
-            // button1
+            // aboutButton
             // 
-            button1.Location = new Point(333, 229);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 2;
-            button1.Text = "About";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += AboutMenu;
+            aboutButton.Location = new Point(333, 229);
+            aboutButton.Name = "aboutButton";
+            aboutButton.Size = new Size(75, 23);
+            aboutButton.TabIndex = 2;
+            aboutButton.Text = "About";
+            aboutButton.UseVisualStyleBackColor = true;
+            aboutButton.Click += AboutMenu;
             // 
             // openPresetsLocation
             // 
@@ -186,15 +186,15 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Window";
             // 
-            // button3
+            // iwadFolderButton
             // 
-            button3.Location = new Point(12, 212);
-            button3.Name = "button3";
-            button3.Size = new Size(116, 23);
-            button3.TabIndex = 12;
-            button3.Text = "Set IWADs Folder";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += SetIWADFolder;
+            iwadFolderButton.Location = new Point(12, 196);
+            iwadFolderButton.Name = "iwadFolderButton";
+            iwadFolderButton.Size = new Size(116, 23);
+            iwadFolderButton.TabIndex = 12;
+            iwadFolderButton.Text = "Set IWADs Folder";
+            iwadFolderButton.UseVisualStyleBackColor = true;
+            iwadFolderButton.Click += SetIWADFolder;
             // 
             // rpcFilesTrackBar
             // 
@@ -254,12 +254,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(418, 262);
             Controls.Add(groupBox4);
-            Controls.Add(button3);
+            Controls.Add(iwadFolderButton);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label1);
-            Controls.Add(button1);
+            Controls.Add(aboutButton);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -286,7 +286,7 @@
 
         private CheckBox rcpBox;
         private CheckBox closeBox;
-        private Button button1;
+        private Button aboutButton;
         private Button openPresetsLocation;
         private CheckBox topMostBox;
         private CheckBox defaultBox;
@@ -297,7 +297,7 @@
         private GroupBox groupBox2;
         private GroupBox groupBox3;
         private ToolTip toolTips;
-        private Button button3;
+        private Button iwadFolderButton;
         private FolderBrowserDialog iwadFolderDialog;
         private TrackBar rpcFilesTrackBar;
         private GroupBox groupBox4;
