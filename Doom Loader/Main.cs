@@ -120,7 +120,7 @@ namespace Doom_Loader
             }
         }
 
-        // You can find the RPC stuff here.
+        // RPC Initialization, DEH/BEX patch sorting, and starting port with arguments.
         private void Play(object sender, EventArgs e)
         {
             #region Discord RPC
