@@ -27,8 +27,7 @@ namespace Doom_Loader
                 $"{GetType().Assembly.GetName().Version.Build}";
         }
 
-        // Little Easter Egg
-        private void EasterEgg(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             new extraCredits().ShowDialog();
         }

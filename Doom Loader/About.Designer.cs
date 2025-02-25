@@ -33,6 +33,7 @@
             label1 = new Label();
             version = new Label();
             label2 = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -72,13 +73,23 @@
             label2.Size = new Size(178, 15);
             label2.TabIndex = 3;
             label2.Text = "Programmed by CoderPenguin1";
-            label2.Click += EasterEgg;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(68, 267);
+            button1.Name = "button1";
+            button1.Size = new Size(178, 23);
+            button1.TabIndex = 4;
+            button1.Text = "View Credits && Legal Info";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // About
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(311, 275);
+            ClientSize = new Size(311, 302);
+            Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(version);
             Controls.Add(label1);
@@ -103,5 +114,6 @@
         private Label label1;
         private Label version;
         private Label label2;
+        private Button button1;
     }
 }

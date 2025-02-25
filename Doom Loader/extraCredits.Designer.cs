@@ -32,6 +32,7 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             richTextBox1 = new RichTextBox();
+            richTextBox2 = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -60,15 +61,28 @@
             richTextBox1.Location = new Point(458, 15);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
-            richTextBox1.Size = new Size(295, 388);
+            richTextBox1.ScrollBars = RichTextBoxScrollBars.None;
+            richTextBox1.Size = new Size(295, 167);
             richTextBox1.TabIndex = 3;
             richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
+            // richTextBox2
+            // 
+            richTextBox2.BorderStyle = BorderStyle.None;
+            richTextBox2.Location = new Point(458, 188);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.ReadOnly = true;
+            richTextBox2.ScrollBars = RichTextBoxScrollBars.None;
+            richTextBox2.Size = new Size(295, 230);
+            richTextBox2.TabIndex = 4;
+            richTextBox2.Text = resources.GetString("richTextBox2.Text");
             // 
             // extraCredits
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(757, 425);
+            Controls.Add(richTextBox2);
             Controls.Add(richTextBox1);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
@@ -90,5 +104,6 @@
         private PictureBox pictureBox1;
         private Label label1;
         private RichTextBox richTextBox1;
+        private RichTextBox richTextBox2;
     }
 }
