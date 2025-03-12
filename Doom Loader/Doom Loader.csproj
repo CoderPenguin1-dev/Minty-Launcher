@@ -10,13 +10,13 @@
     <Authors>CoderPenguin1</Authors>
     <Product>The Minty Launcher</Product>
     <Version>5.5.2.0</Version>
-    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
 	<PublishAot>false</PublishAot>
     <AssemblyName>MintyLauncher</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="logo.ico" />
+    <Content Include="icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
