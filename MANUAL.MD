@@ -123,6 +123,8 @@ Note: Single-lettered arguments can't be combined together. They must be seperat
 
 `--iwad [IWAD path]` `-w [IWAD path]` loads in the IWAD file from your IWADs folder. Must include the file extension. Case sensitive.
 
+`--iwad-folder [IWAD folder path]` sets the IWAD folder path. Call this *before* `--iwad`.
+
 `--no-gui` is meant to be combined with the above arguments. Automatically starts the sourceport from the preset with the desired IWAD without ever showing the GUI.
 
 `--no-gui-rpc [on/off]` `-n [on/off]` is identical to `--no-gui` but allows you to override your RPC setting. Use [1, true, on] to enable RPC, [0, false, off] to disable RPC.

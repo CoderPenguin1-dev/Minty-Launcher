@@ -502,6 +502,7 @@ namespace Doom_Loader
 
             // Command Line Arguments
             bool noGUI = false;
+            bool usedIWAD = false;
             if (Environment.GetCommandLineArgs().Length > 0)
             {
                 string[] args = Environment.GetCommandLineArgs();
@@ -530,6 +531,21 @@ namespace Doom_Loader
                             LoadPreset($"{appdata}\\MintyLauncher\\Presets\\{args[i]}.mlPreset");
                             break;
 
+                        case "--iwad-folder":
+                            i++;
+                            ApplicationVariables.IWADFolderPath = args[i];
+                            if (!Path.Exists(ApplicationVariables.IWADFolderPath))
+                            {
+                                MessageBox.Show("Given IWAD Folder Path does not exist. Check to see if your capitalization is wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Environment.Exit(1);
+                            }
+                            if (usedIWAD)
+                            {
+                                MessageBox.Show("Specified new IWAD Folder Path after setting IWAD.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Environment.Exit(1);
+                            }
+                            break;
+
                         case "--iwad" or "-w":
                             i++;
                             RefreshIWAD(sender, e);
@@ -540,6 +556,7 @@ namespace Doom_Loader
                                 Environment.Exit(1);
                             }
                             iwadBox.SelectedItem = args[i];
+                            usedIWAD = true;
                             break;
 
                         case "--no-gui":
