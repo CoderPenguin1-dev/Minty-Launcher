@@ -15,6 +15,8 @@ Just a collection of simple definitions you may see throughout here, the launche
 
 **Complevel:** Usually indicated by a number, it's a parameter used in some source ports to emulate other source ports.
 
+**AppData Preset:** Any Minty Launcher preset stored in your `%appdata%/MintyLauncher` folder.
+
 ## 1. Setting Up
 For Framework Dependent Only: Make sure you've installed the .NET 9.0 Runtimes before running.
 
@@ -57,6 +59,9 @@ You can drag files onto this window to quickly add them to your External File li
 You can select multiple files at once to delete them with the **-** button. You can also select a single file.
 
 You can reorder single files in the list with the Up and Down arrow buttons.
+
+Note: The placement of `.deh` and `.bex` patches don't matter. They are always loaded before PWADs.
+They're, however, loaded in the order they appear in the list.
 
 ## 3. Settings Overview
 
@@ -109,6 +114,8 @@ These are settings relating to Minty Launcher's main window.
 	
 ## 4. Command-line Arguments
 Note that all of your settings (and your Default preset, if enabled) are loaded before these are checked.
+
+Note: Single-lettered arguments can't be combined together. They must be seperated.
 
 `--preset [preset name]` loads in the preset from your AppData folder. Exclude the file extension from the name. Case sensitive.
 
