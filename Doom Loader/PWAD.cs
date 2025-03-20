@@ -79,33 +79,39 @@ namespace Doom_Loader
         #region Reorder Buttons
         private void ReorderItemUp(object sender, EventArgs e)
         {
-            string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
-            int index = pwadList.SelectedIndex;
-            if (index != 0) // Check if the item is not already at the top
+            if (pwadList.SelectedIndices.Count == 1)
             {
-                List<string> PWADs = new List<string>(ApplicationVariables.externalFiles.ToList());
-                // Move the item
-                PWADs.RemoveAt(index);
-                PWADs.Insert(index - 1, data);
-                ApplicationVariables.externalFiles = PWADs.ToArray();
-                Reload();
-                pwadList.SelectedIndex = index - 1; // Set the cursor to the new position
+                string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
+                int index = pwadList.SelectedIndex;
+                if (index != 0) // Check if the item is not already at the top
+                {
+                    List<string> PWADs = new List<string>(ApplicationVariables.externalFiles.ToList());
+                    // Move the item
+                    PWADs.RemoveAt(index);
+                    PWADs.Insert(index - 1, data);
+                    ApplicationVariables.externalFiles = PWADs.ToArray();
+                    Reload();
+                    pwadList.SelectedIndex = index - 1; // Set the cursor to the new position
+                }
             }
         }
 
         private void ReorderItemDown(object sender, EventArgs e)
         {
-            string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
-            int index = pwadList.SelectedIndex;
-            if (index != pwadList.Items.Count - 1) // Check if the item is not already at the bottom
+            if (pwadList.SelectedIndices.Count == 1)
             {
-                List<string> PWADs = new List<string>(ApplicationVariables.externalFiles.ToList());
-                // Move the item
-                PWADs.RemoveAt(index);
-                PWADs.Insert(index + 1, data);
-                ApplicationVariables.externalFiles = PWADs.ToArray();
-                Reload();
-                pwadList.SelectedIndex = index + 1; // Set the cursor to the new position
+                string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
+                int index = pwadList.SelectedIndex;
+                if (index != pwadList.Items.Count - 1) // Check if the item is not already at the bottom
+                {
+                    List<string> PWADs = new List<string>(ApplicationVariables.externalFiles.ToList());
+                    // Move the item
+                    PWADs.RemoveAt(index);
+                    PWADs.Insert(index + 1, data);
+                    ApplicationVariables.externalFiles = PWADs.ToArray();
+                    Reload();
+                    pwadList.SelectedIndex = index + 1; // Set the cursor to the new position
+                }
             }
         }
         #endregion
