@@ -51,7 +51,7 @@ namespace Doom_Loader
                 foreach (string PWAD in addPWADDialog.FileNames)
                 {
                     List<string> PWADs = new(ApplicationVariables.externalFiles.ToList()) { PWAD }; // Turn the original array into a usable list and add in the PWAD.
-                    ApplicationVariables.externalFiles = PWADs.ToArray(); // Merge the list into the array.
+                    ApplicationVariables.externalFiles = [.. PWADs]; // Merge the list into the array.
                 }
                 Reload();
             }
@@ -69,7 +69,7 @@ namespace Doom_Loader
                         PWADs.RemoveAt(i);
                     }
                 }
-                ApplicationVariables.externalFiles = PWADs.ToArray(); // Turn the edited list back into an array
+                ApplicationVariables.externalFiles = [.. PWADs]; // Turn the edited list back into an array
                 Reload();
             }
             catch { }
