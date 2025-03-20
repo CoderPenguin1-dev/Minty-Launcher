@@ -41,6 +41,10 @@ namespace Doom_Loader
             {
                 pwadList.Items.Add(Path.GetFileName(PWAD));
             }
+            // Disable reorder buttons and remove button.
+            reorderUpButton.Enabled = false;
+            reorderDownButton.Enabled = false;
+            removeItemButton.Enabled = false;
         }
 
         #region PWAD Addition & Removal
@@ -71,11 +75,6 @@ namespace Doom_Loader
                 }
                 ApplicationVariables.externalFiles = [.. PWADs]; // Turn the edited list back into an array
                 Reload();
-
-                // Disable reorder buttons and remove button.
-                reorderUpButton.Enabled = false;
-                reorderDownButton.Enabled = false;
-                removeItemButton.Enabled = false;
             }
             catch { }
         }
