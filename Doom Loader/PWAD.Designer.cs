@@ -63,6 +63,7 @@
             // 
             // removeItemButton
             // 
+            removeItemButton.Enabled = false;
             removeItemButton.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
             removeItemButton.Location = new Point(60, 203);
             removeItemButton.Name = "removeItemButton";

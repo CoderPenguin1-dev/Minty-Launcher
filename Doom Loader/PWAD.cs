@@ -72,9 +72,10 @@ namespace Doom_Loader
                 ApplicationVariables.externalFiles = [.. PWADs]; // Turn the edited list back into an array
                 Reload();
 
-                // Disable reorder buttons.
+                // Disable reorder buttons and remove button.
                 reorderUpButton.Enabled = false;
                 reorderDownButton.Enabled = false;
+                removeItemButton.Enabled = false;
             }
             catch { }
         }
@@ -150,6 +151,10 @@ namespace Doom_Loader
                 reorderUpButton.Enabled = true;
                 reorderDownButton.Enabled = true;
             }
+
+            if (pwadList.SelectedIndices.Count > 0)
+                removeItemButton.Enabled = true;
+            else removeItemButton.Enabled = false;
         }
     }
 }
