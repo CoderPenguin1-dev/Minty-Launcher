@@ -71,6 +71,10 @@ namespace Doom_Loader
                 }
                 ApplicationVariables.externalFiles = [.. PWADs]; // Turn the edited list back into an array
                 Reload();
+
+                // Disable reorder buttons.
+                reorderUpButton.Enabled = false;
+                reorderDownButton.Enabled = false;
             }
             catch { }
         }
@@ -79,39 +83,33 @@ namespace Doom_Loader
         #region Reorder Buttons
         private void ReorderItemUp(object sender, EventArgs e)
         {
-            if (pwadList.SelectedIndices.Count == 1)
+            string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
+            int index = pwadList.SelectedIndex;
+            if (index != 0) // Check if the item is not already at the top
             {
-                string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
-                int index = pwadList.SelectedIndex;
-                if (index != 0) // Check if the item is not already at the top
-                {
-                    List<string> PWADs = new List<string>(ApplicationVariables.externalFiles.ToList());
-                    // Move the item
-                    PWADs.RemoveAt(index);
-                    PWADs.Insert(index - 1, data);
-                    ApplicationVariables.externalFiles = PWADs.ToArray();
-                    Reload();
-                    pwadList.SelectedIndex = index - 1; // Set the cursor to the new position
-                }
+                List<string> PWADs = new List<string>(ApplicationVariables.externalFiles.ToList());
+                // Move the item
+                PWADs.RemoveAt(index);
+                PWADs.Insert(index - 1, data);
+                ApplicationVariables.externalFiles = PWADs.ToArray();
+                Reload();
+                pwadList.SelectedIndex = index - 1; // Set the cursor to the new position
             }
         }
 
         private void ReorderItemDown(object sender, EventArgs e)
         {
-            if (pwadList.SelectedIndices.Count == 1)
+            string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
+            int index = pwadList.SelectedIndex;
+            if (index != pwadList.Items.Count - 1) // Check if the item is not already at the bottom
             {
-                string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
-                int index = pwadList.SelectedIndex;
-                if (index != pwadList.Items.Count - 1) // Check if the item is not already at the bottom
-                {
-                    List<string> PWADs = new List<string>(ApplicationVariables.externalFiles.ToList());
-                    // Move the item
-                    PWADs.RemoveAt(index);
-                    PWADs.Insert(index + 1, data);
-                    ApplicationVariables.externalFiles = PWADs.ToArray();
-                    Reload();
-                    pwadList.SelectedIndex = index + 1; // Set the cursor to the new position
-                }
+                List<string> PWADs = new List<string>(ApplicationVariables.externalFiles.ToList());
+                // Move the item
+                PWADs.RemoveAt(index);
+                PWADs.Insert(index + 1, data);
+                ApplicationVariables.externalFiles = PWADs.ToArray();
+                Reload();
+                pwadList.SelectedIndex = index + 1; // Set the cursor to the new position
             }
         }
         #endregion
@@ -142,7 +140,7 @@ namespace Doom_Loader
 
         private void CheckAmountSelected(object sender, EventArgs e)
         {
-            if (pwadList.SelectedIndices.Count > 1)
+            if (pwadList.SelectedIndices.Count > 1 || pwadList.SelectedIndices.Count == 0)
             {
                 reorderUpButton.Enabled = false;
                 reorderDownButton.Enabled = false;

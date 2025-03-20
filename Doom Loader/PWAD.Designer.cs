@@ -80,6 +80,7 @@
             // 
             // reorderUpButton
             // 
+            reorderUpButton.Enabled = false;
             reorderUpButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             reorderUpButton.Location = new Point(169, 203);
             reorderUpButton.Name = "reorderUpButton";
@@ -91,6 +92,7 @@
             // 
             // reorderDownButton
             // 
+            reorderDownButton.Enabled = false;
             reorderDownButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             reorderDownButton.Location = new Point(216, 203);
             reorderDownButton.Name = "reorderDownButton";
