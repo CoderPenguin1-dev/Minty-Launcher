@@ -87,11 +87,11 @@ namespace Doom_Loader
             int index = pwadList.SelectedIndex;
             if (index != 0) // Check if the item is not already at the top
             {
-                List<string> PWADs = new List<string>(ApplicationVariables.externalFiles.ToList());
+                List<string> PWADs = new(ApplicationVariables.externalFiles.ToList());
                 // Move the item
                 PWADs.RemoveAt(index);
                 PWADs.Insert(index - 1, data);
-                ApplicationVariables.externalFiles = PWADs.ToArray();
+                ApplicationVariables.externalFiles = [.. PWADs];
                 Reload();
                 pwadList.SelectedIndex = index - 1; // Set the cursor to the new position
             }
@@ -103,11 +103,11 @@ namespace Doom_Loader
             int index = pwadList.SelectedIndex;
             if (index != pwadList.Items.Count - 1) // Check if the item is not already at the bottom
             {
-                List<string> PWADs = new List<string>(ApplicationVariables.externalFiles.ToList());
+                List<string> PWADs = new(ApplicationVariables.externalFiles.ToList());
                 // Move the item
                 PWADs.RemoveAt(index);
                 PWADs.Insert(index + 1, data);
-                ApplicationVariables.externalFiles = PWADs.ToArray();
+                ApplicationVariables.externalFiles = [.. PWADs];
                 Reload();
                 pwadList.SelectedIndex = index + 1; // Set the cursor to the new position
             }
