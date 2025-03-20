@@ -30,11 +30,11 @@
         {
             components = new System.ComponentModel.Container();
             pwadList = new ListBox();
-            button1 = new Button();
-            button2 = new Button();
+            addItemButton = new Button();
+            removeItemButton = new Button();
             addPWADDialog = new OpenFileDialog();
-            button3 = new Button();
-            button4 = new Button();
+            reorderUpButton = new Button();
+            reorderDownButton = new Button();
             toolTips = new ToolTip(components);
             SuspendLayout();
             // 
@@ -47,29 +47,30 @@
             pwadList.SelectionMode = SelectionMode.MultiExtended;
             pwadList.Size = new Size(244, 184);
             pwadList.TabIndex = 0;
+            pwadList.SelectedIndexChanged += CheckAmountSelected;
             // 
-            // button1
+            // addItemButton
             // 
-            button1.AccessibleName = "";
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button1.Location = new Point(13, 203);
-            button1.Name = "button1";
-            button1.Size = new Size(41, 39);
-            button1.TabIndex = 1;
-            button1.Text = "+";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += AddPWAD;
+            addItemButton.AccessibleName = "";
+            addItemButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            addItemButton.Location = new Point(13, 203);
+            addItemButton.Name = "addItemButton";
+            addItemButton.Size = new Size(41, 39);
+            addItemButton.TabIndex = 1;
+            addItemButton.Text = "+";
+            addItemButton.UseVisualStyleBackColor = true;
+            addItemButton.Click += AddPWAD;
             // 
-            // button2
+            // removeItemButton
             // 
-            button2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
-            button2.Location = new Point(60, 203);
-            button2.Name = "button2";
-            button2.Size = new Size(41, 39);
-            button2.TabIndex = 2;
-            button2.Text = "-";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += RemovePWAD;
+            removeItemButton.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
+            removeItemButton.Location = new Point(60, 203);
+            removeItemButton.Name = "removeItemButton";
+            removeItemButton.Size = new Size(41, 39);
+            removeItemButton.TabIndex = 2;
+            removeItemButton.Text = "-";
+            removeItemButton.UseVisualStyleBackColor = true;
+            removeItemButton.Click += RemovePWAD;
             // 
             // addPWADDialog
             // 
@@ -77,27 +78,27 @@
             addPWADDialog.Multiselect = true;
             addPWADDialog.Title = "Add External File(s)";
             // 
-            // button3
+            // reorderUpButton
             // 
-            button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button3.Location = new Point(169, 203);
-            button3.Name = "button3";
-            button3.Size = new Size(41, 39);
-            button3.TabIndex = 3;
-            button3.Text = "↑";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += ReorderItemUp;
+            reorderUpButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            reorderUpButton.Location = new Point(169, 203);
+            reorderUpButton.Name = "reorderUpButton";
+            reorderUpButton.Size = new Size(41, 39);
+            reorderUpButton.TabIndex = 3;
+            reorderUpButton.Text = "↑";
+            reorderUpButton.UseVisualStyleBackColor = true;
+            reorderUpButton.Click += ReorderItemUp;
             // 
-            // button4
+            // reorderDownButton
             // 
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button4.Location = new Point(216, 203);
-            button4.Name = "button4";
-            button4.Size = new Size(41, 39);
-            button4.TabIndex = 4;
-            button4.Text = "↓";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += ReorderItemDown;
+            reorderDownButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            reorderDownButton.Location = new Point(216, 203);
+            reorderDownButton.Name = "reorderDownButton";
+            reorderDownButton.Size = new Size(41, 39);
+            reorderDownButton.TabIndex = 4;
+            reorderDownButton.Text = "↓";
+            reorderDownButton.UseVisualStyleBackColor = true;
+            reorderDownButton.Click += ReorderItemDown;
             // 
             // PWAD
             // 
@@ -105,10 +106,10 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(269, 252);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(reorderDownButton);
+            Controls.Add(reorderUpButton);
+            Controls.Add(removeItemButton);
+            Controls.Add(addItemButton);
             Controls.Add(pwadList);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
@@ -127,11 +128,11 @@
         #endregion
 
         private ListBox pwadList;
-        private Button button1;
-        private Button button2;
+        private Button addItemButton;
+        private Button removeItemButton;
         private OpenFileDialog addPWADDialog;
-        private Button button3;
-        private Button button4;
+        private Button reorderUpButton;
+        private Button reorderDownButton;
         private ToolTip toolTips;
     }
 }
