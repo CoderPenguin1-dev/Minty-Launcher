@@ -32,7 +32,8 @@ namespace Doom_Loader
         } // Ran at Startup, sets up tooltips and PWAD list
 
         /// <summary>
-        /// Used to reload the PWAD Manager's PWAD List with the mods's filenames only
+        /// Used to reload the PWAD Manager's PWAD List with the mods's filenames only.
+        /// It will also disable the reorder and remove buttons.
         /// </summary>
         private void Reload()
         {
@@ -41,6 +42,7 @@ namespace Doom_Loader
             {
                 pwadList.Items.Add(Path.GetFileName(PWAD));
             }
+
             // Disable reorder buttons and remove button.
             reorderUpButton.Enabled = false;
             reorderDownButton.Enabled = false;
@@ -63,20 +65,16 @@ namespace Doom_Loader
 
         private void RemovePWAD(object sender, EventArgs e)
         {
-            try // Here to prevent crashing when no index was selected
+            List<string> PWADs = new(ApplicationVariables.externalFiles.ToList()); // Turn the original array into a usable list.
+            for (int i = pwadList.Items.Count - 1; i >= 0; i--)
             {
-                List<string> PWADs = new(ApplicationVariables.externalFiles.ToList()); // Turn the original array into a usable list.
-                for (int i = pwadList.Items.Count - 1; i >= 0; i--)
+                if (pwadList.GetSelected(i)) // If the PWAD in the PWAD Listbox is apart of the selected items, remove it.
                 {
-                    if (pwadList.GetSelected(i)) // If the PWAD in the PWAD Listbox is apart of the selected items, remove it.
-                    {
-                        PWADs.RemoveAt(i);
-                    }
+                    PWADs.RemoveAt(i);
                 }
-                ApplicationVariables.externalFiles = [.. PWADs]; // Turn the edited list back into an array
-                Reload();
             }
-            catch { }
+            ApplicationVariables.externalFiles = [.. PWADs]; // Turn the edited list back into an array
+            Reload();
         }
         #endregion
 
