@@ -138,6 +138,8 @@ namespace Doom_Loader
 
         private void CheckAmountSelected(object sender, EventArgs e)
         {
+            // Disable reorder buttons if there's more than one or no file selected,
+            // or if there's only one file.
             if (pwadList.SelectedIndices.Count > 1 || pwadList.SelectedIndices.Count == 0 || pwadList.Items.Count == 1)
             {
                 reorderUpButton.Enabled = false;
@@ -149,6 +151,7 @@ namespace Doom_Loader
                 reorderDownButton.Enabled = true;
             }
 
+            // Enable remove button if any amount of files are selected.
             if (pwadList.SelectedIndices.Count > 0)
                 removeItemButton.Enabled = true;
             else removeItemButton.Enabled = false;
