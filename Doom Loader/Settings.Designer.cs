@@ -83,7 +83,7 @@
             // 
             // aboutButton
             // 
-            aboutButton.Location = new Point(378, 227);
+            aboutButton.Location = new Point(353, 227);
             aboutButton.Name = "aboutButton";
             aboutButton.Size = new Size(75, 23);
             aboutButton.TabIndex = 2;
@@ -252,7 +252,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(465, 262);
+            ClientSize = new Size(440, 262);
             Controls.Add(groupBox4);
             Controls.Add(iwadFolderButton);
             Controls.Add(groupBox3);
