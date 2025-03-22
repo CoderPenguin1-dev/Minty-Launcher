@@ -83,7 +83,7 @@
             // 
             // aboutButton
             // 
-            aboutButton.Location = new Point(333, 229);
+            aboutButton.Location = new Point(378, 227);
             aboutButton.Name = "aboutButton";
             aboutButton.Size = new Size(75, 23);
             aboutButton.TabIndex = 2;
@@ -147,7 +147,7 @@
             // 
             button2.Location = new Point(6, 47);
             button2.Name = "button2";
-            button2.Size = new Size(136, 30);
+            button2.Size = new Size(165, 30);
             button2.TabIndex = 8;
             button2.Text = "Make Settings Portable";
             button2.UseVisualStyleBackColor = true;
@@ -159,7 +159,7 @@
             groupBox1.Controls.Add(button2);
             groupBox1.Location = new Point(12, 101);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(181, 87);
+            groupBox1.Size = new Size(210, 87);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             groupBox1.Text = "Portability";
@@ -170,7 +170,7 @@
             groupBox2.Controls.Add(defaultBox);
             groupBox2.Location = new Point(12, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(190, 83);
+            groupBox2.Size = new Size(210, 83);
             groupBox2.TabIndex = 10;
             groupBox2.TabStop = false;
             groupBox2.Text = "Presets";
@@ -179,7 +179,7 @@
             // 
             groupBox3.Controls.Add(closeBox);
             groupBox3.Controls.Add(topMostBox);
-            groupBox3.Location = new Point(208, 12);
+            groupBox3.Location = new Point(228, 12);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(200, 77);
             groupBox3.TabIndex = 11;
@@ -214,9 +214,9 @@
             groupBox4.Controls.Add(label2);
             groupBox4.Controls.Add(rpcFilesTrackBar);
             groupBox4.Controls.Add(rcpBox);
-            groupBox4.Location = new Point(208, 101);
+            groupBox4.Location = new Point(228, 101);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(163, 120);
+            groupBox4.Size = new Size(200, 120);
             groupBox4.TabIndex = 14;
             groupBox4.TabStop = false;
             groupBox4.Text = "Discord Rich Presence";
@@ -252,7 +252,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(418, 262);
+            ClientSize = new Size(465, 262);
             Controls.Add(groupBox4);
             Controls.Add(iwadFolderButton);
             Controls.Add(groupBox3);
