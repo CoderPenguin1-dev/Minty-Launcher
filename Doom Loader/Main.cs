@@ -56,9 +56,12 @@ namespace Doom_Loader
         {
             try
             {
+                // Check if the user already has an IWAD selected.
+                // Save it for later if they do.
                 string IWAD = null;
-                if (iwadBox.SelectedItem != null) IWAD = iwadBox.SelectedItem.ToString(); // Check if the user already has an IWAD selected
-                                                                                          // Save it for later if they do.
+                if (iwadBox.SelectedItem != null) 
+                    IWAD = iwadBox.SelectedItem.ToString();
+
                 iwadBox.Items.Clear();
                 string[] IWADs = Directory.GetFiles(ApplicationVariables.IWADFolderPath);
 
@@ -74,7 +77,8 @@ namespace Doom_Loader
                 if (iwadBox.Items.Contains(IWAD)) iwadBox.SelectedItem = IWAD;
                 else iwadBox.SelectedItem = null;
             }
-            // Ask user to set the IWAD folder path if they either don't have one set or the one set is missing.
+            // Ask user to set the IWAD folder path if they
+            // either don't have one set or the one set is missing.
             catch
             {
                 var error = MessageBox.Show("IWADs Folder path missing.\nSet new path now?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
