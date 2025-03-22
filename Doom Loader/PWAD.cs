@@ -138,7 +138,7 @@ namespace Doom_Loader
 
         private void CheckAmountSelected(object sender, EventArgs e)
         {
-            if (pwadList.SelectedIndices.Count > 1 || pwadList.SelectedIndices.Count == 0)
+            if (pwadList.SelectedIndices.Count > 1 || pwadList.SelectedIndices.Count == 0 || pwadList.Items.Count == 1)
             {
                 reorderUpButton.Enabled = false;
                 reorderDownButton.Enabled = false;
