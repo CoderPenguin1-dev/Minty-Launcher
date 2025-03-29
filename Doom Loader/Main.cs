@@ -187,7 +187,6 @@ namespace Doom_Loader
                     // Replace all back-slashes with forward-slashes to prevent bug where it'll think it's an escape character.
                     .Replace('\\', '/') + " ";
             }
-            MessageBox.Show(portArguments);
             if (ApplicationVariables.complevel != 0) portArguments += $"-complevel {ApplicationVariables.complevel} "; // Complevel
 
             // Check if there was a DeHacked patch
