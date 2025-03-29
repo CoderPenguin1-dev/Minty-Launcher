@@ -145,9 +145,9 @@
             // 
             // button2
             // 
-            button2.Location = new Point(6, 47);
+            button2.Location = new Point(6, 50);
             button2.Name = "button2";
-            button2.Size = new Size(165, 30);
+            button2.Size = new Size(165, 23);
             button2.TabIndex = 8;
             button2.Text = "Make Settings Portable";
             button2.UseVisualStyleBackColor = true;
