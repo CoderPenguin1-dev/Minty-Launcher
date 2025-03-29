@@ -103,7 +103,7 @@ namespace Doom_Loader
         {
             if (sourcePortDialog.ShowDialog() != DialogResult.Cancel)
             {
-                ApplicationVariables.sourcePort = "\"" + sourcePortDialog.FileName + "\"";
+                ApplicationVariables.sourcePort = sourcePortDialog.FileName;
 
                 bool dataFound = false;
                 if (File.Exists("mintyLauncher.portDatabase"))
@@ -210,6 +210,7 @@ namespace Doom_Loader
                     {
                         CreateNoWindow = false,
                         UseShellExecute = false,
+                        WorkingDirectory = Path.GetDirectoryName(ApplicationVariables.sourcePort)
                     }).WaitForExit();
                 if (ApplicationVariables.closeOnPlay)
                 {
@@ -217,7 +218,7 @@ namespace Doom_Loader
                     Environment.Exit(0);
                 }
             }
-            catch { }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             if (ApplicationVariables.rpc) RPCClient.client.Dispose(); // Kill RPC Connection
 
             // Move window visible above all windows
