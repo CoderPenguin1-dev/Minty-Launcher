@@ -31,6 +31,7 @@ Now, select your desired IWAD and complevel and hit *Play* and it should boot yo
 
 Also, it'd be a good idea (however not required) to download `mintyLauncher.portDatabse` from the GitHub repository and sticking it in the same folder as your Minty Launcher executable.
 This will swap out the name of the executable file of the source port over to something more pleasing to look at. You can also add in your own source ports or edit the list as you'd like.
+An empty version of this file is created upon first startup of Minty Launcher.
 
 ## 2. The Interface
 
