@@ -179,7 +179,15 @@ namespace Doom_Loader
             // Argument Setup
             string portArguments = "";
 
-            if (extraParamsTextBox.Text != "") portArguments += ApplicationVariables.arguments + " "; // Extra Paramaters
+            // Extra Paramaters
+            if (extraParamsTextBox.Text != "")
+            {
+                portArguments += ApplicationVariables.arguments
+                    .Replace("*", Environment.CurrentDirectory) // Check if there's any Minty CWD characters.
+                    // Replace all back-slashes with forward-slashes to prevent bug where it'll think it's an escape character.
+                    .Replace('\\', '/') + " ";
+            }
+            MessageBox.Show(portArguments);
             if (ApplicationVariables.complevel != 0) portArguments += $"-complevel {ApplicationVariables.complevel} "; // Complevel
 
             // Check if there was a DeHacked patch
