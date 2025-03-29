@@ -41,6 +41,7 @@ The IWAD and Complevel selectors allow you to select which IWAD and source port 
 
 The *Extra Paramaters* box allows you to type in any extra parameters you wish to pass along to the source port, such as `-playdemo` to play a recorded demo.
 You can also right-click the box to insert a file path easier.
+You can also insert an `*` into the box to use Minty Launcher's directory instead of the source port's.
 
 The *Select Port* button allows you to select which port you wish to use.
 
