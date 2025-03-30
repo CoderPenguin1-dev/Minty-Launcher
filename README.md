@@ -16,7 +16,6 @@ Minty Launcher only targets Windows, and only has been tested on Windows 10 and 
 Although not required, I do ask you not to sell forks of Minty Launcher or to restrict access to the source code.
 
 ## Interface
-Below shows the interface of Minty Launcher.
 <details>
 	<summary>Main Window</summary>
 	<img src="Images/mainWindow.png">
