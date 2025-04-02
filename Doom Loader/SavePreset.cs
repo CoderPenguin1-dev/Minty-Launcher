@@ -22,9 +22,7 @@ namespace Doom_Loader
         {
             if (textBox1.Text.Length > 0)
             {
-                string path = $"%appdata%\\MintyLauncher\\Presets\\{textBox1.Text}.mlPreset";
-                path = Environment.ExpandEnvironmentVariables(path);
-
+                string path = $"{Main.FindMintyLauncherFolder()}Presets\\{textBox1.Text}.mlPreset";
                 Main.SavePreset(path);
                 ApplicationVariables.presetName = textBox1.Text;
                 this.Close();

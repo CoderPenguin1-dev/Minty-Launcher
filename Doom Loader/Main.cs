@@ -15,32 +15,22 @@ namespace Doom_Loader
 
         private static bool boot = true; // Used for calling LoadPresets() in AppDataInit() to prevent some odd bug.
 
-        private void ComplevelChanged(object sender, EventArgs e)
+        private void ComplevelIndexChanged(object sender, EventArgs e)
         {
-            switch (complevelSelector.SelectedItem)
+            CheckComplevel();
+        }
+
+        private void CheckComplevel()
+        {
+            ApplicationVariables.complevelIndex = complevelSelector.SelectedIndex;
+            if (complevelSelector.SelectedIndex == 0)
             {
-                case "None":
-                    ApplicationVariables.complevel = 0;
-                    break;
-                case "Doom v1.9":
-                    ApplicationVariables.complevel = 2;
-                    break;
-                case "Ultimate Doom":
-                    ApplicationVariables.complevel = 3;
-                    break;
-                case "Final Doom":
-                    ApplicationVariables.complevel = 4;
-                    break;
-                case "Boom v2.02":
-                    ApplicationVariables.complevel = 9;
-                    break;
-                case "MBF":
-                    ApplicationVariables.complevel = 11;
-                    break;
-                case "MBF21":
-                    ApplicationVariables.complevel = 21;
-                    break;
+                ApplicationVariables.complevel = "-";
+                return;
             }
+            string path = FindMintyLauncherFolder();
+            string complevelString = ApplicationVariables.complevels[complevelSelector.SelectedIndex];
+            ApplicationVariables.complevel = complevelString.Split(";")[1];
         }
 
         private void IWADChanged(object sender, EventArgs e)
@@ -106,18 +96,17 @@ namespace Doom_Loader
                 ApplicationVariables.sourcePort = sourcePortDialog.FileName;
 
                 bool dataFound = false;
-                if (File.Exists("mintyLauncher.portDatabase"))
+                string path = FindMintyLauncherFolder();
+                if (!File.Exists($"{path}{ApplicationVariables.PORTDATABASE_FILE}")) Generate.PortDatabase(path);
+                foreach (string portData in File.ReadAllLines($"{path}{ApplicationVariables.PORTDATABASE_FILE}"))
                 {
-                    foreach (string portData in File.ReadAllLines("mintyLauncher.portDatabase"))
+                    if (portData.StartsWith('#')) continue; // Check for comment lines. Here only for legacy support.
+                    string[] data = portData.Split(';');
+                    if (string.Equals(Path.GetFileName(sourcePortDialog.FileName), data[0], StringComparison.CurrentCultureIgnoreCase))
                     {
-                        if (portData.StartsWith('#')) continue; // Check for comment lines.
-                        string[] data = portData.Split(';');
-                        if (string.Equals(Path.GetFileName(sourcePortDialog.FileName), data[0], StringComparison.CurrentCultureIgnoreCase))
-                        {
-                            portButton.Text = $"{data[1]}";
-                            dataFound = true;
-                            break;
-                        }
+                        portButton.Text = $"{data[1]}";
+                        dataFound = true;
+                        break;
                     }
                 }
                 if (!dataFound) portButton.Text = Path.GetFileNameWithoutExtension(sourcePortDialog.SafeFileName);
@@ -187,7 +176,7 @@ namespace Doom_Loader
                     // Replace all back-slashes with forward-slashes to prevent bug where it'll think it's an escape character.
                     .Replace('\\', '/') + " ";
             }
-            if (ApplicationVariables.complevel != 0) portArguments += $"-complevel {ApplicationVariables.complevel} "; // Complevel
+            if (ApplicationVariables.complevel != "-") portArguments += $"-complevel {ApplicationVariables.complevel} "; // Complevel
 
             // Check if there was a DeHacked patch
             List<string> extFileStore = []; // Used so the PWAD adder code doesn't need to iterate through the useless DEH and BEX files later.
@@ -242,38 +231,8 @@ namespace Doom_Loader
             string[] args = File.ReadAllLines(path);
 
             #region Complevel
-            switch (args[2])
-            {
-                case "0":
-                    ApplicationVariables.complevel = 0;
-                    complevelSelector.SelectedItem = "None";
-                    break;
-                case "2":
-                    ApplicationVariables.complevel = 2;
-                    complevelSelector.SelectedItem = "Doom v1.9";
-                    break;
-                case "3":
-                    ApplicationVariables.complevel = 3;
-                    complevelSelector.SelectedItem = "Ultimate Doom";
-                    break;
-                case "4":
-                    ApplicationVariables.complevel = 4;
-                    complevelSelector.SelectedItem = "Final Doom";
-                    break;
-                case "9":
-                    ApplicationVariables.complevel = 9;
-                    complevelSelector.SelectedItem = "Boom v2.02";
-                    break;
-                case "11":
-                    ApplicationVariables.complevel = 11;
-                    complevelSelector.SelectedItem = "MBF";
-                    break;
-                case "21":
-                    ApplicationVariables.complevel = 21;
-                    complevelSelector.SelectedItem = "MBF21";
-                    break;
-
-            }
+            complevelSelector.SelectedIndex = int.Parse(args[2]);
+            CheckComplevel();
             #endregion
 
             extraParamsTextBox.Text = args[0]; // Arguments
@@ -318,8 +277,7 @@ namespace Doom_Loader
 
             if (!ApplicationVariables.customPreset || ApplicationVariables.useDefault && boot)
             {
-                path = $"%appdata%\\MintyLauncher\\Presets\\{loadPresetBox.SelectedItem}.mlPreset";
-                path = Environment.ExpandEnvironmentVariables(path);
+                path = $"{FindMintyLauncherFolder()}Presets\\{loadPresetBox.SelectedItem}.mlPreset";
                 boot = false;
             }
             else
@@ -366,7 +324,7 @@ namespace Doom_Loader
             string file = @"";
             file += $"{ApplicationVariables.arguments}\n";
             file += $"{ApplicationVariables.sourcePort}\n";
-            file += $"{ApplicationVariables.complevel}\n";
+            file += $"{ApplicationVariables.complevelIndex}\n";
 
             if (ApplicationVariables.externalFiles.Length != 0)
             {
@@ -387,7 +345,7 @@ namespace Doom_Loader
             {
                 if (!ApplicationVariables.customPreset && e.Button == MouseButtons.Right)
                 {
-                    string path = Environment.ExpandEnvironmentVariables($"%appdata%\\MintyLauncher\\Presets\\{loadPresetBox.SelectedItem}.mlPreset");
+                    string path = FindMintyLauncherFolder() + "Presets" + loadPresetBox.SelectedItem;
                     SavePreset(path);
                     MessageBox.Show("Preset Saved", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -403,8 +361,7 @@ namespace Doom_Loader
             string presetName = null;
             if (loadPresetBox.SelectedItem != null) presetName = loadPresetBox.SelectedItem.ToString();
             loadPresetBox.Items.Clear();
-            string path = "%appdata%\\MintyLauncher\\Presets";
-            path = Environment.ExpandEnvironmentVariables(path);
+            string path = $"{FindMintyLauncherFolder()}Presets";
             string[] presets = Directory.GetFiles(path);
 
             foreach (string preset in presets)
@@ -427,82 +384,71 @@ namespace Doom_Loader
             RPCClient.client.Invoke();
         }
 
+        public static string FindMintyLauncherFolder()
+        {
+            // Try to find the portable settings file.
+            if (Path.Exists("MintyLauncher"))
+                return "MintyLauncher\\";
+            // If no portable settings file is found in the CWD,
+            // return the settings file found in Minty Launcher's folder in the user's Roaming AppData folder.
+            else
+                return Environment.ExpandEnvironmentVariables("%appdata%\\MintyLauncher\\");
+        }
+
         // Settings, init complevel ComboBox and tooltips, and check command line arguments.
         // For --info and -i, check Program.cs
         private void AppDataInit(object sender, EventArgs e)
         {
-            string appdata = "%appdata%";
-            appdata = Environment.ExpandEnvironmentVariables(appdata);
+            string appdata = Environment.ExpandEnvironmentVariables("%appdata%\\");
 
-            // Create the Port Database file, usually only done on first run.
-            if (!File.Exists("mintyLauncher.portDatabase"))
-                File.WriteAllText("mintyLauncher.portDatabase", "# This is the Port Database file for The Minty Launcher" +
-                    "\n# To create a new entry, do this for each port (one port per line!): [port filename].exe;[port name]" +
-                    "\n# Example: gzdoom.exe;GZDoom" +
-                    "\n# You can download official database updates on the GitHub Repo under each Release: https://github.com/PENGUINCODER1/Minty-Launcher");
-
-            if (Directory.Exists($"{appdata}\\MintyLauncher") || File.Exists("mintyLauncher.PortableSettings"))
+            if (!Path.Exists(Environment.ExpandEnvironmentVariables($"{appdata}MintyLauncher\\")) && !File.Exists(ApplicationVariables.SETTINGS_FILE))
             {
-                // Settings
-                try
-                {
-                    string[] lines = [];
-                    if (File.Exists("mintyLauncher.PortableSettings"))
-                        lines = File.ReadAllLines("mintyLauncher.PortableSettings");
-                    else lines = File.ReadAllLines($"{appdata}\\MintyLauncher\\settings.txt");
-
-                    // Set the settings.
-                    ApplicationVariables.rpc = bool.Parse(lines[0]);
-                    ApplicationVariables.closeOnPlay = bool.Parse(lines[1]);
-                    ApplicationVariables.topMost = bool.Parse(lines[2]);
-                    ApplicationVariables.useDefault = bool.Parse(lines[3]);
-                    ApplicationVariables.customPreset = bool.Parse(lines[4]);
-                    if (ApplicationVariables.customPreset)
-                    {
-                        customPresetButton.Enabled = true;
-                        customPresetButton.Visible = true;
-                        loadPresetBox.Enabled = false;
-                        loadPresetBox.Visible = false;
-                    }
-                    ApplicationVariables.IWADFolderPath = lines[5];
-                    ApplicationVariables.rpcFilesShown = int.Parse(lines[6]);
-                }
-                catch
-                {
-                    File.WriteAllLines($"{appdata}\\MintyLauncher\\settings.txt", [ ApplicationVariables.rpc.ToString(),
-                        ApplicationVariables.closeOnPlay.ToString(),
-                        ApplicationVariables.topMost.ToString(),
-                        ApplicationVariables.useDefault.ToString(),
-                        ApplicationVariables.customPreset.ToString()
-                    ]);
-                }
-
-                // Presets
-                if (!Directory.Exists($"{appdata}\\MintyLauncher\\Presets")) Directory.CreateDirectory($"{appdata}\\MintyLauncher\\Presets"); //Check if there's the presets folder.
-                else if (File.Exists($"{appdata}\\MintyLauncher\\Presets\\Default.mlPreset") && ApplicationVariables.useDefault) // Check if there is the Default preset.
-                {
-                    // Load Default preset. Also add it to the list and select it.
-                    loadPresetBox.Items.Add("Default");
-                    loadPresetBox.SelectedItem = "Default";
-                    LoadPreset($"{appdata}\\MintyLauncher\\Presets\\Default.mlPreset");
-                }
-            }
-
-            // No AppData folder detected, generate the folder.
-            else
-            {
-                Directory.CreateDirectory($"{appdata}\\MintyLauncher");
-                File.WriteAllLines($"{appdata}\\MintyLauncher\\settings.txt", [ ApplicationVariables.rpc.ToString(),
-                    ApplicationVariables.closeOnPlay.ToString(),
-                    ApplicationVariables.topMost.ToString(),
-                    ApplicationVariables.useDefault.ToString(),
-                    ApplicationVariables.customPreset.ToString()
-                ]);
+                string folderPath = $"{appdata}\\MintyLauncher\\";
+                Directory.CreateDirectory(folderPath);
+                Generate.Settings(folderPath);
                 // Prompt user to select IWADs folder path.
                 var error = MessageBox.Show("IWADs Folder path missing.\nSet new path now?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                 if (error == DialogResult.Yes) new Settings().SetIWADFolder(sender, e);
                 else if (error == DialogResult.No) MessageBox.Show("Please set new path in settings.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Directory.CreateDirectory($"{appdata}\\MintyLauncher\\Presets");
+                Directory.CreateDirectory($"{folderPath}Presets");
+                Generate.PortDatabase(folderPath);
+                Generate.Complevel(folderPath);
+            }
+
+            string path = FindMintyLauncherFolder();
+            string[] settings = File.ReadAllLines($"{path}{ApplicationVariables.SETTINGS_FILE}");
+
+            #region Settings
+            ApplicationVariables.rpc = bool.Parse(settings[0]);
+            ApplicationVariables.closeOnPlay = bool.Parse(settings[1]);
+            ApplicationVariables.topMost = bool.Parse(settings[2]);
+            ApplicationVariables.useDefault = bool.Parse(settings[3]);
+            ApplicationVariables.customPreset = bool.Parse(settings[4]);
+            if (ApplicationVariables.customPreset)
+            {
+                customPresetButton.Enabled = true;
+                customPresetButton.Visible = true;
+                loadPresetBox.Enabled = false;
+                loadPresetBox.Visible = false;
+            }
+            ApplicationVariables.IWADFolderPath = settings[5];
+            ApplicationVariables.rpcFilesShown = int.Parse(settings[6]);
+            #endregion
+
+            #region Complevels
+            string[] complevels = File.ReadAllLines($"{path}{ApplicationVariables.COMPLEVEL_FILE}");
+            ApplicationVariables.complevels = complevels;
+            foreach (string complevel in complevels)
+                complevelSelector.Items.Add(complevel.Split(";")[0]);
+            complevelSelector.SelectedIndex = 0;
+            #endregion
+
+            if (File.Exists($"{path}Presets\\Default.mlPreset") && ApplicationVariables.useDefault) // Check if there is the Default preset.
+            {
+                // Load Default preset. Also add it to the list and select it.
+                loadPresetBox.Items.Add("Default");
+                loadPresetBox.SelectedItem = "Default";
+                LoadPreset($"{appdata}\\MintyLauncher\\Presets\\Default.mlPreset");
             }
 
             // Tooltips
@@ -540,7 +486,7 @@ namespace Doom_Loader
                                 Environment.Exit(1);
                             }
                             loadPresetBox.SelectedItem = args[i];
-                            LoadPreset($"{appdata}\\MintyLauncher\\Presets\\{args[i]}.mlPreset");
+                            LoadPreset($"{path}\\Presets\\{args[i]}.mlPreset");
                             break;
 
                         case "--iwad-folder":

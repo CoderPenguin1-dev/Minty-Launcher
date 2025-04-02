@@ -160,13 +160,13 @@
             complevelSelector.BackColor = SystemColors.Control;
             complevelSelector.DropDownStyle = ComboBoxStyle.DropDownList;
             complevelSelector.FormattingEnabled = true;
-            complevelSelector.Items.AddRange(new object[] { "None", "Doom v1.9", "Ultimate Doom", "Final Doom", "Boom v2.02", "MBF", "MBF21" });
+            complevelSelector.Items.AddRange(new object[] { "None" });
             complevelSelector.Location = new Point(5, 18);
             complevelSelector.Name = "complevelSelector";
             complevelSelector.Size = new Size(108, 23);
             complevelSelector.TabIndex = 19;
             complevelSelector.TabStop = false;
-            complevelSelector.SelectedIndexChanged += ComplevelChanged;
+            complevelSelector.SelectedIndexChanged += ComplevelIndexChanged;
             // 
             // iwadBox
             // 

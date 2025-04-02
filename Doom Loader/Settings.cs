@@ -41,12 +41,12 @@ namespace Doom_Loader
         private static string CheckForWhichConfig()
         {
             // Try to find the portable settings file.
-            if (File.Exists("mintyLauncher.PortableSettings"))
-                return "mintyLauncher.PortableSettings";
+            if (Path.Exists("MintyLauncher"))
+                return $"MintyLauncher\\{ApplicationVariables.SETTINGS_FILE}";
             // If no portable settings file is found in the CWD,
             // return the settings file found in Minty Launcher's folder in the user's Roaming AppData folder.
             else
-                return Environment.ExpandEnvironmentVariables("%appdata%\\MintyLauncher\\settings.txt");
+                return Environment.ExpandEnvironmentVariables($"%appdata%\\MintyLauncher\\{ApplicationVariables.SETTINGS_FILE}");
         }
 
         private void Settings_Load(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace Doom_Loader
             if (!rcpBox.Checked)
                 rpcFilesTrackBar.Enabled = false;
 
-            if (File.Exists("mintyLauncher.PortableSettings")) button2.Enabled = false; // Disable "Make Settings Portable" button if portable settings file already exists.
+            if (Path.Exists("MintyLauncher")) button2.Enabled = false; // Disable "Make Settings Portable" button if portable settings file already exists.
 
             #region Tooltips
             toolTips.SetToolTip(rcpBox, "Enable Discord Rich Presence intergration.");
@@ -134,7 +134,14 @@ namespace Doom_Loader
 
         private void EnablePortableSettings(object sender, EventArgs e)
         {
-            RewriteAppDataConfig("mintyLauncher.PortableSettings");
+            string oldPath = Environment.ExpandEnvironmentVariables("%appdata%\\MintyLauncher\\");
+            Directory.CreateDirectory("MintyLauncher");
+            File.Copy($"{oldPath}{ApplicationVariables.SETTINGS_FILE}", $"MintyLauncher\\{ApplicationVariables.SETTINGS_FILE}");
+            File.Copy($"{oldPath}{ApplicationVariables.COMPLEVEL_FILE}", $"MintyLauncher\\{ApplicationVariables.COMPLEVEL_FILE}");
+            File.Copy($"{oldPath}{ApplicationVariables.PORTDATABASE_FILE}", $"MintyLauncher\\{ApplicationVariables.PORTDATABASE_FILE}");
+            Directory.CreateDirectory("MintyLauncher\\Presets");
+            foreach (string file in Directory.GetFiles($"{oldPath}Presets"))
+                File.Copy(file, $"MintyLauncher\\Presets\\{Path.GetFileName(file)}");
             button2.Enabled = false;
         }
 
@@ -145,8 +152,8 @@ namespace Doom_Loader
 
         private void ShowPresets(object sender, EventArgs e)
         {
-            string appdata = Environment.ExpandEnvironmentVariables("%appdata%");
-            Process.Start("explorer.exe", $"{appdata}\\MintyLauncher\\Presets");
+            string path = Main.FindMintyLauncherFolder();
+            Process.Start("explorer.exe", $"{path}");
         }
     }
 }
