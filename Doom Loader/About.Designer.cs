@@ -50,11 +50,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(101, 202);
+            label1.Location = new Point(113, 202);
             label1.Name = "label1";
-            label1.Size = new Size(112, 15);
+            label1.Size = new Size(90, 15);
             label1.TabIndex = 1;
-            label1.Text = "The Minty Launcher";
+            label1.Text = "Minty Launcher";
             // 
             // version
             // 

@@ -275,7 +275,7 @@
             MaximizeBox = false;
             Name = "Main";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "The Minty Launcher";
+            Text = "Minty Launcher";
             Load += AppDataInit;
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);

@@ -1,4 +1,4 @@
-# The Minty Launcher User's Guide
+# Minty Launcher User's Guide
 
 You can obtain source code for Minty Launcher [here](https://github.com/PENGUINCODER1/Minty-Launcher).
 
