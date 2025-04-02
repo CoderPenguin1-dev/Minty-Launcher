@@ -2,7 +2,10 @@
 
 # Minty Launcher
 A C# WinForms Doom launcher I made as I hadn't liked others like ZDL or Doom Launcher.
-This is built for my purposes and features will usually be added when I need/want them. I will, however, gladly take suggestions and implement them if possible within my lackluster skill level.
+This is built for my purposes and features will usually be added when I need/want them. I will, however, gladly take suggestions and implement them if possible within my ability.
+
+Minty Launcher focuses mainly on user usability and simplicity. Everything you need is visibly shown, but there's more specific features and shortcuts when you need them.
+The launcher also has Discord Rich Presence support so people can see what you're playing and what source port you're using.
 
 Minty Launcher only targets Windows, and only has been tested on Windows 10 and 11. Minty Launcher through Wine has mainly been untested.
 
