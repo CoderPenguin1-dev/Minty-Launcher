@@ -15,7 +15,9 @@ Just a collection of simple definitions you may see throughout here, the launche
 
 **Complevel:** Usually indicated by a number, it's a parameter used in some source ports to emulate other source ports.
 
-**AppData Preset:** Any Minty Launcher preset stored in your `%appdata%/MintyLauncher` folder.
+**Settings Preset:** Any Minty Launcher preset stored in your Settings folder.
+
+**Settings Folder:** Either `%appdata\MintyLauncher` or `MintyLauncher` depending on if you've made your settings portable or not.
 
 ## 1. Setting Up
 For Framework Dependent Only: Make sure you've installed the .NET 9.0 Runtimes before running.
@@ -28,10 +30,6 @@ With either method, you'll need to navigate to where the folder containing your 
 
 Then, you'll need to select a source port. On the main window, click on *Select Port* and navigate to the executable file of your desired port.
 Now, select your desired IWAD and complevel and hit *Play* and it should boot you into the game!
-
-Also, it'd be a good idea (however not required) to download `mintyLauncher.portDatabse` from the GitHub repository and sticking it in the same folder as your Minty Launcher executable.
-This will swap out the name of the executable file of the source port over to something more pleasing to look at. You can also add in your own source ports or edit the list as you'd like.
-An empty version of this file is created upon first startup of Minty Launcher.
 
 ## 2. The Interface
 
@@ -52,7 +50,7 @@ The *External Files* button opens up the External File Manager window, which all
 
 *Ask For Preset Location* Setting **ON**: The *Load Preset* button will allow you to load in a preset.
 
-The *Save Preset* button will allow you to save a preset. If the *Ask For Preset Location* setting is **OFF**, it will pop up with a small box that'll allow you to put in a preset name. These are saved in your AppData folder.
+The *Save Preset* button will allow you to save a preset. If the *Ask For Preset Location* setting is **OFF**, it will pop up with a small box that'll allow you to put in a preset name. These are saved in your Settings Folder.
 If the *Ask For Preset Location* setting is **OFF**, you can right-click the button to quickly save the current preset.
 
 ### 2b. The External File Manager
@@ -66,6 +64,7 @@ Note: The placement of `.deh` and `.bex` patches don't matter. They are always l
 They're, however, loaded in the order they appear in the list.
 
 ## 3. Settings Overview
+You can find your Settings Folder by going into `Settings > Open Minty Launcher Folder`. There, you'll find your presets, port database, complevels, and actual settings files.
 
 ### 3a. Presets
 These are settings relating to presets.
@@ -83,7 +82,7 @@ These are settings related to being able to more easily use the same executable 
 	
 *Make Settings Portable*:
 	
-	This will create a portable settings file in the directory of Minty Launcher's executable.
+	This will move all files from your appdata to a folder called MintyLauncher. The launcher will then read from this folder instead of appdata.
 	
 ### 3c. Window
 These are settings relating to Minty Launcher's main window.
@@ -119,7 +118,7 @@ Note that all of your settings (and your Default preset, if enabled) are loaded 
 
 Note: Single-lettered arguments can't be combined together. They must be seperated.
 
-`--preset [preset name]` loads in the preset from your AppData folder. Exclude the file extension from the name. Case sensitive.
+`--preset [preset name]` loads in the preset from your Settings Folder. Exclude the file extension from the name. Case sensitive.
 
 `--preset-path [preset path]` `-p [preset path]` loads in a preset from the desired path. Must be an `.mlPreset` file.
 
