@@ -97,7 +97,7 @@
             openPresetsLocation.Name = "openPresetsLocation";
             openPresetsLocation.Size = new Size(175, 23);
             openPresetsLocation.TabIndex = 3;
-            openPresetsLocation.Text = "Open Minty Launcher Folder";
+            openPresetsLocation.Text = "Open Settings Folder";
             openPresetsLocation.UseVisualStyleBackColor = true;
             openPresetsLocation.Click += ShowPresets;
             // 
