@@ -112,8 +112,25 @@ These are settings relating to Minty Launcher's main window.
 *Set IWADs Folder*:
 
 	This will allow you to change where your IWADs folder is located.
+
+## 4. Settings Files
+You can access your settings files (as well as presets) by going into `Settings > Open Minty Launcher Folder`
+
+### 4a. Port Database
+Each entry is in this format: `source port file name`;`source port actual name`.
+For example, GZDoom would be `gzdoom.exe;GZDoom`.
+Entry placement and the input for the source port's actual name doesn't matter.
+If your source port's actual name contains a &, double it up `&&`.
+
+When you select a source port (or open a preset that contains a source port), it will first look through this file.
+If an entry matches the source port executable name, it will replace the source port button and the RPC source port description with the source port's actual name.
+
+### 4b. Complevel
+Each entry is in this format: `complevel name`;`complevel number`.
+For example, Doom 2 would be `Doom v1.9;2`.
+Entry placement dictates which order it will be shown in the complevel selector.
 	
-## 4. Command-line Arguments
+## 5. Command-line Arguments
 Note that all of your settings (and your Default preset, if enabled) are loaded before these are checked.
 
 Note: Single-lettered arguments can't be combined together. They must be seperated.
