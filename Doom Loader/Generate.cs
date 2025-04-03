@@ -53,7 +53,7 @@ public static class Generate
             "Doom v1.9;2\r\n" +
             "Ultimate Doom;3\r\n" +
             "Final Doom;4\r\n" +
-            "Boom v2.02;4\r\n" +
+            "Boom v2.02;9\r\n" +
             "MBF;11\r\n" +
             "MBF21;21\r\n"
         );
