@@ -64,12 +64,12 @@ namespace Doom_Loader
 
             #region Tooltips
             toolTips.SetToolTip(rcpBox, "Enable Discord Rich Presence intergration.");
-            toolTips.SetToolTip(button2, "Creates a portable settings file in the same directory as Minty Launcher.");
-            toolTips.SetToolTip(openPresetsLocation, "Open the AppData Presets folder.");
+            toolTips.SetToolTip(button2, "Moves all settings to a local folder called MintyLauncher. Will read/write settings in there.");
+            toolTips.SetToolTip(openPresetsLocation, "Open the currently-used Minty Launcher folder.");
             toolTips.SetToolTip(closeBox, "Closes Minty Launcher after the port has been closed.");
             toolTips.SetToolTip(topMostBox, "Makes Minty Launcher the top window after the port has been closed.");
             toolTips.SetToolTip(customPresetBox, "Provide a file dialog when loading/saving presets.");
-            toolTips.SetToolTip(defaultBox, @"Makes an AppData preset titled ""Default"" load on launch of Minty Launcher.");
+            toolTips.SetToolTip(defaultBox, @"Makes an Settings Folder preset titled ""Default"" load on launch of Minty Launcher.");
             toolTips.SetToolTip(iwadFolderButton, ApplicationVariables.IWADFolderPath);
             #endregion
         }
