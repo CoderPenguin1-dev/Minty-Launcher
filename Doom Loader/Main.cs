@@ -62,7 +62,7 @@ namespace Doom_Loader
             else
                 return Environment.ExpandEnvironmentVariables("%appdata%\\MintyLauncher\\");
         }
-#endregion
+        #endregion
 
         private void IWADChanged(object sender, EventArgs e)
         {
@@ -390,7 +390,7 @@ namespace Doom_Loader
         {
             string appdata = Environment.ExpandEnvironmentVariables("%appdata%\\");
 
-            if (!Path.Exists(Environment.ExpandEnvironmentVariables($"{appdata}MintyLauncher\\")) && !File.Exists(ApplicationVariables.SETTINGS_FILE))
+            if (!Path.Exists(Environment.ExpandEnvironmentVariables($"{appdata}MintyLauncher\\")) && !Path.Exists("MintyLauncher\\"))
             {
                 string folderPath = $"{appdata}\\MintyLauncher\\";
                 Directory.CreateDirectory(folderPath);
