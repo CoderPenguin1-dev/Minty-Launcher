@@ -431,8 +431,9 @@ namespace Doom_Loader
                 complevelSelector.Items.Add(complevel.Split(";")[0]);
             complevelSelector.SelectedIndex = 0;
             #endregion
-
-            if (File.Exists($"{path}Presets\\Default.mlPreset") && ApplicationVariables.useDefault) // Check if there is the Default preset.
+            
+            // Check if there is the Default preset.
+            if (File.Exists($"{path}Presets\\Default.mlPreset") && ApplicationVariables.useDefault) 
             {
                 // Load Default preset. Also add it to the list and select it.
                 loadPresetBox.Items.Add("Default");
@@ -440,12 +441,13 @@ namespace Doom_Loader
                 LoadPreset($"{path}Presets\\Default.mlPreset");
             }
 
-            // Tooltips
+            #region Tooltips
             complevelSelector.SelectedIndex = 0;
             toolTips.SetToolTip(iwadBox, "Select your desired IWAD. You can change the IWAD folder in Settings.");
             toolTips.SetToolTip(pwadManagerButton, "Open the External File Manager.");
             toolTips.SetToolTip(complevelSelector, "Used to emulate a specific engine. Only works for ports that support the -complevel parameter.");
             toolTips.SetToolTip(extraParamsTextBox, "Add in any extra parameters you may want. Right click to add a file path to the end of the text.");
+            #endregion
 
             // Command Line Arguments
             bool noGUI = false;
@@ -475,7 +477,7 @@ namespace Doom_Loader
                                 Environment.Exit(1);
                             }
                             loadPresetBox.SelectedItem = args[i];
-                            LoadPreset($"{path}\\Presets\\{args[i]}.mlPreset");
+                            LoadPreset($"{path}Presets\\{args[i]}.mlPreset");
                             break;
 
                         case "--iwad-folder":
