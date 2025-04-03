@@ -255,8 +255,6 @@ namespace Doom_Loader
 
             #region Sourceport and IWADs
             ApplicationVariables.sourcePort = Regex.Replace(args[1], @"[^\w\\.@: -]", string.Empty);
-            FileInfo port = new(ApplicationVariables.sourcePort);
-            string directory = port.Directory.ToString();
             CheckPortDatabase();
             #endregion
 
