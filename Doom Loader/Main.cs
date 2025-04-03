@@ -20,6 +20,7 @@ namespace Doom_Loader
             CheckComplevel();
         }
 
+        #region Checkers
         private void CheckComplevel()
         {
             ApplicationVariables.complevelIndex = complevelSelector.SelectedIndex;
@@ -32,6 +33,36 @@ namespace Doom_Loader
             string complevelString = ApplicationVariables.complevels[complevelSelector.SelectedIndex];
             ApplicationVariables.complevel = complevelString.Split(";")[1];
         }
+
+        private void CheckPortDatabase()
+        {
+            bool dataFound = false;
+            string path = FindMintyLauncherFolder();
+            foreach (string portData in File.ReadAllLines($"{path}{ApplicationVariables.PORTDATABASE_FILE}"))
+            {
+                if (portData.StartsWith('#')) continue; // Check for comment lines. Here only for legacy support.
+                string[] data = portData.Split(';');
+                if (string.Equals(Path.GetFileName(ApplicationVariables.sourcePort), data[0], StringComparison.CurrentCultureIgnoreCase))
+                {
+                    portButton.Text = $"{data[1]}";
+                    dataFound = true;
+                    break;
+                }
+            }
+            if (!dataFound) portButton.Text = Path.GetFileNameWithoutExtension(sourcePortDialog.SafeFileName);
+        }
+
+        public static string FindMintyLauncherFolder()
+        {
+            // Try to find the portable settings file.
+            if (Path.Exists("MintyLauncher"))
+                return "MintyLauncher\\";
+            // If no portable settings file is found in the CWD,
+            // return the settings file found in Minty Launcher's folder in the user's Roaming AppData folder.
+            else
+                return Environment.ExpandEnvironmentVariables("%appdata%\\MintyLauncher\\");
+        }
+#endregion
 
         private void IWADChanged(object sender, EventArgs e)
         {
@@ -94,22 +125,7 @@ namespace Doom_Loader
             if (sourcePortDialog.ShowDialog() != DialogResult.Cancel)
             {
                 ApplicationVariables.sourcePort = sourcePortDialog.FileName;
-
-                bool dataFound = false;
-                string path = FindMintyLauncherFolder();
-                if (!File.Exists($"{path}{ApplicationVariables.PORTDATABASE_FILE}")) Generate.PortDatabase(path);
-                foreach (string portData in File.ReadAllLines($"{path}{ApplicationVariables.PORTDATABASE_FILE}"))
-                {
-                    if (portData.StartsWith('#')) continue; // Check for comment lines. Here only for legacy support.
-                    string[] data = portData.Split(';');
-                    if (string.Equals(Path.GetFileName(sourcePortDialog.FileName), data[0], StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        portButton.Text = $"{data[1]}";
-                        dataFound = true;
-                        break;
-                    }
-                }
-                if (!dataFound) portButton.Text = Path.GetFileNameWithoutExtension(sourcePortDialog.SafeFileName);
+                CheckPortDatabase();
             }
         }
 
@@ -241,22 +257,7 @@ namespace Doom_Loader
             ApplicationVariables.sourcePort = Regex.Replace(args[1], @"[^\w\\.@: -]", string.Empty);
             FileInfo port = new(ApplicationVariables.sourcePort);
             string directory = port.Directory.ToString();
-            bool dataFound = false;
-            if (File.Exists("mintyLauncher.portDatabase"))
-            {
-                foreach (string portData in File.ReadAllLines("mintyLauncher.portDatabase"))
-                {
-                    if (portData.StartsWith('#')) continue; // Check for comments
-                    string[] data = portData.Split(';');
-                    if (Path.GetFileName(ApplicationVariables.sourcePort) == data[0])
-                    {
-                        portButton.Text = $"{data[1]}";
-                        dataFound = true;
-                        break;
-                    }
-                }
-            }
-            if (!dataFound) portButton.Text = Path.GetFileNameWithoutExtension(ApplicationVariables.sourcePort);
+            CheckPortDatabase();
             #endregion
 
             // PWAD
@@ -382,17 +383,6 @@ namespace Doom_Loader
         private void UpdateRPCTimestamp(object sender, EventArgs e)
         {
             RPCClient.client.Invoke();
-        }
-
-        public static string FindMintyLauncherFolder()
-        {
-            // Try to find the portable settings file.
-            if (Path.Exists("MintyLauncher"))
-                return "MintyLauncher\\";
-            // If no portable settings file is found in the CWD,
-            // return the settings file found in Minty Launcher's folder in the user's Roaming AppData folder.
-            else
-                return Environment.ExpandEnvironmentVariables("%appdata%\\MintyLauncher\\");
         }
 
         // Settings, init complevel ComboBox and tooltips, and check command line arguments.
