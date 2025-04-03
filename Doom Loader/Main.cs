@@ -344,7 +344,7 @@ namespace Doom_Loader
             {
                 if (!ApplicationVariables.customPreset && e.Button == MouseButtons.Right)
                 {
-                    string path = FindMintyLauncherFolder() + "Presets\\" + loadPresetBox.SelectedItem;
+                    string path = FindMintyLauncherFolder() + "Presets\\" + loadPresetBox.SelectedItem + ".mlPreset";
                     SavePreset(path);
                     MessageBox.Show("Preset Saved", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -365,7 +365,8 @@ namespace Doom_Loader
 
             foreach (string preset in presets)
             {
-                loadPresetBox.Items.Add(Path.GetFileNameWithoutExtension(preset));
+                if (preset.EndsWith(".mlPreset"))
+                    loadPresetBox.Items.Add(Path.GetFileNameWithoutExtension(preset));
             }
             if (loadPresetBox.Items.Contains(presetName)) loadPresetBox.SelectedItem = presetName;
             else loadPresetBox.SelectedItem = null;
@@ -436,7 +437,7 @@ namespace Doom_Loader
                 // Load Default preset. Also add it to the list and select it.
                 loadPresetBox.Items.Add("Default");
                 loadPresetBox.SelectedItem = "Default";
-                LoadPreset($"{appdata}\\MintyLauncher\\Presets\\Default.mlPreset");
+                LoadPreset($"{path}Presets\\Default.mlPreset");
             }
 
             // Tooltips
