@@ -30,7 +30,7 @@ namespace Doom_Loader
                 return;
             }
             string path = FindMintyLauncherFolder();
-            string complevelString = ApplicationVariables.complevels[complevelSelector.SelectedIndex];
+            string complevelString = ApplicationVariables.complevels[complevelSelector.SelectedIndex - 1];
             ApplicationVariables.complevel = complevelString.Split(";")[1];
         }
 
