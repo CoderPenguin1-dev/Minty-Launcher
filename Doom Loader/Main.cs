@@ -402,7 +402,8 @@ namespace Doom_Loader
         {
             string appdata = Environment.ExpandEnvironmentVariables("%appdata%\\");
 
-            if (!Path.Exists(Environment.ExpandEnvironmentVariables($"{appdata}MintyLauncher\\")) && !Path.Exists("MintyLauncher\\"))
+            // Create Minty Launcher folder if neither the appdata or local settings folders exist.
+            if (!Path.Exists($"{appdata}MintyLauncher\\") && !Path.Exists("MintyLauncher\\"))
             {
                 string folderPath = $"{appdata}\\MintyLauncher\\";
                 Directory.CreateDirectory(folderPath);
