@@ -259,10 +259,9 @@ namespace Doom_Loader
         {
             string[] args = File.ReadAllLines(path);
 
-            #region Complevel
+            // Complevel
             ApplicationVariables.complevel = args[2];
             CheckComplevel();
-            #endregion
 
             extraParamsTextBox.Text = args[0]; // Arguments
 
