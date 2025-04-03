@@ -17,21 +17,34 @@ namespace Doom_Loader
 
         private void ComplevelIndexChanged(object sender, EventArgs e)
         {
-            CheckComplevel();
+            if (complevelSelector.SelectedIndex == 0) ApplicationVariables.complevel = "-";
+            else
+            {
+                foreach (string entry in ApplicationVariables.complevels)
+                {
+                    string[] entryTokens = entry.Split(";");
+                    if (entryTokens[0] == (string)complevelSelector.SelectedItem)
+                        ApplicationVariables.complevel = entryTokens[1];
+                }
+            }
         }
 
         #region Checkers
         private void CheckComplevel()
         {
-            ApplicationVariables.complevelIndex = complevelSelector.SelectedIndex;
-            if (complevelSelector.SelectedIndex == 0)
+            if (ApplicationVariables.complevel == "-")
+                complevelSelector.SelectedIndex = 0;
+            else
             {
-                ApplicationVariables.complevel = "-";
-                return;
+                foreach (string entry in ApplicationVariables.complevels)
+                {
+                    string[] entryTokens = entry.Split(";");
+                    if (entryTokens[1] == ApplicationVariables.complevel)
+                    {
+                        complevelSelector.SelectedItem = entryTokens[0];
+                    }
+                }
             }
-            string path = FindMintyLauncherFolder();
-            string complevelString = ApplicationVariables.complevels[complevelSelector.SelectedIndex - 1];
-            ApplicationVariables.complevel = complevelString.Split(";")[1];
         }
 
         private void CheckPortDatabase()
@@ -247,7 +260,7 @@ namespace Doom_Loader
             string[] args = File.ReadAllLines(path);
 
             #region Complevel
-            complevelSelector.SelectedIndex = int.Parse(args[2]);
+            ApplicationVariables.complevel = args[2];
             CheckComplevel();
             #endregion
 
@@ -323,7 +336,7 @@ namespace Doom_Loader
             string file = @"";
             file += $"{ApplicationVariables.arguments}\n";
             file += $"{ApplicationVariables.sourcePort}\n";
-            file += $"{ApplicationVariables.complevelIndex}\n";
+            file += $"{ApplicationVariables.complevel}\n";
 
             if (ApplicationVariables.externalFiles.Length != 0)
             {
