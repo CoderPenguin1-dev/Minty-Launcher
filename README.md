@@ -38,20 +38,35 @@ If you use the Framework-Dependent version, you'll need to have the .NET 9 Runti
 Note that there's a user manual you should read, titled `MANUAL.MD`.
 
 # Building
-No dependencies are required besides [DiscordRichPresence](https://github.com/Lachee/discord-rpc-csharp) from NuGet and its dependencies as well as WinForms and .NET 9.
+## Prerequisites
+* [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+* [DiscordRichPresence](https://github.com/Lachee/discord-rpc-csharp) (will usually download when building)
 
-You can clone the repo by running the following.
+## Building Steps
+Clone the repo:
+```
+git clone https://github.com/PENGUINCODER1/Minty-Launcher.git
+```
 
-	git clone https://github.com/PENGUINCODER1/Minty-Launcher.git
+Move into build directory:
+```
+cd "Minty-Launcher/Doom Loader"
+```
 
-If you wish to replace the RPC ID, it's located in the `Doom Loader\Properties\Resources.resx` file.
+Optionally change Discord RPC API Key:
+```
+cd Properties
+notepad Resources.resx
+```
+Scroll all the way down and edit the number under `<data name="DiscordAPI" xml:space="preserve">` with your API key.
+Save and close Notepad.
+```
+cd ..
+```
 
-Build Debug build with the following in the `Minty-Launcher/Doom Loader` folder.
+Build & Run Debug binary:
+```
+dotnet run
+```
 
-	dotnet run
-
-You should now have a successful build afterwards!
-
-If you want a more streamline script to follow, you could also copy and run this.
-
-	git clone https://github.com/PENGUINCODER1/Minty-Launcher.git && cd "Minty-Launcher/Doom Loader" && dotnet run
+It should open up afterwards. The build will be in `Doom Loader\bin\Debug\net9.0-windows7.0`.
