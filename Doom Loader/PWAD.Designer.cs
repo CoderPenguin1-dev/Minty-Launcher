@@ -75,7 +75,7 @@
             // 
             // addPWADDialog
             // 
-            addPWADDialog.Filter = "All Supported Files|*.wad;*.pk3;*.deh;*bex|WADs|*.wad|PK3s|*.pk3|DeHackED|*.deh|BEX|*.bex|All Files|*.*";
+            addPWADDialog.Filter = "DOOM Mod Files|*.wad;*.pk3;*.deh;*bex|WADs|*.wad|PK3s|*.pk3|DeHackED|*.deh|BEX|*.bex|All Files|*.*";
             addPWADDialog.Multiselect = true;
             addPWADDialog.Title = "Add External File(s)";
             // 
