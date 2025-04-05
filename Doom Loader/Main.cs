@@ -419,8 +419,7 @@ namespace Doom_Loader
 
             string path = FindMintyLauncherFolder();
 
-            // Check if user didn't clear out old Minty Launcher AppData folder.
-            // If it wasn't cleared, convert all old files.
+            #region Convert Old Files
             if (File.Exists(path + "settings.txt"))
             {
                 var result = MessageBox.Show("Old Minty Launcher AppData folder detected.\nDo you want to convert old files?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -454,6 +453,8 @@ namespace Doom_Loader
                 }
                 else Environment.Exit(0);
             }
+            #endregion
+
             string[] settings = File.ReadAllLines($"{path}{ApplicationVariables.SETTINGS_FILE}");
 
             #region Settings
