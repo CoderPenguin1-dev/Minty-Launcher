@@ -421,7 +421,7 @@ namespace Doom_Loader
 
             string path = FindMintyLauncherFolder();
 
-            #region Convert Old Files
+            #region Convert Old Files (v5.x.x to v6.0.0)
             if (File.Exists(path + "settings.txt"))
             {
                 var result = MessageBox.Show("Old Minty Launcher AppData folder detected." +
