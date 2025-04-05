@@ -288,7 +288,7 @@ namespace Doom_Loader
 
             if (!ApplicationVariables.customPreset || ApplicationVariables.useDefault && boot)
             {
-                path = $"{FindMintyLauncherFolder()}Presets\\{loadPresetBox.SelectedItem}.mlPreset";
+                path = $"{FindMintyLauncherFolder()}Presets\\{loadPresetBox.SelectedItem}{ApplicationVariables.PRESET_EXTENSION}";
                 boot = false;
             }
             else
@@ -356,7 +356,7 @@ namespace Doom_Loader
             {
                 if (!ApplicationVariables.customPreset && e.Button == MouseButtons.Right)
                 {
-                    string path = FindMintyLauncherFolder() + "Presets\\" + loadPresetBox.SelectedItem + ".mlPreset";
+                    string path = FindMintyLauncherFolder() + "Presets\\" + loadPresetBox.SelectedItem + "{ApplicationVariables.PRESET_EXTENSION}";
                     SavePreset(path);
                     MessageBox.Show("Preset Saved", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -377,7 +377,7 @@ namespace Doom_Loader
 
             foreach (string preset in presets)
             {
-                if (preset.EndsWith(".mlPreset"))
+                if (preset.EndsWith(ApplicationVariables.PRESET_EXTENSION))
                     loadPresetBox.Items.Add(Path.GetFileNameWithoutExtension(preset));
             }
             if (loadPresetBox.Items.Contains(presetName)) loadPresetBox.SelectedItem = presetName;
@@ -422,7 +422,8 @@ namespace Doom_Loader
             #region Convert Old Files
             if (File.Exists(path + "settings.txt"))
             {
-                var result = MessageBox.Show("Old Minty Launcher AppData folder detected.\nDo you want to convert old files?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                var result = MessageBox.Show("Old Minty Launcher AppData folder detected.\nDo you want to convert old files?", 
+                    "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
                     File.Copy($"{path}settings.txt", $"{path}{ApplicationVariables.SETTINGS_FILE}");
@@ -483,12 +484,12 @@ namespace Doom_Loader
             #endregion
             
             // Check if there is the Default preset.
-            if (File.Exists($"{path}Presets\\Default.mlPreset") && ApplicationVariables.useDefault) 
+            if (File.Exists($"{path}Presets\\Default{ApplicationVariables.PRESET_EXTENSION}") && ApplicationVariables.useDefault) 
             {
                 // Load Default preset. Also add it to the list and select it.
                 loadPresetBox.Items.Add("Default");
                 loadPresetBox.SelectedItem = "Default";
-                LoadPreset($"{path}Presets\\Default.mlPreset");
+                LoadPreset($"{path}Presets\\Default{ApplicationVariables.PRESET_EXTENSION}");
             }
 
             #region Tooltips
@@ -529,7 +530,7 @@ namespace Doom_Loader
                                 Environment.Exit(1);
                             }
                             loadPresetBox.SelectedItem = args[i];
-                            LoadPreset($"{path}Presets\\{args[i]}.mlPreset");
+                            LoadPreset($"{path}Presets\\{args[i]}{ApplicationVariables.PRESET_EXTENSION}");
                             usedPreset = true;
                             break;
 

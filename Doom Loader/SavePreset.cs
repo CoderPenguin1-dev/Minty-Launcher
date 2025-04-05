@@ -17,12 +17,11 @@ namespace Doom_Loader
             InitializeComponent();
         }
 
-        // If changes are made here, also adapt changes to SavePreset() in Main.cs
         private void SavePresetButton(object sender, EventArgs e)
         {
             if (textBox1.Text.Length > 0)
             {
-                string path = $"{Main.FindMintyLauncherFolder()}Presets\\{textBox1.Text}.mlPreset";
+                string path = $"{Main.FindMintyLauncherFolder()}Presets\\{textBox1.Text}{ApplicationVariables.PRESET_EXTENSION}";
                 Main.SavePreset(path);
                 ApplicationVariables.presetName = textBox1.Text;
                 this.Close();

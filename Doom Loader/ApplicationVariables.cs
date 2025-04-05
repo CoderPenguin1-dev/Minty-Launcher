@@ -13,6 +13,7 @@ public static class ApplicationVariables
     public const string SETTINGS_FILE = "mintyLauncher.settings";
     public const string PORTDATABASE_FILE = "mintyLauncher.portDatabase";
     public const string COMPLEVEL_FILE = "mintyLauncher.complevel";
+    public const string PRESET_EXTENSION = ".mlPreset";
 
     public static string[] complevels = [];
 
