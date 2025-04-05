@@ -424,7 +424,10 @@ namespace Doom_Loader
             #region Convert Old Files
             if (File.Exists(path + "settings.txt"))
             {
-                var result = MessageBox.Show("Old Minty Launcher AppData folder detected.\nDo you want to convert old files?", 
+                var result = MessageBox.Show("Old Minty Launcher AppData folder detected." +
+                    "\nDo you want to convert old Minty Launcher files?\n" +
+                    "These files include your settings and presets." +
+                    "\nYou'll lose no data, but these files will become incompatible with older versions.", 
                     "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
