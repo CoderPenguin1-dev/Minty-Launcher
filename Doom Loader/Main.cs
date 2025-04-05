@@ -408,10 +408,12 @@ namespace Doom_Loader
                 string folderPath = $"{appdata}\\MintyLauncher\\";
                 Directory.CreateDirectory(folderPath);
                 Generate.Settings(folderPath);
+
                 // Prompt user to select IWADs folder path.
                 var error = MessageBox.Show("IWADs Folder path missing.\nSet new path now?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                 if (error == DialogResult.Yes) new Settings().SetIWADFolder(sender, e);
                 else if (error == DialogResult.No) MessageBox.Show("Please set new path in settings.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 Directory.CreateDirectory($"{folderPath}Presets");
                 Generate.PortDatabase(folderPath);
                 Generate.Complevel(folderPath);
@@ -424,6 +426,7 @@ namespace Doom_Loader
             {
                 var result = MessageBox.Show("Old Minty Launcher AppData folder detected.\nDo you want to convert old files?", 
                     "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
                 if (result == DialogResult.Yes)
                 {
                     File.Copy($"{path}settings.txt", $"{path}{ApplicationVariables.SETTINGS_FILE}");
