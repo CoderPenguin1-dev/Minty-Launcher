@@ -465,6 +465,7 @@ namespace Doom_Loader
             // Command Line Arguments
             bool noGUI = false;
             bool usedIWAD = false;
+            bool usedPreset = false;
             if (Environment.GetCommandLineArgs().Length > 0)
             {
                 string[] args = Environment.GetCommandLineArgs();
@@ -473,14 +474,15 @@ namespace Doom_Loader
                     // Anything with i++ takes in an argument of its own. Put there to skip the argument on the next pass.
                     switch (args[i])
                     {
-                        case "--preset-path" or "-p":
+                        case "--preset-path":
                             i++;
                             loadPresetBox.Items.Add("External Preset");
                             loadPresetBox.SelectedItem = "External Preset";
                             LoadPreset(args[i]);
+                            usedPreset = true;
                             break;
 
-                        case "--preset":
+                        case "--preset" or "-p":
                             i++;
                             RefreshPresetBox(sender, e);
                             // Here due to how ComboBoxes work with capitalization.
@@ -491,6 +493,7 @@ namespace Doom_Loader
                             }
                             loadPresetBox.SelectedItem = args[i];
                             LoadPreset($"{path}Presets\\{args[i]}.mlPreset");
+                            usedPreset = true;
                             break;
 
                         case "--iwad-folder":
@@ -521,12 +524,22 @@ namespace Doom_Loader
                             usedIWAD = true;
                             break;
 
-                        case "--no-gui":
+                        case "--no-gui" or "-n":
+                            if (!usedIWAD || !usedPreset)
+                            {
+                                MessageBox.Show("You must call --iwad and --preset or --preset-path prior to calling --no-gui.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Environment.Exit(1);
+                            }
                             noGUI = true;
                             break;
 
-                        case "--no-gui-rpc" or "-n":
+                        case "--rpc":
                             i++;
+                            if (!noGUI)
+                            {
+                                MessageBox.Show("--rpc must be called after --no-gui", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Environment.Exit(1);
+                            }
                             if (args[i] == "0"
                                 || args[i].Equals("off", StringComparison.CurrentCultureIgnoreCase)
                                 || args[i].Equals("false", StringComparison.CurrentCultureIgnoreCase))
@@ -541,11 +554,27 @@ namespace Doom_Loader
                             }
                             else
                             {
-                                MessageBox.Show("Invalid input for --no-gui-rpc. Refer to USER.MD for details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Invalid input for --rpc. Refer to USER.MD for details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 Environment.Exit(1);
                             }
+                            break;
 
-                            noGUI = true;
+                        case "--rpc-files-shown":
+                            i++;
+                            if (!noGUI)
+                            {
+                                MessageBox.Show("--rpc-files-shown must be called after --no-gui", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Environment.Exit(1);
+                            }
+                            try
+                            {
+                                ApplicationVariables.rpcFilesShown = int.Parse(args[i]);
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Invalid input for --rpc-files-shown. Refer to USER.MD for details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Environment.Exit(1);
+                            }
                             break;
                     }
                 }
