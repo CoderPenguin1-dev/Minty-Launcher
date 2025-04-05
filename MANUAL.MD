@@ -129,7 +129,18 @@ If an entry matches the source port executable name, it will replace the source 
 Each entry is in this format: `complevel name`;`complevel number`.
 For example, Doom 2 would be `Doom v1.9;2`.
 Entry placement dictates which order it will be shown in the complevel selector.
-Note this placement is also used for presets. Please *add onto* the list instead of inserting a line in the middle of it to prevent presets breaking.
+
+### 4c. Presets
+All presets are in the `.mlPreset` file format. The format looks like this internally:
+```
+Parameters
+Source Port Path
+Complevel
+File Path(s)
+```
+Each file path is seperated by a comma (,). 
+When saving a preset using no complevel (shown as "None" in the launcher), it will be saved as a dash (-).
+When any other option is left blank, it will remain blank in the preset as well.
 	
 ## 5. Command-line Arguments
 Note that all of your settings (and your Default preset, if enabled) are loaded before these are checked.
