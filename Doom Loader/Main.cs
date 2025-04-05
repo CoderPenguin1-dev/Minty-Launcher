@@ -443,7 +443,7 @@ namespace Doom_Loader
 
                     Generate.Complevel(path);
 
-                    result = MessageBox.Show("Do you want to move over your Port Database file?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    result = MessageBox.Show("Do you want to move over your Port Database file?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         File.Copy(ApplicationVariables.PORTDATABASE_FILE, $"{path}{ApplicationVariables.PORTDATABASE_FILE}");
