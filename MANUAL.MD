@@ -104,7 +104,7 @@ These are settings relating to Minty Launcher's main window.
 
 *Amount Of Files Shown*
 
-	The limit to how many files can be shown before the RPC Activity show them with "Multiple Files" on Discord.
+	The limit to how many individual files can be shown before the RPC Activity will show them as "Multiple Files" on Discord.
 	Setting it to 0 disables this functionality.
 	
 ### 3e. Ungrouped
