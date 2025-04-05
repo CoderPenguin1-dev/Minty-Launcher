@@ -569,6 +569,8 @@ namespace Doom_Loader
                             try
                             {
                                 ApplicationVariables.rpcFilesShown = int.Parse(args[i]);
+                                if (ApplicationVariables.rpcFilesShown > 5 || ApplicationVariables.rpcFilesShown < 0)
+                                    throw new Exception();
                             }
                             catch
                             {
