@@ -149,14 +149,20 @@ Note: Single-lettered arguments can't be combined together. They must be seperat
 
 `--preset [preset name]` loads in the preset from your Settings Folder. Exclude the file extension from the name. Case sensitive.
 
-`--preset-path [preset path]` `-p [preset path]` loads in a preset from the desired path. Must be an `.mlPreset` file.
+`--preset-path [preset path]` or `-p [preset path]` loads in a preset from the desired path. Must be an `.mlPreset` file.
 
-`--iwad [IWAD path]` `-w [IWAD path]` loads in the IWAD file from your IWADs folder. Must include the file extension. Case sensitive.
+`--iwad [IWAD path]` or `-w [IWAD path]`: Loads in the IWAD file from your IWADs folder. Must include the file extension. Case sensitive.
 
-`--iwad-folder [IWAD folder path]` sets the IWAD folder path. Call this *before* `--iwad`.
+`--iwad-folder [IWAD folder path]`: Set the IWAD folder path. Call this before `--iwad`.
 
-`--no-gui` is meant to be combined with the above arguments. Automatically starts the sourceport from the preset with the desired IWAD without ever showing the GUI.
+`--no-gui` or `-n`: Start the selected IWAD and preset without a GUI. Must be called after `--iwad` and `--preset` or `--preset-path` have been called.
 
-`--no-gui-rpc [on/off]` `-n [on/off]` is identical to `--no-gui` but allows you to override your RPC setting. Use [1, true, on] to enable RPC, [0, false, off] to disable RPC.
+`--rpc [on/off]`: Enables/disables the RPC intergration. Must be called after `--no-gui` has been called.
+* Valid inputs for enabling it are on, 1, true.
+* Valid inputs for disabling are off, 0, false.
+* Temporary.
 
-`--info` `-i` shows the current version of Minty Launcher. Will ignore every other argument if you have this.
+`--rpc-files-shown [Amount Shown, 0-5]`: Dicates how many files can be shown with the RPC intergration.
+* Temporary.
+
+`--info` or `-i`: shows the current version of Minty Launcher. Will ignore every other argument if you have this.
