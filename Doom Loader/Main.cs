@@ -418,6 +418,42 @@ namespace Doom_Loader
             }
 
             string path = FindMintyLauncherFolder();
+
+            // Check if user didn't clear out old Minty Launcher AppData folder.
+            // If it wasn't cleared, convert all old files.
+            if (File.Exists(path + "settings.txt"))
+            {
+                var result = MessageBox.Show("Old Minty Launcher AppData folder detected.\nDo you want to convert old files?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    File.Copy($"{path}settings.txt", $"{path}{ApplicationVariables.SETTINGS_FILE}");
+                    File.Delete($"{path}settings.txt");
+
+                    // Convert old preset files.
+                    DirectoryInfo presetsFolder = new(path + "Presets");
+                    foreach (var file in presetsFolder.GetFiles())
+                    {
+                        string[] preset = File.ReadAllLines(file.FullName);
+                        if (preset[2] == "0")
+                        {
+                            preset[2] = "-";
+                            File.WriteAllLines(file.FullName, preset);
+                        }
+                    }
+
+                    Generate.Complevel(path);
+
+                    result = MessageBox.Show("Do you want to move over your Port Database file?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (result == DialogResult.Yes)
+                    {
+                        File.Copy(ApplicationVariables.PORTDATABASE_FILE, $"{path}{ApplicationVariables.PORTDATABASE_FILE}");
+                        File.Delete(ApplicationVariables.PORTDATABASE_FILE );
+                    }
+                    else Generate.PortDatabase(path);
+                    MessageBox.Show("Conversion Complete.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else Environment.Exit(0);
+            }
             string[] settings = File.ReadAllLines($"{path}{ApplicationVariables.SETTINGS_FILE}");
 
             #region Settings
