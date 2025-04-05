@@ -81,6 +81,8 @@ namespace Doom_Loader
         #region Reorder Buttons
         private void ReorderItemUp(object sender, EventArgs e)
         {
+            reorderUpButton.Enabled = true;
+            reorderDownButton.Enabled = true;
             string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
             int index = pwadList.SelectedIndex;
             if (index != 0) // Check if the item is not already at the top
@@ -92,11 +94,15 @@ namespace Doom_Loader
                 ApplicationVariables.externalFiles = [.. PWADs];
                 Reload();
                 pwadList.SelectedIndex = index - 1; // Set the cursor to the new position
+                if (pwadList.SelectedIndex == 0)
+                    reorderUpButton.Enabled = false;
             }
         }
 
         private void ReorderItemDown(object sender, EventArgs e)
         {
+            reorderUpButton.Enabled = true;
+            reorderDownButton.Enabled = true;
             string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
             int index = pwadList.SelectedIndex;
             if (index != pwadList.Items.Count - 1) // Check if the item is not already at the bottom
@@ -108,6 +114,8 @@ namespace Doom_Loader
                 ApplicationVariables.externalFiles = [.. PWADs];
                 Reload();
                 pwadList.SelectedIndex = index + 1; // Set the cursor to the new position
+                if (pwadList.SelectedIndex == pwadList.Items.Count - 1)
+                    reorderDownButton.Enabled = false;
             }
         }
         #endregion
@@ -155,6 +163,11 @@ namespace Doom_Loader
             if (pwadList.SelectedIndices.Count > 0)
                 removeItemButton.Enabled = true;
             else removeItemButton.Enabled = false;
+
+            if (pwadList.SelectedIndex == pwadList.Items.Count - 1)
+                reorderDownButton.Enabled = false;
+            if (pwadList.SelectedIndex == 0)
+                reorderUpButton.Enabled = false;
         }
     }
 }
