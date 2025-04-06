@@ -82,6 +82,7 @@ namespace Doom_Loader
             try
             {
                 ApplicationVariables.IWAD = $"{ApplicationVariables.IWADFolderPath}/{iwadBox.SelectedItem}";
+                playButton.Enabled = true;
             }
             catch { }
         }
@@ -450,11 +451,15 @@ namespace Doom_Loader
 
                     Generate.Complevel(path);
 
-                    result = MessageBox.Show("Do you want to move over your Port Database file?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
+                    if (File.Exists(ApplicationVariables.PORTDATABASE_FILE))
                     {
-                        File.Copy(ApplicationVariables.PORTDATABASE_FILE, $"{path}{ApplicationVariables.PORTDATABASE_FILE}");
-                        File.Delete(ApplicationVariables.PORTDATABASE_FILE );
+                        result = MessageBox.Show("Do you want to move over your Port Database file?", "Notice", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            File.Copy(ApplicationVariables.PORTDATABASE_FILE, $"{path}{ApplicationVariables.PORTDATABASE_FILE}");
+                            File.Delete(ApplicationVariables.PORTDATABASE_FILE);
+                        }
+                        else Generate.PortDatabase(path);
                     }
                     else Generate.PortDatabase(path);
                     MessageBox.Show("Conversion Complete.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);

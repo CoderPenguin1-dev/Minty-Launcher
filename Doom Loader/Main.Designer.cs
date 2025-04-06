@@ -90,6 +90,7 @@
             // playButton
             // 
             playButton.BackColor = SystemColors.ControlLight;
+            playButton.Enabled = false;
             playButton.ForeColor = SystemColors.ControlText;
             playButton.Location = new Point(12, 233);
             playButton.Margin = new Padding(4, 3, 4, 3);
