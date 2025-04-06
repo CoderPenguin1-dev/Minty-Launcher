@@ -427,7 +427,8 @@ namespace Doom_Loader
                 var result = MessageBox.Show("Old Minty Launcher AppData folder detected." +
                     "\nDo you want to convert old Minty Launcher files?\n" +
                     "These files include your settings and presets." +
-                    "\nYou'll lose no data, but these files will become incompatible with older versions.", 
+                    "\nYou'll lose no data, but these files will become incompatible with older versions." +
+                    "\nYou must do this to use this version of Minty Launcher with your old settings and presets.", 
                     "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
