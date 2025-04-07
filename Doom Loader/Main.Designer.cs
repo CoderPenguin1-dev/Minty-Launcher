@@ -63,8 +63,7 @@
             pwadManagerButton.Margin = new Padding(4, 3, 4, 3);
             pwadManagerButton.Name = "pwadManagerButton";
             pwadManagerButton.Size = new Size(118, 23);
-            pwadManagerButton.TabIndex = 3;
-            pwadManagerButton.TabStop = false;
+            pwadManagerButton.TabIndex = 5;
             pwadManagerButton.Text = "External Files";
             pwadManagerButton.UseVisualStyleBackColor = false;
             pwadManagerButton.Click += PWADManagerOpen;
@@ -77,7 +76,6 @@
             portButton.Name = "portButton";
             portButton.Size = new Size(129, 23);
             portButton.TabIndex = 4;
-            portButton.TabStop = false;
             portButton.Text = "Select Port";
             portButton.UseVisualStyleBackColor = false;
             portButton.Click += SelectPort;
@@ -96,8 +94,7 @@
             playButton.Margin = new Padding(4, 3, 4, 3);
             playButton.Name = "playButton";
             playButton.Size = new Size(183, 23);
-            playButton.TabIndex = 6;
-            playButton.TabStop = false;
+            playButton.TabIndex = 9;
             playButton.Text = "Play";
             playButton.UseVisualStyleBackColor = true;
             playButton.Click += Play;
@@ -109,8 +106,7 @@
             extraParamsTextBox.Margin = new Padding(4, 3, 4, 3);
             extraParamsTextBox.Name = "extraParamsTextBox";
             extraParamsTextBox.Size = new Size(253, 23);
-            extraParamsTextBox.TabIndex = 11;
-            extraParamsTextBox.TabStop = false;
+            extraParamsTextBox.TabIndex = 3;
             extraParamsTextBox.TextAlign = HorizontalAlignment.Center;
             extraParamsTextBox.TextChanged += ExtraParamsChanged;
             extraParamsTextBox.MouseDown += ExtraParametersInsertFilePath;
@@ -123,8 +119,7 @@
             savePresetButton.Margin = new Padding(4, 3, 4, 3);
             savePresetButton.Name = "savePresetButton";
             savePresetButton.Size = new Size(124, 23);
-            savePresetButton.TabIndex = 16;
-            savePresetButton.TabStop = false;
+            savePresetButton.TabIndex = 8;
             savePresetButton.Text = "Save Preset";
             savePresetButton.UseVisualStyleBackColor = false;
             savePresetButton.Click += SavePresetButton;
@@ -150,8 +145,7 @@
             settingsOpen.Location = new Point(202, 233);
             settingsOpen.Name = "settingsOpen";
             settingsOpen.Size = new Size(75, 23);
-            settingsOpen.TabIndex = 18;
-            settingsOpen.TabStop = false;
+            settingsOpen.TabIndex = 10;
             settingsOpen.Text = "Settings";
             settingsOpen.UseVisualStyleBackColor = false;
             settingsOpen.Click += SettingsMenuOpen;
@@ -165,8 +159,7 @@
             complevelSelector.Location = new Point(5, 18);
             complevelSelector.Name = "complevelSelector";
             complevelSelector.Size = new Size(108, 23);
-            complevelSelector.TabIndex = 19;
-            complevelSelector.TabStop = false;
+            complevelSelector.TabIndex = 2;
             complevelSelector.SelectedIndexChanged += ComplevelIndexChanged;
             // 
             // iwadBox
@@ -177,8 +170,7 @@
             iwadBox.Location = new Point(6, 18);
             iwadBox.Name = "iwadBox";
             iwadBox.Size = new Size(129, 23);
-            iwadBox.TabIndex = 20;
-            iwadBox.TabStop = false;
+            iwadBox.TabIndex = 1;
             iwadBox.DropDown += RefreshIWAD;
             iwadBox.SelectedIndexChanged += IWADChanged;
             // 
@@ -236,8 +228,7 @@
             customPresetButton.Location = new Point(69, 20);
             customPresetButton.Name = "customPresetButton";
             customPresetButton.Size = new Size(124, 23);
-            customPresetButton.TabIndex = 25;
-            customPresetButton.TabStop = false;
+            customPresetButton.TabIndex = 7;
             customPresetButton.Text = "Load Preset";
             customPresetButton.UseVisualStyleBackColor = false;
             customPresetButton.Visible = false;
@@ -251,8 +242,7 @@
             loadPresetBox.Location = new Point(7, 20);
             loadPresetBox.Name = "loadPresetBox";
             loadPresetBox.Size = new Size(252, 23);
-            loadPresetBox.TabIndex = 25;
-            loadPresetBox.TabStop = false;
+            loadPresetBox.TabIndex = 6;
             loadPresetBox.DropDown += RefreshPresetBox;
             loadPresetBox.SelectionChangeCommitted += LoadPresetComboBox;
             // 
