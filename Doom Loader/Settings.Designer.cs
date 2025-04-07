@@ -117,9 +117,9 @@
             defaultBox.AutoSize = true;
             defaultBox.Location = new Point(6, 22);
             defaultBox.Name = "defaultBox";
-            defaultBox.Size = new Size(175, 19);
+            defaultBox.Size = new Size(159, 19);
             defaultBox.TabIndex = 5;
-            defaultBox.Text = "[*] Load \"Default\" on launch";
+            defaultBox.Text = "Load \"Default\" on launch";
             defaultBox.UseVisualStyleBackColor = true;
             defaultBox.CheckedChanged += DefaultPreset;
             // 
@@ -268,6 +268,7 @@
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Settings";
+            FormClosed += Settings_FormClosed;
             Load += Settings_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

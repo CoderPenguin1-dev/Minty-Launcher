@@ -71,7 +71,7 @@ These are settings relating to presets.
 
 *Load "Default" Preset on launch*: 
 
-	This will check for a preset named "Default" and load it automatically. Please note it will only check the AppData folder.
+	This will check for a preset named "Default" and load it automatically. It will only check the Settings Folder presets.
 	
 ### 3b. Portability
 These are settings related to being able to more easily use the same executable across multiple computers, like on a thumb drive.

@@ -111,6 +111,7 @@ namespace Doom_Loader
             ApplicationVariables.customPreset = customPresetBox.Checked;
             string path = CheckForWhichConfig();
             RewriteAppDataConfig(path);
+            ApplicationVariables.restart = true;
         }
 
         public void SetIWADFolder(object sender, EventArgs e)
@@ -154,6 +155,15 @@ namespace Doom_Loader
         {
             string path = Main.FindMintyLauncherFolder();
             Process.Start("explorer.exe", $"{path}");
+        }
+
+        private void Settings_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (ApplicationVariables.restart)
+            {
+                MessageBox.Show("Minty Launcher will now close due to one of your settings needing Minty Launcher to restart.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                Environment.Exit(0);
+            }
         }
     }
 }
