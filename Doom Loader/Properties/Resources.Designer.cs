@@ -68,5 +68,15 @@ namespace Doom_Loader.Properties {
                 return ResourceManager.GetString("DiscordAPI", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap doveth {
+            get {
+                object obj = ResourceManager.GetObject("doveth", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
