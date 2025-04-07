@@ -4,17 +4,12 @@
 </div>
 
 # About Minty Launcher
-A C# WinForms Doom launcher I made as I hadn't liked others like ZDL or Doom Launcher.
-This is built for my purposes and features will usually be added when I need/want them. I will, however, gladly take suggestions and implement them if possible within my ability.
-
-Minty Launcher focuses mainly on user usability and simplicity. Everything you need is visibly shown, but there's more specific features and shortcuts when you need them.
+Minty Launcher focuses mainly on user usability and simplicity. The interface is built to be quickly readable and quick to go through.
 The launcher also has Discord Rich Presence support so people can see what you're playing and what source port you're using.
 
-Minty Launcher only targets Windows, and only has been tested on Windows 10 and 11. Minty Launcher through Wine has mainly been untested.
+Minty Launcher only targets Windows, and only has been tested on Windows 10 and 11. Minty Launcher through Wine has been unsuccessful.
 
 **NOTICE** Versions of Minty Launcher are receiving false positives. Details in this commit: https://github.com/PENGUINCODER1/Minty-Launcher/issues/2
-
-**NOTICE** The license for Minty Launcher starting v5.4.1 has been changed over to the MIT License.
 
 ## Useful Links
 * [Downloads](https://github.com/PENGUINCODER1/Minty-Launcher/releases)
@@ -34,7 +29,6 @@ Although not required, I do ask you not to sell forks of Minty Launcher or to re
 	<summary>External File Manager Window</summary>
 	<img src="Images/externalFilesWindow.png">
 </details>
-<br>
 
 # Downloading
 You can also get Win64 and Win32 bins (both Framework-Dependent and Standalone) as well as the premade port database file [here on the repo](https://github.com/PENGUINCODER1/Minty-Launcher/releases). 
