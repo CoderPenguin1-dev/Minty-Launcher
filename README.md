@@ -1,6 +1,10 @@
-<img src="Images/logoREADME.png" width="150" height="150">
+<div align="center">
+    <img src="Images/logo.png" width="150" height="150">
+    <h1>Minty Launcher</h1>
+	<h3>Easy to use Doom launcher</h3>
+</div>
 
-# Minty Launcher
+# About Minty Launcher
 A C# WinForms Doom launcher I made as I hadn't liked others like ZDL or Doom Launcher.
 This is built for my purposes and features will usually be added when I need/want them. I will, however, gladly take suggestions and implement them if possible within my ability.
 
@@ -31,6 +35,7 @@ Although not required, I do ask you not to sell forks of Minty Launcher or to re
 	<summary>External File Manager Window</summary>
 	<img src="Images/externalFilesWindow.png">
 </details>
+<br>
 
 # Downloading
 You can also get Win64 and Win32 bins (both Framework-Dependent and Standalone) as well as the premade port database file [here on the repo](https://github.com/PENGUINCODER1/Minty-Launcher/releases). 
