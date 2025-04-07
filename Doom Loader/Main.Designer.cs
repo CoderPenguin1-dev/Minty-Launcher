@@ -99,7 +99,7 @@
             playButton.TabIndex = 6;
             playButton.TabStop = false;
             playButton.Text = "Play";
-            playButton.UseVisualStyleBackColor = false;
+            playButton.UseVisualStyleBackColor = true;
             playButton.Click += Play;
             // 
             // extraParamsTextBox
