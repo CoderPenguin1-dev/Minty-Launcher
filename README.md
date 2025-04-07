@@ -1,7 +1,6 @@
 <div align="center">
     <img src="Images/logo.png" width="150" height="150">
     <h1>Minty Launcher</h1>
-	<h3>Easy to use Doom launcher</h3>
 </div>
 
 # About Minty Launcher
