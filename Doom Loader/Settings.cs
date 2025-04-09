@@ -135,14 +135,21 @@ namespace Doom_Loader
 
         private void EnablePortableSettings(object sender, EventArgs e)
         {
-            string oldPath = Environment.ExpandEnvironmentVariables("%appdata%\\MintyLauncher\\");
+            string oldPath = Environment.ExpandEnvironmentVariables("%appdata%\\MintyLauncher\\"); // Didn't use CheckForWhichConfig() due to this always being in AppData.
+            // Create settings folder.
             Directory.CreateDirectory("MintyLauncher");
+
+            // Copy files
             File.Copy($"{oldPath}{ApplicationVariables.SETTINGS_FILE}", $"MintyLauncher\\{ApplicationVariables.SETTINGS_FILE}");
             File.Copy($"{oldPath}{ApplicationVariables.COMPLEVEL_FILE}", $"MintyLauncher\\{ApplicationVariables.COMPLEVEL_FILE}");
             File.Copy($"{oldPath}{ApplicationVariables.PORTDATABASE_FILE}", $"MintyLauncher\\{ApplicationVariables.PORTDATABASE_FILE}");
+
+            // Copy presets.
             Directory.CreateDirectory("MintyLauncher\\Presets");
             foreach (string file in Directory.GetFiles($"{oldPath}Presets"))
                 File.Copy(file, $"MintyLauncher\\Presets\\{Path.GetFileName(file)}");
+
+            // Disable this button to prevent user from doing this whole process all over again.
             button2.Enabled = false;
         }
 

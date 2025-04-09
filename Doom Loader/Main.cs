@@ -17,6 +17,7 @@ namespace Doom_Loader
 
         private void ComplevelIndexChanged(object sender, EventArgs e)
         {
+            // Check if the selected complevel is "None."
             if (complevelSelector.SelectedIndex == 0) ApplicationVariables.complevel = "-";
             else
             {

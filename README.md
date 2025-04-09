@@ -33,7 +33,7 @@ Although not required, I do ask you not to sell forks of Minty Launcher or to re
 # Downloading
 You can also get Win64 and Win32 bins (both Framework-Dependent and Standalone) as well as the premade port database file [here on the repo](https://github.com/PENGUINCODER1/Minty-Launcher/releases). 
 
-If you use the Framework-Dependent version, you'll need to have the .NET 9 Runtimes installed. You can get there [here](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
+If you use the Framework-Dependent version, you'll need to have the .NET 9 Desktop Runtimes installed. You can get there [here](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
 
 Note that there's a user manual you should read, titled `MANUAL.MD`.
 
