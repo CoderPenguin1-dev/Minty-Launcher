@@ -358,7 +358,7 @@ namespace Doom_Loader
             {
                 if (!ApplicationVariables.customPreset && e.Button == MouseButtons.Right)
                 {
-                    string path = FindMintyLauncherFolder() + "Presets\\" + loadPresetBox.SelectedItem + "{ApplicationVariables.PRESET_EXTENSION}";
+                    string path = FindMintyLauncherFolder() + "Presets\\" + loadPresetBox.SelectedItem + ApplicationVariables.PRESET_EXTENSION;
                     SavePreset(path);
                     MessageBox.Show("Preset Saved", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
