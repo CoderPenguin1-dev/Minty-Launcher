@@ -53,7 +53,7 @@ Move into build directory:
 cd "Minty-Launcher/Doom Loader"
 ```
 
-Optionally change Discord RPC API Key:
+Optionally change the Discord Application ID (for RPC):
 ```
 cd Properties
 notepad Resources.resx
