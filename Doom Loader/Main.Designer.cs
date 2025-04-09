@@ -38,7 +38,7 @@
             savePresetButton = new Button();
             savePresetDialog = new SaveFileDialog();
             openPresetDialog = new OpenFileDialog();
-            rpcUpdateTimer = new System.Windows.Forms.Timer(components);
+            playButtonUpdateTimer = new System.Windows.Forms.Timer(components);
             settingsOpen = new Button();
             complevelSelector = new ComboBox();
             iwadBox = new ComboBox();
@@ -78,6 +78,7 @@
             portButton.TabIndex = 4;
             portButton.Text = "Select Port";
             portButton.UseVisualStyleBackColor = false;
+            portButton.TextChanged += PortChanged;
             portButton.Click += SelectPort;
             // 
             // sourcePortDialog
@@ -135,9 +136,9 @@
             openPresetDialog.Filter = "Minty Launcher Preset|*.mlPreset";
             openPresetDialog.Title = "Load Preset";
             // 
-            // rpcUpdateTimer
+            // playButtonUpdateTimer
             // 
-            rpcUpdateTimer.Tick += UpdateRPCTimestamp;
+            playButtonUpdateTimer.Tick += UpdatePlayButton;
             // 
             // settingsOpen
             // 
@@ -285,7 +286,7 @@
         private Button savePresetButton;
         private SaveFileDialog savePresetDialog;
         private OpenFileDialog openPresetDialog;
-        private System.Windows.Forms.Timer rpcUpdateTimer;
+        private System.Windows.Forms.Timer playButtonUpdateTimer;
         private Button settingsOpen;
         private ComboBox complevelSelector;
         private ComboBox iwadBox;

@@ -8,7 +8,6 @@ public static class ApplicationVariables
     public static string IWAD = string.Empty;
     public static string arguments = "";
     public static string complevel;
-    public static int complevelIndex = 0;
 
     public const string SETTINGS_FILE = "mintyLauncher.settings";
     public const string PORTDATABASE_FILE = "mintyLauncher.portDatabase";

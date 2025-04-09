@@ -53,18 +53,22 @@ namespace Doom_Loader
         {
             bool dataFound = false;
             string path = FindMintyLauncherFolder();
-            foreach (string portData in File.ReadAllLines($"{path}{ApplicationVariables.PORTDATABASE_FILE}"))
+            if (ApplicationVariables.sourcePort != string.Empty)
             {
-                if (portData.StartsWith('#')) continue; // Check for comment lines. Here only for legacy support.
-                string[] data = portData.Split(';');
-                if (string.Equals(Path.GetFileName(ApplicationVariables.sourcePort), data[0], StringComparison.CurrentCultureIgnoreCase))
+                foreach (string portData in File.ReadAllLines($"{path}{ApplicationVariables.PORTDATABASE_FILE}"))
                 {
-                    portButton.Text = $"{data[1]}";
-                    dataFound = true;
-                    break;
+                    if (portData.StartsWith('#')) continue; // Check for comment lines. Here only for legacy support.
+                    string[] data = portData.Split(';');
+                    if (string.Equals(Path.GetFileName(ApplicationVariables.sourcePort), data[0], StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        portButton.Text = $"{data[1]}";
+                        dataFound = true;
+                        break;
+                    }
                 }
+                if (!dataFound) portButton.Text = Path.GetFileNameWithoutExtension(sourcePortDialog.SafeFileName);
             }
-            if (!dataFound) portButton.Text = Path.GetFileNameWithoutExtension(sourcePortDialog.SafeFileName);
+            else portButton.Text = "Select Port";
         }
 
         public static string FindMintyLauncherFolder()
@@ -84,7 +88,6 @@ namespace Doom_Loader
             try
             {
                 ApplicationVariables.IWAD = $"{ApplicationVariables.IWADFolderPath}/{iwadBox.SelectedItem}";
-                playButton.Enabled = true;
             }
             catch { }
         }
@@ -96,7 +99,7 @@ namespace Doom_Loader
                 // Check if the user already has an IWAD selected.
                 // Save it for later if they do.
                 string IWAD = null;
-                if (iwadBox.SelectedItem != null) 
+                if (iwadBox.SelectedItem != null)
                     IWAD = iwadBox.SelectedItem.ToString();
 
                 iwadBox.Items.Clear();
@@ -159,22 +162,22 @@ namespace Doom_Loader
                 else if (ApplicationVariables.rpcFilesShown == 0)
                     state = $"{Path.GetFileName(ApplicationVariables.IWAD)}";
                 else switch (ApplicationVariables.externalFiles.Length)
-                {
-                    case 0:
-                        state = $"{Path.GetFileName(ApplicationVariables.IWAD)}";
-                        break;
-                    case 1:
-                        state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | {Path.GetFileName(ApplicationVariables.externalFiles[0])}";
-                        break;
-                    default:
-                        state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | ";
-                        foreach (string file in ApplicationVariables.externalFiles)
-                        {
-                            state += $"{Path.GetFileName(file)}, ";
-                        }
-                        state = state.Remove(state.Length - 2, 2);
-                        break;
-                } // Check for how many external files were loaded in
+                    {
+                        case 0:
+                            state = $"{Path.GetFileName(ApplicationVariables.IWAD)}";
+                            break;
+                        case 1:
+                            state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | {Path.GetFileName(ApplicationVariables.externalFiles[0])}";
+                            break;
+                        default:
+                            state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | ";
+                            foreach (string file in ApplicationVariables.externalFiles)
+                            {
+                                state += $"{Path.GetFileName(file)}, ";
+                            }
+                            state = state.Remove(state.Length - 2, 2);
+                            break;
+                    } // Check for how many external files were loaded in
 
                 RPCClient.client.SetPresence(new RichPresence()
                 {
@@ -205,7 +208,7 @@ namespace Doom_Loader
             {
                 portArguments += ApplicationVariables.arguments
                     .Replace("*", Environment.CurrentDirectory) // Check if there's any Minty CWD characters.
-                    // Replace all back-slashes with forward-slashes to prevent bug where it'll think it's an escape character.
+                                                                // Replace all back-slashes with forward-slashes to prevent bug where it'll think it's an escape character.
                     .Replace('\\', '/') + " ";
             }
             if (ApplicationVariables.complevel != "-") portArguments += $"-complevel {ApplicationVariables.complevel} "; // Complevel
@@ -393,16 +396,20 @@ namespace Doom_Loader
             ApplicationVariables.arguments = extraParamsTextBox.Text;
         }
 
-        // Update the time since started for the Discord RPC.
-        private void UpdateRPCTimestamp(object sender, EventArgs e)
+        // Update the time since started for the Discord RPC & update if the playButton can be enabled.
+        private void UpdatePlayButton(object sender, EventArgs e)
         {
-            RPCClient.client.Invoke();
+            //RPCClient.client.Invoke();
+            if (portButton.Text != "Select Port" && ApplicationVariables.IWAD != string.Empty)
+                playButton.Enabled = true;
+            else playButton.Enabled = false;
         }
 
         // Settings, init complevel ComboBox and tooltips, and check command line arguments.
         // For --info and -i, check Program.cs
         private void AppDataInit(object sender, EventArgs e)
         {
+            playButtonUpdateTimer.Start();
             string appdata = Environment.ExpandEnvironmentVariables("%appdata%\\");
 
             // Create Minty Launcher folder if neither the appdata or local settings folders exist.
@@ -431,7 +438,7 @@ namespace Doom_Loader
                     "\nDo you want to convert old Minty Launcher files?\n" +
                     "These files include your settings and presets." +
                     "\nYou'll lose no data, but these files will become incompatible with older versions." +
-                    "\nYou must do this to use this version of Minty Launcher with your old settings and presets.", 
+                    "\nYou must do this to use this version of Minty Launcher with your old settings and presets.",
                     "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
@@ -496,9 +503,9 @@ namespace Doom_Loader
                 complevelSelector.Items.Add(complevel.Split(";")[0]);
             complevelSelector.SelectedIndex = 0;
             #endregion
-            
+
             // Check if there is the Default preset.
-            if (File.Exists($"{path}Presets\\Default{ApplicationVariables.PRESET_EXTENSION}") && ApplicationVariables.useDefault) 
+            if (File.Exists($"{path}Presets\\Default{ApplicationVariables.PRESET_EXTENSION}") && ApplicationVariables.useDefault)
             {
                 // Load Default preset. Also add it to the list and select it.
                 loadPresetBox.Items.Add("Default");
@@ -649,6 +656,11 @@ namespace Doom_Loader
                     extraParamsTextBox.AppendText($"\"{fileImport.FileName}\"");
                 }
             }
+        }
+
+        private void PortChanged(object sender, EventArgs e)
+        {
+            toolTips.SetToolTip(portButton, portButton.Text);
         }
     }
 }
