@@ -69,11 +69,11 @@ namespace Doom_Loader
 
         public static string FindMintyLauncherFolder()
         {
-            // Try to find the portable settings file.
+            // Try to find the portable settings folder.
             if (Path.Exists("MintyLauncher"))
                 return "MintyLauncher\\";
-            // If no portable settings file is found in the CWD,
-            // return the settings file found in Minty Launcher's folder in the user's Roaming AppData folder.
+            // If no portable settings folder is found in the CWD,
+            // return the AppData folder.
             else
                 return Environment.ExpandEnvironmentVariables("%appdata%\\MintyLauncher\\");
         }
