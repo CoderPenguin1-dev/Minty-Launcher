@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using DiscordRPC;
 
@@ -354,18 +355,18 @@ namespace Doom_Loader
 
         private void QuickSavePreset(object sender, MouseEventArgs e)
         {
-            try
+            if (!ApplicationVariables.customPreset && e.Button == MouseButtons.Right)
             {
-                if (!ApplicationVariables.customPreset && e.Button == MouseButtons.Right)
+                if ((string)loadPresetBox.SelectedItem != null)
                 {
                     string path = FindMintyLauncherFolder() + "Presets\\" + loadPresetBox.SelectedItem + ApplicationVariables.PRESET_EXTENSION;
                     SavePreset(path);
                     MessageBox.Show("Preset Saved", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
-            catch 
-            {
-                MessageBox.Show("No preset currently selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    MessageBox.Show("No preset currently selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
