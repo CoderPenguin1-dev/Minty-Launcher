@@ -131,7 +131,8 @@ Fly high, David, Thomas' dove.
     <value>Legal Info:
 
 Minty Launcher and its logo are under the MIT License.
-Details can be found in the LICENSE.MD file that came with your download or here: https://github.com/PENGUINCODER1/Minty-Launcher
+Details can be found in the LICENSE.MD file that came with your download 
+or here: https://github.com/PENGUINCODER1/Minty-Launcher
 
 DiscordRichPresence is under the MIT License.
 Details can be found here: https://github.com/Lachee/discord-rpc-csharp
@@ -143,7 +144,7 @@ Details can be found here: https://github.com/discord/discord-rpc</value>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAATIAAAGYCAIAAABOI/kaAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAABV0RVh0Q29tbWVudABMYXZjNTguOTEuMTAwjHAI3AAA/5FJREFUeF7s/XV4HFmW
+        wQAADsEBuJFr7QAAABV0RVh0Q29tbWVudABMYXZjNTguOTEuMTAwjHAI3AAA/5FJREFUeF7s/XV4HFmW
         ro/WOdNQPc3TUE3VXVxmBtliZmZmZksWW5Zly7Zky8zMzChmtsyFDdPT0zNzZuac8zv3Pvfe/++3Y6WW
         wytTCluuqu6eo3reiicyMiJTGbFff2vviIx87eb1Wxa5ce3mS3H96g2LXLty/S/C1cvXXoorl65a5NKF
         yxa5eP6SRS6cu/iFcP7shZfi3JnzFjl7+pxFzpw6+1KcPnnGImI1RrwdI/68SSM+PiNWY8TuNUQcVkMu
