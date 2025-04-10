@@ -660,7 +660,10 @@ namespace Doom_Loader
 
         private void PortChanged(object sender, EventArgs e)
         {
-            toolTips.SetToolTip(portButton, portButton.Text);
+            if (portButton.Text == "Select Port")
+                toolTips.SetToolTip(portButton, null);
+            else 
+                toolTips.SetToolTip(portButton, portButton.Text);
         }
     }
 }
