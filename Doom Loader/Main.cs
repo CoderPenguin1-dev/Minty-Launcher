@@ -50,7 +50,7 @@ namespace Doom_Loader
                 }
                 if (!complevelFound)
                 {
-                    MessageBox.Show($"Can't Find Complevel {ApplicationVariables.complevel}. Setting selected complevel to \"None\"", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Can't Find Complevel {ApplicationVariables.complevel}. Selecting no complevel.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ApplicationVariables.complevel = "-";
                     CheckComplevel();
                 }
