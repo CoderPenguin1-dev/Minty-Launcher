@@ -104,7 +104,7 @@ These are settings relating to Minty Launcher's main window.
 
 *Amount Of Files Shown*
 
-	The limit to how many individual files can be shown before the RPC Activity will show them as "Multiple Files" on Discord.
+	The limit to how many individual file files can be shown on the Discord Activity. If it exceeds the limit, it will show "+ x more" at the end.
 	Setting it to 0 disables this functionality.
 	
 ### 3e. Ungrouped
@@ -123,7 +123,7 @@ Entry placement and the input for the source port's actual name doesn't matter.
 If your source port's actual name contains a &, double it up `&&`.
 
 When you select a source port (or open a preset that contains a source port), it will first look through this file.
-If an entry matches the source port executable name, it will replace the source port button and the RPC source port description with the source port's actual name.
+If an entry matches the source port executable name, it will replace the source port button and the Discord Activity source port description with the source port's actual name.
 
 ### 4b. Complevel
 Each entry is in this format: `complevel name`;`complevel number`.
@@ -162,7 +162,7 @@ Note: Single-lettered arguments can't be combined together. They must be seperat
 * Valid inputs for disabling are off, 0, false.
 * Temporary.
 
-`--rpc-files-shown [Amount Shown, 0-5]`: Dicates how many files can be shown with the RPC intergration.
+`--rpc-files-shown [Amount Shown, 0-5]`: Description in section 3a.
 * Temporary.
 
 `--info` or `-i`: shows the current version of Minty Launcher. Will ignore every other argument if you have this.

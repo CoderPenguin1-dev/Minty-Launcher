@@ -157,27 +157,23 @@ namespace Doom_Loader
                 RPCClient.Initialize();
                 // State Setup
                 string state;
-                if (ApplicationVariables.externalFiles.Length > ApplicationVariables.rpcFilesShown && ApplicationVariables.rpcFilesShown != 0)
-                    state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | Multiple Files";
-                else if (ApplicationVariables.rpcFilesShown == 0)
+                if (ApplicationVariables.rpcFilesShown == 0 || ApplicationVariables.externalFiles.Length == 0)
                     state = $"{Path.GetFileName(ApplicationVariables.IWAD)}";
-                else switch (ApplicationVariables.externalFiles.Length)
+                else
+                {
+                    state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | ";
+                    state += Path.GetFileName(ApplicationVariables.externalFiles[0]);
+                    if (ApplicationVariables.externalFiles.Length > 1)
                     {
-                        case 0:
-                            state = $"{Path.GetFileName(ApplicationVariables.IWAD)}";
-                            break;
-                        case 1:
-                            state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | {Path.GetFileName(ApplicationVariables.externalFiles[0])}";
-                            break;
-                        default:
-                            state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | ";
-                            foreach (string file in ApplicationVariables.externalFiles)
-                            {
-                                state += $"{Path.GetFileName(file)}, ";
-                            }
-                            state = state.Remove(state.Length - 2, 2);
-                            break;
-                    } // Check for how many external files were loaded in
+                        for (int i = 1; i < ApplicationVariables.externalFiles.Length; i++)
+                        {
+                            if (i == ApplicationVariables.rpcFilesShown) break;
+                            state += $", {Path.GetFileName(ApplicationVariables.externalFiles[i])}";
+                        }
+                    }
+                    if (ApplicationVariables.externalFiles.Length > ApplicationVariables.rpcFilesShown)
+                        state += $", + {ApplicationVariables.externalFiles.Length - ApplicationVariables.rpcFilesShown} more";
+                }
 
                 RPCClient.client.SetPresence(new RichPresence()
                 {
@@ -468,7 +464,12 @@ namespace Doom_Loader
                             File.Copy(ApplicationVariables.PORTDATABASE_FILE, $"{path}{ApplicationVariables.PORTDATABASE_FILE}");
                             File.Delete(ApplicationVariables.PORTDATABASE_FILE);
                         }
-                        else Generate.PortDatabase(path);
+                        else
+                        {
+                            Generate.PortDatabase(path);
+                            // For some reason if this file exists, the complevel file can't be read. Don't ask me why.
+                            File.Delete(ApplicationVariables.PORTDATABASE_FILE);
+                        }
                     }
                     else Generate.PortDatabase(path);
                     MessageBox.Show("Conversion Complete.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);

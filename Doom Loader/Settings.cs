@@ -71,6 +71,8 @@ namespace Doom_Loader
             toolTips.SetToolTip(customPresetBox, "Provide a file dialog when loading/saving presets.");
             toolTips.SetToolTip(defaultBox, @"Makes an Settings Folder preset titled ""Default"" load on launch of Minty Launcher.");
             toolTips.SetToolTip(iwadFolderButton, ApplicationVariables.IWADFolderPath);
+            toolTips.SetToolTip(rpcFilesTrackBar, "Sets how many individual files can be shown on the Discord Activity.");
+            toolTips.SetToolTip(label2, "Sets how many individual files can be shown on the Discord Activity.");
             #endregion
         }
 
