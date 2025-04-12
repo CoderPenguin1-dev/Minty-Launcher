@@ -204,8 +204,7 @@ namespace Doom_Loader
             {
                 portArguments += ApplicationVariables.arguments
                     .Replace("*", Environment.CurrentDirectory) // Check if there's any Minty CWD characters.
-                                                                // Replace all back-slashes with forward-slashes to prevent bug where it'll think it's an escape character.
-                    .Replace('\\', '/') + " ";
+                    .Replace('\\', '/') + " "; // Replace all back-slashes with forward-slashes to prevent bug where it'll think it's an escape character.
             }
             if (ApplicationVariables.complevel != "-") portArguments += $"-complevel {ApplicationVariables.complevel} "; // Complevel
 
