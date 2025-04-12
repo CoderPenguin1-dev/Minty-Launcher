@@ -394,7 +394,6 @@ namespace Doom_Loader
         // Update the time since started for the Discord RPC & update if the playButton can be enabled.
         private void UpdatePlayButton(object sender, EventArgs e)
         {
-            //RPCClient.client.Invoke();
             if (portButton.Text != "Select Port" && ApplicationVariables.IWAD != string.Empty)
                 playButton.Enabled = true;
             else playButton.Enabled = false;
@@ -467,6 +466,7 @@ namespace Doom_Loader
                         {
                             Generate.PortDatabase(path);
                             // For some reason if this file exists, the complevel file can't be read. Don't ask me why.
+                            // I can't even reproduce it, either.
                             File.Delete(ApplicationVariables.PORTDATABASE_FILE);
                         }
                     }
