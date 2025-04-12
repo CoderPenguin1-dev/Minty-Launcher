@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
-    <value>Thank you, Owen, Evan, Alch, and Jonah for their help on testing Minty Launcher for bugs and usability.
+    <value>Thank you, Owen, Evan, Alch, "Aries", and Jonah for their help on testing Minty Launcher for bugs and usability.
 
-Special thanks to my parents, Thomas, Laura, "Blockhead", "JustSomeLego," "MisterDoggo," "Anthrax," with several other members of the "Doomcord," Logan, and the Batch Town community for supporting me. 
+Special thanks to my parents, Thomas, Laura, "Blockhead", "JustSomeLego," "MisterDoggo," "Anthrax," with several other members of the Doomcord, Logan, and the Batch Town community for supporting me. 
 
 R.I.P. Oggy (2010 - 2024)
 
@@ -146,7 +146,7 @@ Details can be found here: https://github.com/discord/discord-rpc</value>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAATIAAAGYCAIAAABOI/kaAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAABV0RVh0Q29tbWVudABMYXZjNTguOTEuMTAwjHAI3AAA/5FJREFUeF7s/XV4HFmW
+        vwAADr8BOAVTJAAAABV0RVh0Q29tbWVudABMYXZjNTguOTEuMTAwjHAI3AAA/5FJREFUeF7s/XV4HFmW
         ro/WOdNQPc3TUE3VXVxmBtliZmZmZksWW5Zly7Zky8zMzChmtsyFDdPT0zNzZuac8zv3Pvfe/++3Y6WW
         wytTCluuqu6eo3reiicyMiJTGbFff2vviIx87eb1Wxa5ce3mS3H96g2LXLty/S/C1cvXXoorl65a5NKF
         yxa5eP6SRS6cu/iFcP7shZfi3JnzFjl7+pxFzpw6+1KcPnnGImI1RrwdI/68SSM+PiNWY8TuNUQcVkMu

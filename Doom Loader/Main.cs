@@ -38,13 +38,21 @@ namespace Doom_Loader
                 complevelSelector.SelectedIndex = 0;
             else
             {
+                bool complevelFound = false;
                 foreach (string entry in ApplicationVariables.complevels)
                 {
                     string[] entryTokens = entry.Split(";");
                     if (entryTokens[1] == ApplicationVariables.complevel)
                     {
                         complevelSelector.SelectedItem = entryTokens[0];
+                        complevelFound = true;
                     }
+                }
+                if (!complevelFound)
+                {
+                    MessageBox.Show($"Can't Find Complevel {ApplicationVariables.complevel}. Setting selected complevel to \"None\"", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ApplicationVariables.complevel = "-";
+                    CheckComplevel();
                 }
             }
         }
