@@ -295,7 +295,17 @@ namespace Doom_Loader
                     iwadBox.SelectedIndex = iwadIndex;
                     ApplicationVariables.IWAD = ApplicationVariables.IWADFolderPath + "\\" + args[4];
                 }
+                else
+                {
+                    iwadBox.SelectedIndex = -1;
+                    ApplicationVariables.IWAD = string.Empty;
+                }
             }
+            else
+            {
+                iwadBox.SelectedIndex = -1;
+                ApplicationVariables.IWAD = string.Empty;
+            }    
             #endregion
 
             // PWAD
