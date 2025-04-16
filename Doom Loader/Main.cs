@@ -377,6 +377,7 @@ namespace Doom_Loader
                         file += $"{ApplicationVariables.externalFiles[i]},";
                     file += ApplicationVariables.externalFiles[^1];
                 }
+                file += "\n";
             }
             else file += "\n";
 
