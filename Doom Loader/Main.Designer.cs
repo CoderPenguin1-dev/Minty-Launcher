@@ -174,6 +174,7 @@
             iwadBox.TabIndex = 1;
             iwadBox.DropDown += RefreshIWAD;
             iwadBox.SelectedIndexChanged += IWADChanged;
+            iwadBox.MouseDown += DeselectIWAD;
             // 
             // groupBox1
             // 

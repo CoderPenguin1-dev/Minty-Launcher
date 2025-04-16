@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
@@ -277,16 +278,37 @@ namespace Doom_Loader
             #region Sourceport and IWADs
             ApplicationVariables.sourcePort = Regex.Replace(args[1], @"[^\w\\.@: -]", string.Empty);
             CheckPortDatabase();
+            if (args.Length == 5)
+            {
+                RefreshIWAD(new object(), new EventArgs());
+                int iwadIndex = -1;
+                for (int i = 0; i < iwadBox.Items.Count; i++)
+                {
+                    if (iwadBox.Items[i].ToString().Equals(args[4], StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        iwadIndex = i;
+                        break;
+                    }
+                }
+                if (iwadIndex != -1)
+                {
+                    iwadBox.SelectedIndex = iwadIndex;
+                    ApplicationVariables.IWAD = ApplicationVariables.IWADFolderPath + "\\" + args[4];
+                }
+            }
             #endregion
 
             // PWAD
             ApplicationVariables.externalFiles = [];
-            if (args.Length == 4)
+            if (args.Length >= 4)
             {
-                ApplicationVariables.externalFiles = args[3].Split(',');
-                if (ApplicationVariables.externalFiles.Length == 1) // I can't honestly remember why this if statement was put into here.
-                {                                                   // Will not remove to prevent it possibly breaking like a Jenga tower.
-                    ApplicationVariables.externalFiles[0] = args[3];
+                if (args[3] != string.Empty)
+                {
+                    ApplicationVariables.externalFiles = args[3].Split(',');
+                    if (ApplicationVariables.externalFiles.Length == 1) // I can't honestly remember why this if statement was put into here.
+                    {                                                   // Will not remove to prevent it possibly breaking like a Jenga tower.
+                        ApplicationVariables.externalFiles[0] = args[3];
+                    }
                 }
             }
         }
@@ -356,6 +378,10 @@ namespace Doom_Loader
                     file += ApplicationVariables.externalFiles[^1];
                 }
             }
+            else file += "\n";
+
+            if (ApplicationVariables.IWAD != null)
+                file += Path.GetFileName(ApplicationVariables.IWAD);
             File.WriteAllText(path, file);
         }
 
@@ -666,11 +692,20 @@ namespace Doom_Loader
             }
         }
 
+        private void DeselectIWAD(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                iwadBox.SelectedIndex = -1;
+                ApplicationVariables.IWAD = string.Empty;
+            }
+        }
+
         private void PortChanged(object sender, EventArgs e)
         {
             if (portButton.Text == "Select Port")
                 toolTips.SetToolTip(portButton, null);
-            else 
+            else
                 toolTips.SetToolTip(portButton, portButton.Text);
         }
     }
