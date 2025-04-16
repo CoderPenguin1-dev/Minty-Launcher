@@ -583,6 +583,7 @@ namespace Doom_Loader
                             loadPresetBox.Items.Add("External Preset");
                             loadPresetBox.SelectedItem = "External Preset";
                             LoadPreset(args[i]);
+                            if (ApplicationVariables.IWAD != string.Empty) usedIWAD = true;
                             usedPreset = true;
                             break;
 
@@ -597,6 +598,7 @@ namespace Doom_Loader
                             }
                             loadPresetBox.SelectedItem = args[i];
                             LoadPreset($"{path}Presets\\{args[i]}{ApplicationVariables.PRESET_EXTENSION}");
+                            if (ApplicationVariables.IWAD != string.Empty) usedIWAD = true;
                             usedPreset = true;
                             break;
 
