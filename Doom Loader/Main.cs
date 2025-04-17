@@ -96,7 +96,9 @@ namespace Doom_Loader
         {
             try
             {
-                ApplicationVariables.IWAD = $"{ApplicationVariables.IWADFolderPath}/{iwadBox.SelectedItem}";
+                if (iwadBox.SelectedIndex != 0)
+                    ApplicationVariables.IWAD = $"{ApplicationVariables.IWADFolderPath}/{iwadBox.SelectedItem}";
+                else ApplicationVariables.IWAD = string.Empty;
             }
             catch { }
         }
@@ -112,6 +114,7 @@ namespace Doom_Loader
                     IWAD = iwadBox.SelectedItem.ToString();
 
                 iwadBox.Items.Clear();
+                iwadBox.Items.Add("None");
                 string[] IWADs = Directory.GetFiles(ApplicationVariables.IWADFolderPath);
 
                 // Find the IWADs from the folder path.
@@ -297,13 +300,13 @@ namespace Doom_Loader
                 }
                 else
                 {
-                    iwadBox.SelectedIndex = -1;
+                    iwadBox.SelectedIndex = 0;
                     ApplicationVariables.IWAD = string.Empty;
                 }
             }
             else
             {
-                iwadBox.SelectedIndex = -1;
+                iwadBox.SelectedIndex = 0;
                 ApplicationVariables.IWAD = string.Empty;
             }    
             #endregion
@@ -449,6 +452,8 @@ namespace Doom_Loader
         private void AppDataInit(object sender, EventArgs e)
         {
             playButtonUpdateTimer.Start();
+            iwadBox.Items.Add("None");
+            iwadBox.SelectedIndex = 0;
             string appdata = Environment.ExpandEnvironmentVariables("%appdata%\\");
 
             // Create Minty Launcher folder if neither the appdata or local settings folders exist.
@@ -702,15 +707,6 @@ namespace Doom_Loader
                 {
                     extraParamsTextBox.AppendText($"\"{fileImport.FileName}\"");
                 }
-            }
-        }
-
-        private void DeselectIWAD(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                iwadBox.SelectedIndex = -1;
-                ApplicationVariables.IWAD = string.Empty;
             }
         }
 
