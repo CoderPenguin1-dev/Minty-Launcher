@@ -151,7 +151,8 @@ Note: Single-lettered arguments can't be combined together. They must be seperat
 
 `--preset-path [preset path]` or `-p [preset path]` loads in a preset from the desired path. Must be an `.mlPreset` file.
 
-`--iwad [IWAD path]` or `-w [IWAD path]`: Loads in the IWAD file from your IWADs folder. Must include the file extension.
+`--iwad [IWAD filename]` or `-w [IWAD filename]`: Loads in the IWAD file from your IWADs folder. Must include the file extension.
+You can also input "None" to deselect the IWAD from a preset.
 
 `--iwad-folder [IWAD folder path]`: Set the IWAD folder path. Call this before `--iwad`.
 
