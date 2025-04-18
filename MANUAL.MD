@@ -166,7 +166,8 @@ You can also input "None" to deselect the IWAD from a preset.
 `--rpc-files-shown [Amount Shown, 0-8]`: Description in section 3a.
 * Temporary.
 
-`--update-files`: Will update your complevel and port database files to have newly added information.
+`--generate-update-files`: Creates two files, titled `deleteThis.mintyLauncher.portDatabase` and `deleteThis.mintyLauncher.complevel` 
+so you can copy newly added information into your actual files in your Settings Folder.
 * Will ignore every other argument if you have this, excluding `--info`.
 
 `--info` or `-i`: shows the current version of Minty Launcher. 
