@@ -592,6 +592,45 @@ namespace Doom_Loader
                             usedPreset = true;
                             break;
 
+                        case "--update-files":
+                            #region Complevels
+                            List<string> cmplvls = [.. File.ReadAllLines(FindMintyLauncherFolder() + ApplicationVariables.COMPLEVEL_FILE)];
+                            Generate.Complevel("");
+                            string[] cmplvlFile = File.ReadAllLines(ApplicationVariables.COMPLEVEL_FILE);
+                            foreach (string cmplvl in cmplvlFile)
+                            {
+                                if (cmplvls.Contains(cmplvl, StringComparer.CurrentCultureIgnoreCase))
+                                    continue;
+                                else
+                                {
+                                    cmplvls.Add(cmplvl);
+                                }
+                            }
+                            File.WriteAllLines(FindMintyLauncherFolder() + ApplicationVariables.COMPLEVEL_FILE, cmplvls);
+                            File.Delete(ApplicationVariables.COMPLEVEL_FILE);
+                            #endregion
+
+                            #region Port Database
+                            List<string> ports = [.. File.ReadAllLines(FindMintyLauncherFolder() + ApplicationVariables.PORTDATABASE_FILE)];
+                            Generate.PortDatabase("");
+                            string[] portFile = File.ReadAllLines(ApplicationVariables.PORTDATABASE_FILE);
+                            foreach (string port in portFile)
+                            {
+                                if (ports.Contains(port, StringComparer.CurrentCultureIgnoreCase))
+                                    continue;
+                                else
+                                {
+                                    ports.Add(port);
+                                }
+                            }
+                            File.WriteAllLines(FindMintyLauncherFolder() + ApplicationVariables.COMPLEVEL_FILE, ports);
+                            File.Delete(ApplicationVariables.PORTDATABASE_FILE);
+                            #endregion
+
+                            MessageBox.Show("Update Complete. Minty Launcher will now close.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Environment.Exit(0);
+                            break;
+
                         case "--preset" or "-p":
                             i++;
                             RefreshPresetBox(sender, e);
