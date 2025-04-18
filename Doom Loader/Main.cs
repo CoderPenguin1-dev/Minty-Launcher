@@ -595,14 +595,22 @@ namespace Doom_Loader
                         case "--preset" or "-p":
                             i++;
                             RefreshPresetBox(sender, e);
-                            // Here due to how ComboBoxes work with capitalization.
-                            if (!loadPresetBox.Items.Contains(args[i]))
+                            int presetIndex = -1;
+                            for (int x = 0; x < loadPresetBox.Items.Count; x++)
+                            {
+                                if (loadPresetBox.Items[x].ToString().Equals(args[i], StringComparison.CurrentCultureIgnoreCase))
+                                {
+                                    presetIndex = x;
+                                    break;
+                                }
+                            }
+                            if (presetIndex == -1)
                             {
                                 MessageBox.Show("Given preset does not exist. Check to see if your capitalization is wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 Environment.Exit(1);
                             }
-                            loadPresetBox.SelectedItem = args[i];
-                            LoadPreset($"{path}Presets\\{args[i]}{ApplicationVariables.PRESET_EXTENSION}");
+                            loadPresetBox.SelectedIndex = presetIndex;
+                            LoadPreset($"{path}Presets\\{loadPresetBox.SelectedItem}{ApplicationVariables.PRESET_EXTENSION}");
                             if (ApplicationVariables.IWAD != string.Empty) usedIWAD = true;
                             usedPreset = true;
                             break;
@@ -625,13 +633,24 @@ namespace Doom_Loader
                         case "--iwad" or "-w":
                             i++;
                             RefreshIWAD(sender, e);
-                            // Here due to how ComboBoxes work with capitalization.
-                            if (!iwadBox.Items.Contains(args[i]))
+
+                            int iwadIndex = -1;
+                            // Why is x at 0? Well, I wanted the user to be able to specify "None" to outright tell a preset to not use an IWAD.
+                            for (int x = 0; i < iwadBox.Items.Count; x++)
+                            {
+                                if (iwadBox.Items[x].ToString().Equals(args[i], StringComparison.CurrentCultureIgnoreCase))
+                                {
+                                    iwadIndex = x;
+                                    break;
+                                }
+                            }
+                            if (iwadIndex == -1)
                             {
                                 MessageBox.Show("Given IWAD does not exist. Check to see if your capitalization is wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 Environment.Exit(1);
                             }
-                            iwadBox.SelectedItem = args[i];
+
+                            iwadBox.SelectedIndex = iwadIndex;
                             usedIWAD = true;
                             break;
 
