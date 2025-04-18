@@ -135,23 +135,23 @@ All presets are in the `.mlPreset` file format. The format looks like this inter
 ```
 Parameters
 Source Port Path
-Complevel
+Complevel Number (or - if None)
 File Path(s)
+IWAD filename
 ```
-Each file path is seperated by a comma (,). 
-When saving a preset using no complevel (shown as "None" in the launcher), it will be saved as a dash (-).
-When any other option is left blank, it will remain blank in the preset as well.
+Each file path is seperated by a comma (,).
+When an option is left unchanged (with the exception of, complevel), it will remain blank in the preset as well.
 	
 ## 5. Command-line Arguments
 Note that all of your settings (and your Default preset, if enabled) are loaded before these are checked.
 
 Note: Single-lettered arguments can't be combined together. They must be seperated.
 
-`--preset [preset name]` loads in the preset from your Settings Folder. Exclude the file extension from the name. Case sensitive.
+`--preset [preset name]` loads in the preset from your Settings Folder. Exclude the file extension from the name.
 
 `--preset-path [preset path]` or `-p [preset path]` loads in a preset from the desired path. Must be an `.mlPreset` file.
 
-`--iwad [IWAD path]` or `-w [IWAD path]`: Loads in the IWAD file from your IWADs folder. Must include the file extension. Case sensitive.
+`--iwad [IWAD path]` or `-w [IWAD path]`: Loads in the IWAD file from your IWADs folder. Must include the file extension.
 
 `--iwad-folder [IWAD folder path]`: Set the IWAD folder path. Call this before `--iwad`.
 
@@ -162,7 +162,7 @@ Note: Single-lettered arguments can't be combined together. They must be seperat
 * Valid inputs for disabling are off, 0, false.
 * Temporary.
 
-`--rpc-files-shown [Amount Shown, 0-5]`: Description in section 3a.
+`--rpc-files-shown [Amount Shown, 0-8]`: Description in section 3a.
 * Temporary.
 
 `--info` or `-i`: shows the current version of Minty Launcher. Will ignore every other argument if you have this.
