@@ -592,7 +592,7 @@ namespace Doom_Loader
                             usedPreset = true;
                             break;
 
-                        case "--update-files":
+                        case "--update-files": // May move into Program.cs at some point.
                             #region Complevels
                             List<string> cmplvls = [.. File.ReadAllLines(FindMintyLauncherFolder() + ApplicationVariables.COMPLEVEL_FILE)];
                             Generate.Complevel("");
