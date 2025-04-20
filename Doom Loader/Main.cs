@@ -595,8 +595,8 @@ namespace Doom_Loader
 
                         case "--generate-update-files": // May move into Program.cs at some point.
                             Generate.Complevel("deleteThis.");
-
                             Generate.PortDatabase("deleteThis.");
+
                             MessageBox.Show("Generated files.\n" +
                                 "Please copy what you need from the `deleteThis.` files and put them in your actual files in your settings folder.\n" +
                                 "Afterwards, please delete the `deleteThis.` files.",
@@ -746,7 +746,7 @@ namespace Doom_Loader
             if (portButton.Text == "Select Port")
                 toolTips.SetToolTip(portButton, null);
             else
-                toolTips.SetToolTip(portButton, portButton.Text);
+                toolTips.SetToolTip(portButton, portButton.Text + " | " + Path.GetFileName(ApplicationVariables.sourcePort));
         }
     }
 }
