@@ -43,6 +43,7 @@ You can also right-click the box to insert a file path easier.
 You can also insert an `*` into the box to use Minty Launcher's directory instead of the source port's. Example: `-record */demos/demo`.
 
 The *Select Port* button allows you to select which port you wish to use.
+You can also right-click the button to give all information about the currently selected port.
 
 The *External Files* button opens up the External File Manager window, which allows you to sort load orders of maps, mods, and dehacked/bex patches.
 

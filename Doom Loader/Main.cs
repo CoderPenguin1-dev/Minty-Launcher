@@ -755,9 +755,16 @@ namespace Doom_Loader
         {
             if (e.Button == MouseButtons.Right)
             {
-                MessageBox.Show($"Port Name: {portButton.Text}\n" +
-                    $"Port Executable: {Path.GetFileName(ApplicationVariables.sourcePort)}\n" +
-                    $"Port Executable Path: {ApplicationVariables.sourcePort}", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (ApplicationVariables.sourcePort != string.Empty)
+                {
+                    MessageBox.Show($"Port Name: {portButton.Text}\n" +
+                        $"Port Executable: {Path.GetFileName(ApplicationVariables.sourcePort)}\n" +
+                        $"Port Executable Path: {ApplicationVariables.sourcePort}", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No port selected.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
     }
