@@ -309,7 +309,7 @@ namespace Doom_Loader
             {
                 iwadBox.SelectedIndex = 0;
                 ApplicationVariables.IWAD = string.Empty;
-            }    
+            }
             #endregion
 
             // PWAD
@@ -568,8 +568,10 @@ namespace Doom_Loader
             complevelSelector.SelectedIndex = 0;
             toolTips.SetToolTip(iwadBox, "Select your desired IWAD. You can change the IWAD folder in Settings.");
             toolTips.SetToolTip(pwadManagerButton, "Open the External File Manager.");
-            toolTips.SetToolTip(complevelSelector, "Used to emulate a specific engine. Only works for ports that support the -complevel parameter.");
-            toolTips.SetToolTip(extraParamsTextBox, "Add in any extra parameters you may want. Right click to add a file path to the end of the text.");
+            toolTips.SetToolTip(complevelSelector, "Used to emulate a specific engine.\nOnly works for ports that support the -complevel parameter.");
+            toolTips.SetToolTip(extraParamsTextBox, "Add in any extra parameters you may want.\nRight click to add a file path to the end of the text.");
+            if (!ApplicationVariables.customPreset)
+                toolTips.SetToolTip(savePresetButton, "Right click to quick-save currently selected preset.");
             #endregion
 
             // Command Line Arguments
@@ -746,7 +748,17 @@ namespace Doom_Loader
             if (portButton.Text == "Select Port")
                 toolTips.SetToolTip(portButton, null);
             else
-                toolTips.SetToolTip(portButton, portButton.Text + " | " + Path.GetFileName(ApplicationVariables.sourcePort));
+                toolTips.SetToolTip(portButton, portButton.Text + "\nRight click to aee all info.");
+        }
+
+        private void ShowFullPortInfo(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                MessageBox.Show($"Port Name: {portButton.Text}\n" +
+                    $"Port Executable: {Path.GetFileName(ApplicationVariables.sourcePort)}\n" +
+                    $"Port Executable Path: {ApplicationVariables.sourcePort}", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

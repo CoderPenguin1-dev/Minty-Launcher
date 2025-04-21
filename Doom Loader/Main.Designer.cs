@@ -80,6 +80,7 @@
             portButton.UseVisualStyleBackColor = false;
             portButton.TextChanged += PortChanged;
             portButton.Click += SelectPort;
+            portButton.MouseDown += ShowFullPortInfo;
             // 
             // sourcePortDialog
             // 
