@@ -14,6 +14,12 @@ public static class ApplicationVariables
     public const string COMPLEVEL_FILE = "mintyLauncher.complevel";
     public const string PRESET_EXTENSION = ".mlPreset";
 
+    /// <summary>
+    /// // The maximum amount for the "RPC Files Shown" setting
+    /// If you want to change the max for this setting, do it here, NOT the Settings Designer.
+    /// </summary>
+    public const int MAX_RPC_FILES_SHOWN = 8;
+
     public static string[] complevels = [];
 
     // Settings

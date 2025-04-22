@@ -713,7 +713,7 @@ namespace Doom_Loader
                             try
                             {
                                 ApplicationVariables.rpcFilesShown = int.Parse(args[i]);
-                                if (ApplicationVariables.rpcFilesShown > 8 || ApplicationVariables.rpcFilesShown < 0)
+                                if (ApplicationVariables.rpcFilesShown > ApplicationVariables.MAX_RPC_FILES_SHOWN || ApplicationVariables.rpcFilesShown < 0)
                                     throw new Exception();
                             }
                             catch

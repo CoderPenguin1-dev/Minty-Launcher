@@ -200,7 +200,7 @@
             // 
             rpcFilesTrackBar.LargeChange = 0;
             rpcFilesTrackBar.Location = new Point(1, 68);
-            rpcFilesTrackBar.Maximum = 8;
+            rpcFilesTrackBar.Maximum = ApplicationVariables.MAX_RPC_FILES_SHOWN;
             rpcFilesTrackBar.Name = "rpcFilesTrackBar";
             rpcFilesTrackBar.Size = new Size(132, 45);
             rpcFilesTrackBar.TabIndex = 13;
@@ -228,7 +228,7 @@
             label4.Name = "label4";
             label4.Size = new Size(13, 15);
             label4.TabIndex = 16;
-            label4.Text = "8";
+            label4.Text = ApplicationVariables.MAX_RPC_FILES_SHOWN.ToString();
             // 
             // label3
             // 
