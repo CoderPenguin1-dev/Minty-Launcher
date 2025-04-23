@@ -36,9 +36,9 @@ Now, select your desired IWAD and complevel and hit *Play* and it should boot yo
 ### 2a. The Main Window
 The main window has several buttons and hidden gimmicks so it may be confusing at first.
 
-The IWAD and Complevel selectors allow you to select which IWAD and source port you wish to emulate. Please note the latter is only usable in ports that supoort such feature like DSDA-Doom.
+The IWAD and Complevel selectors allow you to select which IWAD and source port you wish to emulate. Please note the latter is only usable in ports that support such features like DSDA-Doom.
 
-The *Extra Paramaters* box allows you to type in any extra parameters you wish to pass along to the source port, such as `-playdemo` to play a recorded demo.
+The *Extra Parameters* box allows you to type in any extra parameters you wish to pass along to the source port, such as `-playdemo` to play a recorded demo.
 You can also right-click the box to insert a file path easier.
 You can also insert an `*` into the box to use Minty Launcher's directory instead of the source port's. Example: `-record */demos/demo`.
 
@@ -98,9 +98,9 @@ These are settings relating to Minty Launcher's main window.
 	
 ### 3d. Discord Rich Presence
 
-*Enable RPC Intergration*
+*Enable RPC Integration*
 	
-	Enables the Rich Presence intergration of Minty Launcher. 
+	Enables the Rich Presence integration of Minty Launcher. 
 	This will show information such as your source port, IWAD, and loaded files like PWADs.
 
 *Amount Of Files Shown*
@@ -140,13 +140,13 @@ Complevel Number (or - if None)
 File Path(s)
 IWAD filename
 ```
-Each file path is seperated by a comma (,).
+Each file path is separated by a comma (,).
 When an option is left unchanged (with the exception of, complevel), it will remain blank in the preset as well.
 	
 ## 5. Command-line Arguments
 Note that all of your settings (and your Default preset, if enabled) are loaded before these are checked.
 
-Note: Single-lettered arguments can't be combined together. They must be seperated.
+Note: Single-lettered arguments can't be combined together. They must be separated.
 
 `--preset [preset name]` loads in the preset from your Settings Folder. Exclude the file extension from the name.
 
@@ -159,7 +159,7 @@ You can also input "None" to deselect the IWAD from a preset.
 
 `--no-gui` or `-n`: Start the selected IWAD and preset without a GUI. Must be called after `--iwad` and `--preset` or `--preset-path` have been called.
 
-`--rpc [on/off]`: Enables/disables the RPC intergration. Must be called after `--no-gui` has been called.
+`--rpc [on/off]`: Enables/disables the RPC integration. Must be called after `--no-gui` has been called.
 * Valid inputs for enabling it are on, 1, true.
 * Valid inputs for disabling are off, 0, false.
 * Temporary.
@@ -173,3 +173,4 @@ so you can copy newly added information into your actual files in your Settings 
 
 `--info` or `-i`: shows the current version of Minty Launcher. 
 * Will ignore every other argument if you have this.
+
