@@ -43,7 +43,7 @@ You can also right-click the box to insert a file path easier.
 You can also insert an `*` into the box to use Minty Launcher's directory instead of the source port's. Example: `-record */demos/demo`.
 
 The *Select Port* button allows you to select which port you wish to use.
-You can also right-click the button to give all information about the currently selected port.
+You can also right-click the button to give all information about the currently selected port. This includes the file path of the port.
 
 The *External Files* button opens up the External File Manager window, which allows you to sort load orders of maps, mods, and dehacked/bex patches.
 
@@ -55,13 +55,15 @@ The *Save Preset* button will allow you to save a preset. If the *Ask For Preset
 If the *Ask For Preset Location* setting is **OFF**, you can right-click the button to quickly save the current preset.
 
 ### 2b. The External File Manager
-You can drag files onto this window to quickly add them to your External File list. You can also hit the **+** button to add in an external file to the list as well.
+You can drag files onto this window to quickly add them to your External File List. You can also hit the **+** button to add in an external file to the List as well.
 
-You can select multiple files at once to delete them with the **-** button. You can also select a single file.
+If you need to see the file paths of each file, you can right-click the External File List. Selecting no files will show every file path. Selecting multiple files will show only those file paths.
+
+You can select one or multiple file(s) to delete them with the **-** button.
 
 You can reorder single files in the list with the Up and Down arrow buttons.
 
-Note: The placement of `.deh` and `.bex` patches don't matter. They are always loaded before PWADs.
+Note: The placement of `.deh` and `.bex` patches don't matter too much. They are always loaded before PWADs.
 They're, however, loaded in the order they appear in the list.
 
 ## 3. Settings Overview
@@ -138,7 +140,7 @@ Parameters
 Source Port Path
 Complevel Number (or - if None)
 File Path(s)
-IWAD filename
+IWAD File Name
 ```
 Each file path is separated by a comma (,).
 When an option is left unchanged (with the exception of, complevel), it will remain blank in the preset as well.
@@ -148,18 +150,18 @@ Note that all of your settings (and your Default preset, if enabled) are loaded 
 
 Note: Single-lettered arguments can't be combined together. They must be separated.
 
-`--preset [preset name]` loads in the preset from your Settings Folder. Exclude the file extension from the name.
+`--preset [Preset Name]` loads in the preset from your Settings Folder. Exclude the file extension from the name.
 
-`--preset-path [preset path]` or `-p [preset path]` loads in a preset from the desired path. Must be an `.mlPreset` file.
+`--preset-path [Preset Path]` or `-p [Preset Path]` loads in a preset from the desired path. Must be an `.mlPreset` file.
 
-`--iwad [IWAD filename]` or `-w [IWAD filename]`: Loads in the IWAD file from your IWADs folder. Must include the file extension.
+`--iwad [IWAD File Name]` or `-w [IWAD File Name]`: Loads in the IWAD file from your IWADs folder. Must include the file extension.
 You can also input "None" to deselect the IWAD from a preset.
 
-`--iwad-folder [IWAD folder path]`: Set the IWAD folder path. Call this before `--iwad`.
+`--iwad-folder [IWAD Folder Path]`: Set the IWAD folder path. Call this before `--iwad`.
 
 `--no-gui` or `-n`: Start the selected IWAD and preset without a GUI. Must be called after `--iwad` and `--preset` or `--preset-path` have been called.
 
-`--rpc [on/off]`: Enables/disables the RPC integration. Must be called after `--no-gui` has been called.
+`--rpc [On/Off]`: Enables/disables the RPC integration. Must be called after `--no-gui` has been called.
 * Valid inputs for enabling it are on, 1, true.
 * Valid inputs for disabling are off, 0, false.
 * Temporary.

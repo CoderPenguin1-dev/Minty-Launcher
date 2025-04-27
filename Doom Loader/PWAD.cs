@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Doom_Loader
 {
@@ -184,9 +185,20 @@ namespace Doom_Loader
             if (e.Button == MouseButtons.Right)
             {
                 string output = "";
+                List<string> files = [];
+
+                if (pwadList.SelectedItems.Count > 0)
+                {
+                    foreach (int item in pwadList.SelectedIndices)
+                    {
+                        files.Add(ApplicationVariables.externalFiles[item]);
+                    }
+                }
+                else files = [.. ApplicationVariables.externalFiles];
+
                 if (ApplicationVariables.externalFiles.Length > 0)
                 {
-                    foreach (string file in ApplicationVariables.externalFiles)
+                    foreach (string file in files)
                         output += file + "\n\n";
                 }
                 else output = "No external files.";
