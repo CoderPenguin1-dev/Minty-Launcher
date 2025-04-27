@@ -22,7 +22,7 @@ public static class ApplicationVariables
     /// </summary>
     public const int MAX_RPC_FILES_SHOWN = 8;
 
-    public static string[] complevels = [];
+    //public static string[] complevels = [];
 
     // Settings
     public static string IWADFolderPath = string.Empty;

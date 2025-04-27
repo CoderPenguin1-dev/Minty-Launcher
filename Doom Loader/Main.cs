@@ -24,7 +24,8 @@ namespace Doom_Loader
             if (complevelSelector.SelectedIndex == 0) ApplicationVariables.complevel = "-";
             else
             {
-                foreach (string entry in ApplicationVariables.complevels)
+                string[] complevels = File.ReadAllLines($"{FindMintyLauncherFolder()}{ApplicationVariables.COMPLEVEL_FILE}");
+                foreach (string entry in complevels)
                 {
                     string[] entryTokens = entry.Split(";");
                     if (entryTokens[0] == (string)complevelSelector.SelectedItem)
@@ -41,7 +42,8 @@ namespace Doom_Loader
             else
             {
                 bool complevelFound = false;
-                foreach (string entry in ApplicationVariables.complevels)
+                string[] complevels = File.ReadAllLines($"{FindMintyLauncherFolder()}{ApplicationVariables.COMPLEVEL_FILE}");
+                foreach (string entry in complevels)
                 {
                     string[] entryTokens = entry.Split(";");
                     if (entryTokens[1] == ApplicationVariables.complevel)
@@ -65,7 +67,8 @@ namespace Doom_Loader
             string path = FindMintyLauncherFolder();
             if (ApplicationVariables.sourcePort != string.Empty)
             {
-                foreach (string portData in File.ReadAllLines($"{path}{ApplicationVariables.PORTDATABASE_FILE}"))
+                string[] portDatabase = File.ReadAllLines($"{path}{ApplicationVariables.PORTDATABASE_FILE}");
+                foreach (string portData in portDatabase)
                 {
                     if (portData.StartsWith('#')) continue; // Check for comment lines. Here only for legacy support.
                     string[] data = portData.Split(';');
@@ -114,10 +117,11 @@ namespace Doom_Loader
                 if (iwadBox.SelectedItem != null)
                     IWAD = iwadBox.SelectedItem.ToString();
 
+                // Reset dropdown.
                 iwadBox.Items.Clear();
                 iwadBox.Items.Add("None");
-                string[] IWADs = Directory.GetFiles(ApplicationVariables.IWADFolderPath);
 
+                string[] IWADs = Directory.GetFiles(ApplicationVariables.IWADFolderPath);
                 // Find the IWADs from the folder path.
                 foreach (string wad in IWADs)
                 {
@@ -137,6 +141,54 @@ namespace Doom_Loader
                 var error = MessageBox.Show("IWADs Folder path missing.\nSet new path now?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                 if (error == DialogResult.Yes) new Settings().SetIWADFolder(sender, e);
                 else if (error == DialogResult.No) MessageBox.Show("Please set new path in settings.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private static string[] GetComplevels()
+        {
+            string path = FindMintyLauncherFolder();
+            return File.ReadAllLines($"{path}{ApplicationVariables.COMPLEVEL_FILE}");
+        }
+
+        private void RefreshComplevels(object sender, EventArgs e)
+        {
+            // Check if the user already has a complevel selected.
+            // Save it for later if they do.
+            string complevel = null;
+            if (complevelSelector.SelectedItem != null)
+                complevel = complevelSelector.SelectedItem.ToString();
+
+            // Reset dropdown.
+            complevelSelector.Items.Clear();
+            complevelSelector.Items.Add("None");
+
+            string[] complevels = GetComplevels();
+
+            foreach (string entry in complevels)
+                complevelSelector.Items.Add(entry.Split(";")[0]);
+
+            if (complevelSelector.Items.Contains(complevel))
+                complevelSelector.SelectedItem = complevel;
+
+            // Check for num if it can't find it by name
+            else
+            {
+                bool foundComplevel = false;
+                foreach (string entry in complevels)
+                {
+                    if (entry.Split(";")[1].Equals(ApplicationVariables.complevel))
+                    {
+                        complevelSelector.SelectedItem = entry.Split(";")[0];
+                        foundComplevel = true;
+                        break;
+                    }
+                }
+                if (!foundComplevel)
+                {
+                    complevelSelector.SelectedIndex = 0;
+                    ApplicationVariables.complevel = "-";
+                    MessageBox.Show($"Can't Find Complevel {ApplicationVariables.complevel}. Selecting no complevel.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -548,8 +600,7 @@ namespace Doom_Loader
             #endregion
 
             #region Complevels
-            string[] complevels = File.ReadAllLines($"{path}{ApplicationVariables.COMPLEVEL_FILE}");
-            ApplicationVariables.complevels = complevels;
+            string[] complevels = GetComplevels();
             foreach (string complevel in complevels)
                 complevelSelector.Items.Add(complevel.Split(";")[0]);
             complevelSelector.SelectedIndex = 0;
