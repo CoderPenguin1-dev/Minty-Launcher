@@ -16,7 +16,7 @@ Minty Launcher only targets Windows, and only has been tested on Windows 10 and 
 * [User's Guide](MANUAL.MD)
 * [MIT License](LICENSE.MD)
 
-Although not required, I do ask you not to sell forks of Minty Launcher or to restrict access to the source code.
+Although allowed to do so, I do ask you not to sell forks of Minty Launcher and/or restrict access to the source code.
 
 ## Interface
 <details>
@@ -31,11 +31,11 @@ Although not required, I do ask you not to sell forks of Minty Launcher or to re
 </details>
 
 # Downloading
-You can also get Win64 and Win32 bins (both Framework-Dependent and Standalone) as well as the premade port database file [here on the repo](https://github.com/PENGUINCODER1/Minty-Launcher/releases). 
+You can also get Win64 and Win32 bins (both Framework-Dependent and Standalone) [here on the repo](https://github.com/PENGUINCODER1/Minty-Launcher/releases). 
 
 If you use the Framework-Dependent version, you'll need to have the .NET 9 Desktop Runtimes installed. You can get there [here](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
 
-Note that there's a user manual you should read, titled `MANUAL.MD`.
+You should also read the user manual, found at `MANUAL.MD`.
 
 # Building
 ## Prerequisites
@@ -58,6 +58,7 @@ Optionally change the Discord Application ID (for RPC):
 cd Properties
 notepad Resources.resx
 ```
+
 Scroll all the way down and edit the number under `<data name="DiscordAPI" xml:space="preserve">` with your API key.
 Save and close Notepad.
 ```
