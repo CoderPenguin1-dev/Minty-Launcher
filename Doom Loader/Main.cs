@@ -170,7 +170,7 @@ namespace Doom_Loader
             if (complevelSelector.Items.Contains(complevel))
                 complevelSelector.SelectedItem = complevel;
 
-            // Check for num if it can't find it by name
+            // Check for complevel number directly if it can't find it by name.
             else
             {
                 bool foundComplevel = false;
@@ -183,6 +183,7 @@ namespace Doom_Loader
                         break;
                     }
                 }
+                // Fallback to "None" if it can't find the complevel even after previous check.
                 if (!foundComplevel)
                 {
                     complevelSelector.SelectedIndex = 0;
