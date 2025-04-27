@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+namespace Doom_Loader;
+
 public static class Generate
 {
     public static void Settings(string path)

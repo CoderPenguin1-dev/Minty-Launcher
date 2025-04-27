@@ -440,7 +440,7 @@ namespace Doom_Loader
             ApplicationVariables.arguments = extraParamsTextBox.Text;
         }
 
-        // Update the time since started for the Discord RPC & update if the playButton can be enabled.
+        // Checks to see if the play button should be active.
         private void UpdatePlayButton(object sender, EventArgs e)
         {
             if (portButton.Text != "Select Port" && ApplicationVariables.IWAD != string.Empty)

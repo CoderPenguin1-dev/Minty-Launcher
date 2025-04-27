@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 
+namespace Doom_Loader;
+
 public static class ApplicationVariables
 {
     public static string presetName = string.Empty; // Used for the SavePreset window to change the Load Preset ComboBox selected item.
