@@ -178,5 +178,21 @@ namespace Doom_Loader
             if (pwadList.SelectedIndex == 0)
                 reorderUpButton.Enabled = false;
         }
+
+        private void ShowExternalFilePaths(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                string output = "";
+                if (ApplicationVariables.externalFiles.Length > 0)
+                {
+                    foreach (string file in ApplicationVariables.externalFiles)
+                        output += file + "\n\n";
+                }
+                else output = "No external files.";
+
+                MessageBox.Show(output, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

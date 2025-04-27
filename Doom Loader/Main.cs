@@ -757,8 +757,8 @@ namespace Doom_Loader
             {
                 if (ApplicationVariables.sourcePort != string.Empty)
                 {
-                    MessageBox.Show($"Port Name: {portButton.Text}\n" +
-                        $"Port Executable: {Path.GetFileName(ApplicationVariables.sourcePort)}\n" +
+                    MessageBox.Show($"Port Name: {portButton.Text}\n\n" +
+                        $"Port Executable: {Path.GetFileName(ApplicationVariables.sourcePort)}\n\n" +
                         $"Port Executable Path: {ApplicationVariables.sourcePort}", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else

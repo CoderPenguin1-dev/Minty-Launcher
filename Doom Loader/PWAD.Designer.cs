@@ -48,6 +48,7 @@
             pwadList.Size = new Size(244, 184);
             pwadList.TabIndex = 0;
             pwadList.SelectedIndexChanged += CheckAmountSelected;
+            pwadList.MouseDown += ShowExternalFilePaths;
             // 
             // addItemButton
             // 
