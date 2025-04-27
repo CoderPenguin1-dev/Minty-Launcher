@@ -30,6 +30,7 @@ namespace Doom_Loader
             toolTips.SetToolTip(removeItemButton, "Remove File(s).");
             toolTips.SetToolTip(reorderUpButton, "Reorder Selected Item Up.");
             toolTips.SetToolTip(reorderDownButton, "Reorder Selected Item Down.");
+            toolTips.SetToolTip(pwadList, "Right-click to view file paths.");
         } // Ran at Startup, sets up tooltips and PWAD list
 
         /// <summary>
@@ -199,7 +200,11 @@ namespace Doom_Loader
                 if (ApplicationVariables.externalFiles.Length > 0)
                 {
                     foreach (string file in files)
-                        output += file + "\n\n";
+                    {
+                        output += file;
+                        if (files.IndexOf(file) != files.Count - 1)
+                            output += "\n\n";
+                    }
                 }
                 else output = "No external files.";
 
