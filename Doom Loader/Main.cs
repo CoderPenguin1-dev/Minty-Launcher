@@ -508,6 +508,8 @@ namespace Doom_Loader
             playButtonUpdateTimer.Start();
             iwadBox.Items.Add("None");
             iwadBox.SelectedIndex = 0;
+            complevelSelector.Items.Add("None");
+            complevelSelector.SelectedIndex = 0;
             string appdata = Environment.ExpandEnvironmentVariables("%appdata%\\");
 
             // Create Minty Launcher folder if neither the appdata or local settings folders exist.
@@ -617,7 +619,6 @@ namespace Doom_Loader
             }
 
             #region Tooltips
-            complevelSelector.SelectedIndex = 0;
             toolTips.SetToolTip(iwadBox, "Select your desired IWAD.\nYou can change the IWAD folder in Settings.");
             toolTips.SetToolTip(pwadManagerButton, "Open the External File Manager.");
             toolTips.SetToolTip(complevelSelector, "Used to emulate a specific engine.\nOnly works for ports that support the -complevel parameter.");
