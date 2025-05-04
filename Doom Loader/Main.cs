@@ -618,7 +618,7 @@ namespace Doom_Loader
 
             #region Tooltips
             complevelSelector.SelectedIndex = 0;
-            toolTips.SetToolTip(iwadBox, "Select your desired IWAD. You can change the IWAD folder in Settings.");
+            toolTips.SetToolTip(iwadBox, "Select your desired IWAD.\nYou can change the IWAD folder in Settings.");
             toolTips.SetToolTip(pwadManagerButton, "Open the External File Manager.");
             toolTips.SetToolTip(complevelSelector, "Used to emulate a specific engine.\nOnly works for ports that support the -complevel parameter.");
             toolTips.SetToolTip(extraParamsTextBox, "Add in any extra parameters you may want.\nRight click to add a file path to the end of the text.");
