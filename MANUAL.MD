@@ -69,7 +69,7 @@ Note: The placement of `.deh` and `.bex` patches don't matter too much. They are
 They're, however, loaded in the order they appear in the list.
 
 ## 3. Settings Overview
-You can find your Settings Folder by going into `Settings > Open Minty Launcher Folder`. There, you'll find your presets, port database, complevels, and actual settings files.
+This covers what each setting in the Settings window does.
 
 ### 3a. Presets
 These are settings relating to presets.
@@ -112,7 +112,7 @@ These are settings related to being able to more easily use the same executable 
 	This will close the launcher after the source port has been closed.
 
 ## 4. Settings Files
-You can access your settings files (as well as presets) by going into `Settings > Open Minty Launcher Folder`
+You can access your settings files (as well as presets) by going into `Settings > Open Settings Folder`
 
 ### 4a. Port Database
 Each entry is in this format: `source port file name`;`source port actual name`.
