@@ -313,7 +313,7 @@ namespace Doom_Loader
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             if (ApplicationVariables.rpc) RPCClient.client.Dispose(); // Kill RPC Connection
 
-            // Move window visible above all windows
+            // Return focus to Minty Launcher
             if (ApplicationVariables.showOnQuit)
                 this.Focus();
         }

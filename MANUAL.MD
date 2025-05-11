@@ -89,18 +89,7 @@ These are settings related to being able to more easily use the same executable 
 	
 	This will move all files from your appdata to a folder called MintyLauncher. The launcher will then read from this folder instead of appdata.
 	
-### 3c. Window
-These are settings relating to Minty Launcher's main window.
-
-*Close On Play*:
-
-	This will close the launcher after the source port has been closed.
-	
-*Show Window On Quit*:
-
-	This will make the window appear above all windows once the source port has been closed.
-	
-### 3d. Discord Rich Presence
+### 3c. Discord Rich Presence
 
 *Enable RPC Integration*
 	
@@ -112,11 +101,15 @@ These are settings relating to Minty Launcher's main window.
 	The limit to how many individual file files can be shown on the Discord Activity. If it exceeds the limit, it will show "+ x more" at the end.
 	Setting it to 0 disables this functionality.
 	
-### 3e. Ungrouped
+### 3d. Ungrouped
 	
 *Set IWADs Folder*:
 
 	This will allow you to change where your IWADs folder is located.
+	
+*Close On Play*:
+
+	This will close the launcher after the source port has been closed.
 
 ## 4. Settings Files
 You can access your settings files (as well as presets) by going into `Settings > Open Minty Launcher Folder`

@@ -33,14 +33,12 @@
             closeBox = new CheckBox();
             aboutButton = new Button();
             openPresetsLocation = new Button();
-            topMostBox = new CheckBox();
             defaultBox = new CheckBox();
             customPresetBox = new CheckBox();
             label1 = new Label();
             button2 = new Button();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
-            groupBox3 = new GroupBox();
             toolTips = new ToolTip(components);
             iwadFolderButton = new Button();
             iwadFolderDialog = new FolderBrowserDialog();
@@ -51,7 +49,6 @@
             label2 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)rpcFilesTrackBar).BeginInit();
             groupBox4.SuspendLayout();
             SuspendLayout();
@@ -73,7 +70,7 @@
             // 
             closeBox.AutoSize = true;
             closeBox.BackColor = SystemColors.Control;
-            closeBox.Location = new Point(6, 22);
+            closeBox.Location = new Point(228, 138);
             closeBox.Name = "closeBox";
             closeBox.Size = new Size(97, 19);
             closeBox.TabIndex = 1;
@@ -100,17 +97,6 @@
             openPresetsLocation.Text = "Open Settings Folder";
             openPresetsLocation.UseVisualStyleBackColor = true;
             openPresetsLocation.Click += ShowPresets;
-            // 
-            // topMostBox
-            // 
-            topMostBox.AutoSize = true;
-            topMostBox.Location = new Point(6, 47);
-            topMostBox.Name = "topMostBox";
-            topMostBox.Size = new Size(157, 19);
-            topMostBox.TabIndex = 4;
-            topMostBox.Text = "Show Window After Quit";
-            topMostBox.UseVisualStyleBackColor = true;
-            topMostBox.CheckedChanged += ShowWindowAfterQuit;
             // 
             // defaultBox
             // 
@@ -175,20 +161,9 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Presets";
             // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(closeBox);
-            groupBox3.Controls.Add(topMostBox);
-            groupBox3.Location = new Point(228, 12);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(200, 77);
-            groupBox3.TabIndex = 11;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Window";
-            // 
             // iwadFolderButton
             // 
-            iwadFolderButton.Location = new Point(12, 196);
+            iwadFolderButton.Location = new Point(228, 163);
             iwadFolderButton.Name = "iwadFolderButton";
             iwadFolderButton.Size = new Size(116, 23);
             iwadFolderButton.TabIndex = 12;
@@ -200,7 +175,7 @@
             // 
             rpcFilesTrackBar.LargeChange = 0;
             rpcFilesTrackBar.Location = new Point(1, 68);
-            rpcFilesTrackBar.Maximum = ApplicationVariables.MAX_RPC_FILES_SHOWN;
+            rpcFilesTrackBar.Maximum = 8;
             rpcFilesTrackBar.Name = "rpcFilesTrackBar";
             rpcFilesTrackBar.Size = new Size(132, 45);
             rpcFilesTrackBar.TabIndex = 13;
@@ -214,7 +189,7 @@
             groupBox4.Controls.Add(label2);
             groupBox4.Controls.Add(rpcFilesTrackBar);
             groupBox4.Controls.Add(rcpBox);
-            groupBox4.Location = new Point(228, 101);
+            groupBox4.Location = new Point(228, 12);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(200, 120);
             groupBox4.TabIndex = 14;
@@ -228,7 +203,7 @@
             label4.Name = "label4";
             label4.Size = new Size(13, 15);
             label4.TabIndex = 16;
-            label4.Text = ApplicationVariables.MAX_RPC_FILES_SHOWN.ToString();
+            label4.Text = "8";
             // 
             // label3
             // 
@@ -253,9 +228,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(440, 262);
+            Controls.Add(closeBox);
             Controls.Add(groupBox4);
             Controls.Add(iwadFolderButton);
-            Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label1);
@@ -274,8 +249,6 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)rpcFilesTrackBar).EndInit();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
@@ -289,14 +262,12 @@
         private CheckBox closeBox;
         private Button aboutButton;
         private Button openPresetsLocation;
-        private CheckBox topMostBox;
         private CheckBox defaultBox;
         private CheckBox customPresetBox;
         private Label label1;
         private Button button2;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private GroupBox groupBox3;
         private ToolTip toolTips;
         private Button iwadFolderButton;
         private FolderBrowserDialog iwadFolderDialog;

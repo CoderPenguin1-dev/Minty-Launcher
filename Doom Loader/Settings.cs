@@ -53,7 +53,6 @@ namespace Doom_Loader
         {
             rcpBox.Checked = ApplicationVariables.rpc;
             closeBox.Checked = ApplicationVariables.closeOnPlay;
-            topMostBox.Checked = ApplicationVariables.showOnQuit;
             defaultBox.Checked = ApplicationVariables.useDefault;
             customPresetBox.Checked = ApplicationVariables.customPreset;
             rpcFilesTrackBar.Value = ApplicationVariables.rpcFilesShown;
@@ -67,7 +66,6 @@ namespace Doom_Loader
             toolTips.SetToolTip(button2, "Moves all settings to a local folder called MintyLauncher. Will read/write settings in there.");
             toolTips.SetToolTip(openPresetsLocation, "Open the currently-used Minty Launcher folder.");
             toolTips.SetToolTip(closeBox, "Closes Minty Launcher after the port has been closed.");
-            toolTips.SetToolTip(topMostBox, "Makes Minty Launcher the top window after the port has been closed.");
             toolTips.SetToolTip(customPresetBox, "Provide a file dialog when loading/saving presets.");
             toolTips.SetToolTip(defaultBox, @"Makes an Settings Folder preset titled ""Default"" load on launch of Minty Launcher.");
             toolTips.SetToolTip(iwadFolderButton, ApplicationVariables.IWADFolderPath);
@@ -90,13 +88,6 @@ namespace Doom_Loader
         private void CloseOnPlay(object sender, EventArgs e)
         {
             ApplicationVariables.closeOnPlay = closeBox.Checked;
-            string path = CheckForWhichConfig();
-            RewriteAppDataConfig(path);
-        }
-
-        private void ShowWindowAfterQuit(object sender, EventArgs e)
-        {
-            ApplicationVariables.showOnQuit = topMostBox.Checked;
             string path = CheckForWhichConfig();
             RewriteAppDataConfig(path);
         }
