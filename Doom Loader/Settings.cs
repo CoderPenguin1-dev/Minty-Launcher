@@ -27,7 +27,7 @@ namespace Doom_Loader
         {
             File.WriteAllLines(path, [ ApplicationVariables.rpc.ToString(),
                 ApplicationVariables.closeOnPlay.ToString(),
-                ApplicationVariables.topMost.ToString(),
+                ApplicationVariables.showOnQuit.ToString(),
                 ApplicationVariables.useDefault.ToString(),
                 ApplicationVariables.customPreset.ToString(),
                 ApplicationVariables.IWADFolderPath.ToString(),
@@ -53,7 +53,7 @@ namespace Doom_Loader
         {
             rcpBox.Checked = ApplicationVariables.rpc;
             closeBox.Checked = ApplicationVariables.closeOnPlay;
-            topMostBox.Checked = ApplicationVariables.topMost;
+            topMostBox.Checked = ApplicationVariables.showOnQuit;
             defaultBox.Checked = ApplicationVariables.useDefault;
             customPresetBox.Checked = ApplicationVariables.customPreset;
             rpcFilesTrackBar.Value = ApplicationVariables.rpcFilesShown;
@@ -96,7 +96,7 @@ namespace Doom_Loader
 
         private void ShowWindowAfterQuit(object sender, EventArgs e)
         {
-            ApplicationVariables.topMost = topMostBox.Checked;
+            ApplicationVariables.showOnQuit = topMostBox.Checked;
             string path = CheckForWhichConfig();
             RewriteAppDataConfig(path);
         }

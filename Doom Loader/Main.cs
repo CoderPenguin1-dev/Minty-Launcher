@@ -314,11 +314,8 @@ namespace Doom_Loader
             if (ApplicationVariables.rpc) RPCClient.client.Dispose(); // Kill RPC Connection
 
             // Move window visible above all windows
-            if (ApplicationVariables.topMost)
-            {
-                this.TopMost = true;
-                this.TopMost = false;
-            }
+            if (ApplicationVariables.showOnQuit)
+                this.Focus();
         }
 
         #region Presets
@@ -588,7 +585,7 @@ namespace Doom_Loader
             #region Settings
             ApplicationVariables.rpc = bool.Parse(settings[0]);
             ApplicationVariables.closeOnPlay = bool.Parse(settings[1]);
-            ApplicationVariables.topMost = bool.Parse(settings[2]);
+            ApplicationVariables.showOnQuit = bool.Parse(settings[2]);
             ApplicationVariables.useDefault = bool.Parse(settings[3]);
             ApplicationVariables.customPreset = bool.Parse(settings[4]);
             if (ApplicationVariables.customPreset)
