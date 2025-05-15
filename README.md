@@ -9,7 +9,7 @@ The launcher also has Discord Rich Presence support so people can see what you'r
 
 Minty Launcher only targets Windows, and only has been tested on Windows 10 and 11. Minty Launcher through Wine has been unsuccessful.
 
-**NOTICE** Versions of Minty Launcher are receiving false positives. Details in this commit: https://github.com/PENGUINCODER1/Minty-Launcher/issues/2
+**NOTICE** Versions of Minty Launcher are receiving false positives. Details in this issue: https://github.com/PENGUINCODER1/Minty-Launcher/issues/2
 
 ## Useful Links
 * [Downloads](https://github.com/PENGUINCODER1/Minty-Launcher/releases)
