@@ -6,6 +6,8 @@ using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using DiscordRPC;
 using System.Linq;
+using System.Windows.Forms;
+using System.Drawing.Imaging.Effects;
 
 namespace Doom_Loader
 {
@@ -14,6 +16,7 @@ namespace Doom_Loader
         public Main()
         {
             InitializeComponent();
+            TopMost = true;
         }
 
         private static bool boot = true; // Used for calling LoadPresets() in AppDataInit() to prevent some odd bug.
@@ -311,11 +314,7 @@ namespace Doom_Loader
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            if (ApplicationVariables.rpc) RPCClient.client.Dispose(); // Kill RPC Connection
-
-            // Return focus to Minty Launcher
-            if (ApplicationVariables.showOnQuit)
-                this.Focus();
+            if (ApplicationVariables.rpc) RPCClient.client.Dispose(); // Kill RPC Connection.
         }
 
         #region Presets
