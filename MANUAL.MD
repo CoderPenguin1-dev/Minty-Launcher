@@ -42,7 +42,11 @@ The IWAD and Complevel selectors allow you to select which IWAD and source port 
 
 The *Extra Parameters* box allows you to type in any extra parameters you wish to pass along to the source port, such as `-playdemo` to play a recorded demo.
 You can also right-click the box to insert a file path easier.
-You can also insert an `*` into the box to use Minty Launcher's directory instead of the source port's. Example: `-record */demos/demo`.
+You can also insert an `*` into the box to insert the alternate directory (details below). Example: `-record */demos/demo`.
+
+*Use Source Port As CWD* Setting **ON**: It will use Minty Launcher's folder.
+
+*Use Source Port As CWD* Setting **OFF**: It will use the source port's folder.
 
 The *Select Port* button allows you to select which port you wish to use.
 You can also right-click the button to give all information about the currently selected port. This includes the file path of the port.
@@ -84,7 +88,13 @@ These are settings related to being able to more easily use the same executable 
 *Ask For Preset Location*:
 
 	This will replace the Load Preset Box with a button instead. Both the Load and Save buttons will pop up with a file dialog instead.
-	
+
+*Use Source Port As CWD*:
+
+	This will use the source port's folder as the working directory when launching it. 
+	This will also have any `*` in the Extra Parameters textbox insert Minty Launcher's folder when this setting is one. It will use the Source Port's folder when it's off.
+	Recommended to keep this on.
+
 *Make Settings Portable*:
 	
 	This will move all files from your appdata to a folder called MintyLauncher. The launcher will then read from this folder instead of appdata.
