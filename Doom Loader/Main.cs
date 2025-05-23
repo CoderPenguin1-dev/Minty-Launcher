@@ -16,7 +16,6 @@ namespace Doom_Loader
         public Main()
         {
             InitializeComponent();
-            TopMost = true;
         }
 
         private static bool boot = true; // Used for calling LoadPresets() in AppDataInit() to prevent some odd bug.
