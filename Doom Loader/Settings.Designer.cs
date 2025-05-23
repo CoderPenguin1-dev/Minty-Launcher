@@ -38,6 +38,7 @@
             label1 = new Label();
             button2 = new Button();
             groupBox1 = new GroupBox();
+            useSourcePort = new CheckBox();
             groupBox2 = new GroupBox();
             toolTips = new ToolTip(components);
             iwadFolderButton = new Button();
@@ -131,7 +132,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(6, 50);
+            button2.Location = new Point(6, 77);
             button2.Name = "button2";
             button2.Size = new Size(165, 23);
             button2.TabIndex = 8;
@@ -141,14 +142,26 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(useSourcePort);
             groupBox1.Controls.Add(customPresetBox);
             groupBox1.Controls.Add(button2);
             groupBox1.Location = new Point(12, 101);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(210, 87);
+            groupBox1.Size = new Size(210, 113);
             groupBox1.TabIndex = 9;
             groupBox1.TabStop = false;
             groupBox1.Text = "Portability";
+            // 
+            // useSourcePort
+            // 
+            useSourcePort.AutoSize = true;
+            useSourcePort.Location = new Point(6, 48);
+            useSourcePort.Name = "useSourcePort";
+            useSourcePort.Size = new Size(155, 19);
+            useSourcePort.TabIndex = 9;
+            useSourcePort.Text = "Use Source Port As CWD";
+            useSourcePort.UseVisualStyleBackColor = true;
+            useSourcePort.CheckedChanged += UseSourcePortAsCWD;
             // 
             // groupBox2
             // 
@@ -276,5 +289,6 @@
         private Label label2;
         private Label label4;
         private Label label3;
+        private CheckBox useSourcePort;
     }
 }

@@ -27,7 +27,7 @@ namespace Doom_Loader
         {
             File.WriteAllLines(path, [ ApplicationVariables.rpc.ToString(),
                 ApplicationVariables.closeOnPlay.ToString(),
-                ApplicationVariables.showOnQuit.ToString(),
+                ApplicationVariables.useSourcePortDirectory.ToString(),
                 ApplicationVariables.useDefault.ToString(),
                 ApplicationVariables.customPreset.ToString(),
                 ApplicationVariables.IWADFolderPath.ToString(),
@@ -56,6 +56,7 @@ namespace Doom_Loader
             defaultBox.Checked = ApplicationVariables.useDefault;
             customPresetBox.Checked = ApplicationVariables.customPreset;
             rpcFilesTrackBar.Value = ApplicationVariables.rpcFilesShown;
+            useSourcePort.Checked = ApplicationVariables.useSourcePortDirectory;
             if (!rcpBox.Checked)
                 rpcFilesTrackBar.Enabled = false;
 
@@ -116,6 +117,13 @@ namespace Doom_Loader
                 RewriteAppDataConfig(path);
                 toolTips.SetToolTip(iwadFolderButton, ApplicationVariables.IWADFolderPath);
             }
+        }
+
+        private void UseSourcePortAsCWD(object sender, EventArgs e)
+        {
+            ApplicationVariables.useSourcePortDirectory = useSourcePort.Checked;
+            string path = CheckForWhichConfig();
+            RewriteAppDataConfig(path);
         }
 
         private void RPCAmountOfFilesShown(object sender, EventArgs e)

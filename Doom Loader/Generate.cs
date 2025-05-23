@@ -14,7 +14,7 @@ public static class Generate
         [ 
             ApplicationVariables.rpc.ToString(),
             ApplicationVariables.closeOnPlay.ToString(),
-            ApplicationVariables.showOnQuit.ToString(),
+            ApplicationVariables.useSourcePortDirectory.ToString(),
             ApplicationVariables.useDefault.ToString(),
             ApplicationVariables.customPreset.ToString(),
             ApplicationVariables.rpcFilesShown.ToString(),

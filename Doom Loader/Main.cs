@@ -266,15 +266,20 @@ namespace Doom_Loader
 
             // Argument Setup
             string portArguments = "";
+            string replaceWithDirectory;
+            if (ApplicationVariables.useSourcePortDirectory) replaceWithDirectory = Environment.CurrentDirectory;
+            else replaceWithDirectory = Path.GetDirectoryName(ApplicationVariables.sourcePort);
+
 
             // Extra Paramaters
             if (extraParamsTextBox.Text != "")
             {
                 portArguments += ApplicationVariables.arguments
-                    .Replace("*", Environment.CurrentDirectory) // Check if there's any Minty CWD characters.
+                    .Replace("*", replaceWithDirectory) // Check if there's any Minty CWD characters.
                     .Replace('\\', '/') + " "; // Replace all back-slashes with forward-slashes to prevent bug where it'll think it's an escape character.
             }
             if (ApplicationVariables.complevel != "-") portArguments += $"-complevel {ApplicationVariables.complevel} "; // Complevel
+            MessageBox.Show(portArguments);
 
             // Check if there was a DeHacked patch
             List<string> extFileStore = []; // Used so the PWAD adder code doesn't need to iterate through the useless DEH and BEX files later.
@@ -299,12 +304,15 @@ namespace Doom_Loader
             // Start Port
             try
             {
+                string workingDirectory;
+                if (ApplicationVariables.useSourcePortDirectory) workingDirectory = Path.GetDirectoryName(ApplicationVariables.sourcePort);
+                else workingDirectory = "";
                 Process.Start(
                     new ProcessStartInfo(ApplicationVariables.sourcePort, portArguments)
                     {
                         CreateNoWindow = false,
                         UseShellExecute = false,
-                        WorkingDirectory = Path.GetDirectoryName(ApplicationVariables.sourcePort)
+                        WorkingDirectory = workingDirectory
                     }).WaitForExit();
                 if (ApplicationVariables.closeOnPlay)
                 {
@@ -583,7 +591,7 @@ namespace Doom_Loader
             #region Settings
             ApplicationVariables.rpc = bool.Parse(settings[0]);
             ApplicationVariables.closeOnPlay = bool.Parse(settings[1]);
-            ApplicationVariables.showOnQuit = bool.Parse(settings[2]);
+            ApplicationVariables.useSourcePortDirectory = bool.Parse(settings[2]);
             ApplicationVariables.useDefault = bool.Parse(settings[3]);
             ApplicationVariables.customPreset = bool.Parse(settings[4]);
             if (ApplicationVariables.customPreset)

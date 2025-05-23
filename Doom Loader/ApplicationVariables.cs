@@ -28,7 +28,7 @@ public static class ApplicationVariables
     public static string IWADFolderPath = string.Empty;
     public static bool closeOnPlay = false;
     public static bool rpc = true;
-    public static bool showOnQuit = false;
+    public static bool useSourcePortDirectory = false;
     public static bool useDefault = true;
     public static bool customPreset = false;
     public static int rpcFilesShown = 2;
