@@ -279,7 +279,6 @@ namespace Doom_Loader
                     .Replace('\\', '/') + " "; // Replace all back-slashes with forward-slashes to prevent bug where it'll think it's an escape character.
             }
             if (ApplicationVariables.complevel != "-") portArguments += $"-complevel {ApplicationVariables.complevel} "; // Complevel
-            MessageBox.Show(portArguments);
 
             // Check if there was a DeHacked patch
             List<string> extFileStore = []; // Used so the PWAD adder code doesn't need to iterate through the useless DEH and BEX files later.
