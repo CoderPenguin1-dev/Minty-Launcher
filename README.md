@@ -22,7 +22,6 @@ Although allowed to do so, I do ask you not to sell forks of Minty Launcher and/
 <details>
 	<summary>Main Window</summary>
 	<img src="Images/mainWindow.png">
-	<p>Using the Port Database to show "Nyan Doom" instead of "nyan-doom"</p>
 </details>
 
 <details>
@@ -59,7 +58,7 @@ cd Properties
 notepad Resources.resx
 ```
 
-Scroll all the way down and edit the number under `<data name="DiscordAPI" xml:space="preserve">` with your API key.
+Scroll all the way down and edit the number under `<data name="DiscordAPI" xml:space="preserve">` with your Application ID.
 Save and close Notepad.
 ```
 cd ..
