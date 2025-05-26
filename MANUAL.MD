@@ -38,7 +38,7 @@ Now, select your desired IWAD and complevel and hit *Play* and it should boot yo
 ### 2a. The Main Window
 The main window has several buttons and hidden gimmicks so it may be confusing at first.
 
-The IWAD and Complevel selectors allow you to select which IWAD and source port you wish to emulate. Please note the latter is only usable in ports that support such features like DSDA-Doom.
+The IWAD and Complevel selectors allow you to select which IWAD and source port you wish to emulate. Please note the latter is only usable in ports that support such features like DSDA-Doom and Woof.
 
 The *Extra Parameters* box allows you to type in any extra parameters you wish to pass along to the source port, such as `-playdemo` to play a recorded demo.
 You can also right-click the box to insert a file path easier.
@@ -62,6 +62,9 @@ If the *Ask For Preset Location* setting is **OFF**, you can right-click the but
 
 ### 2b. The External File Manager
 You can drag files onto this window to quickly add them to your External File List. You can also hit the **+** button to add in an external file to the List as well.
+
+You can right-click the **+** button to instead merge any files. This is meant for ports that emulate the original engine exactly, like Chocolate Doom or Minty Doom. 
+This feature is otherwise unused.
 
 If you need to see the file paths of each file, you can right-click the External File List. Selecting no files will show every file path. Selecting multiple files will show only those file paths.
 
