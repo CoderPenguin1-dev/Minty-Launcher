@@ -60,7 +60,7 @@
             addItemButton.TabIndex = 1;
             addItemButton.Text = "+";
             addItemButton.UseVisualStyleBackColor = true;
-            addItemButton.Click += AddPWAD;
+            addItemButton.MouseDown += AddPWAD;
             // 
             // removeItemButton
             // 

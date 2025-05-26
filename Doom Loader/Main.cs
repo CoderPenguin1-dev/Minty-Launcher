@@ -280,25 +280,37 @@ namespace Doom_Loader
             }
             if (ApplicationVariables.complevel != "-") portArguments += $"-complevel {ApplicationVariables.complevel} "; // Complevel
 
-            // Check if there was a DeHacked patch
-            List<string> extFileStore = []; // Used so the PWAD adder code doesn't need to iterate through the useless DEH and BEX files later.
+            // Check if there was a DeHacked patch or merged file.
+            List<string> extFileStore = [];
+            List<string> mergeFilesStore = [];
             for (int i = 0; i < ApplicationVariables.externalFiles.Length; i++)
             {
                 if (ApplicationVariables.externalFiles[i].EndsWith(".deh", StringComparison.CurrentCultureIgnoreCase))
                     portArguments += $"-deh \"{ApplicationVariables.externalFiles[i]}\" ";
+
                 else if (ApplicationVariables.externalFiles[i].EndsWith(".bex", StringComparison.CurrentCultureIgnoreCase))
                     portArguments += $"-bex \"{ApplicationVariables.externalFiles[i]}\" ";
-                else // Not an DEH/BEX patch? Shove it along with the external files.
+
+                else if (ApplicationVariables.externalFiles[i].Contains("<M>")) // Check if the file is merged instead of just added.
+                    mergeFilesStore.Add(ApplicationVariables.externalFiles[i].Remove(0,3));
+
+                else // Isn't merged and isn't a patch? Lump it with the rest!
                     extFileStore.Add(ApplicationVariables.externalFiles[i]);
             }
 
             // Check if PWAD was selected
+            portArguments += $"-iwad \"{ApplicationVariables.IWAD}\"";
             if (extFileStore.Count != 0)
             {
-                portArguments += $"-iwad \"{ApplicationVariables.IWAD}\" -file ";
-                foreach (string pwad in extFileStore) portArguments += $"\"{pwad}\" ";
+                portArguments += $" -file";
+                foreach (string pwad in extFileStore) portArguments += $" \"{pwad}\"";
             }
-            else portArguments += $"-iwad \"{ApplicationVariables.IWAD}\"";
+
+            if (mergeFilesStore.Count != 0)
+            {
+                portArguments += " -merge";
+                foreach (string pwad in mergeFilesStore) portArguments += $" \"{pwad}\"";
+            }
 
             // Start Port
             try

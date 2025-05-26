@@ -23,10 +23,15 @@ namespace Doom_Loader
             // Load PWADs into list
             if (ApplicationVariables.externalFiles.Length != 0)
                 foreach (string PWAD in ApplicationVariables.externalFiles)
-                    pwadList.Items.Add(Path.GetFileName(PWAD));
+                {
+                    if (PWAD.Contains("<M>"))
+                        pwadList.Items.Add("<M>" + Path.GetFileName(PWAD));
+                    else
+                        pwadList.Items.Add(Path.GetFileName(PWAD));
+                }
 
             // Setup tool tips
-            toolTips.SetToolTip(addItemButton, "Add File(s).");
+            toolTips.SetToolTip(addItemButton, "Add File(s).\nRight-click to use -merge instead.");
             toolTips.SetToolTip(removeItemButton, "Remove File(s).");
             toolTips.SetToolTip(reorderUpButton, "Reorder Selected Item Up.");
             toolTips.SetToolTip(reorderDownButton, "Reorder Selected Item Down.");
@@ -42,7 +47,10 @@ namespace Doom_Loader
             pwadList.Items.Clear();
             foreach (string PWAD in ApplicationVariables.externalFiles)
             {
-                pwadList.Items.Add(Path.GetFileName(PWAD));
+                if (PWAD.Contains("<M>"))
+                    pwadList.Items.Add("<M>" + Path.GetFileName(PWAD));
+                else
+                    pwadList.Items.Add(Path.GetFileName(PWAD));
             }
 
             // Disable reorder buttons and remove button.
@@ -52,16 +60,22 @@ namespace Doom_Loader
         }
 
         #region PWAD Addition & Removal
-        private void AddPWAD(object sender, EventArgs e)
+        private void AddPWAD(object sender, MouseEventArgs e)
         {
-            if (addPWADDialog.ShowDialog() != DialogResult.Cancel)
+            if (e.Button != MouseButtons.Middle)
             {
-                foreach (string PWAD in addPWADDialog.FileNames)
+                if (addPWADDialog.ShowDialog() != DialogResult.Cancel)
                 {
-                    List<string> PWADs = new(ApplicationVariables.externalFiles.ToList()) { PWAD }; // Turn the original array into a usable list and add in the PWAD.
-                    ApplicationVariables.externalFiles = [.. PWADs]; // Merge the list into the array.
+                    string modified = "";
+                    if (e.Button == MouseButtons.Right)
+                        modified = "<M>";
+                    foreach (string PWAD in addPWADDialog.FileNames)
+                    {
+                        List<string> PWADs = new([.. ApplicationVariables.externalFiles]) { modified + PWAD }; // Turn the original array into a usable list and add in the PWAD.
+                        ApplicationVariables.externalFiles = [.. PWADs]; // Merge the list into the array.
+                    }
+                    Reload();
                 }
-                Reload();
             }
         }
 
