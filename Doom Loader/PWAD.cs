@@ -47,6 +47,7 @@ namespace Doom_Loader
             pwadList.Items.Clear();
             foreach (string PWAD in ApplicationVariables.externalFiles)
             {
+                // Make sure the merge indicator stays when removing the filepath.
                 if (PWAD.Contains("<M>"))
                     pwadList.Items.Add("<M>" + Path.GetFileName(PWAD));
                 else
@@ -215,7 +216,10 @@ namespace Doom_Loader
                 {
                     foreach (string file in files)
                     {
-                        output += file;
+                        // Remove the merge indicator if there is one.
+                        if (file.StartsWith("<M>"))
+                            output += file.Remove(0, 3);
+                        else output += file;
                         if (files.IndexOf(file) != files.Count - 1)
                             output += "\n\n";
                     }
