@@ -54,6 +54,7 @@ namespace Doom_Loader
                         complevelFound = true;
                     }
                 }
+
                 if (!complevelFound)
                 {
                     MessageBox.Show($"Can't Find Complevel {ApplicationVariables.complevel}. Selecting no complevel.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -109,7 +110,7 @@ namespace Doom_Loader
             catch { }
         }
 
-        private void RefreshIWAD(object sender, EventArgs e)
+        private void RefreshIWADsBox(object sender, EventArgs e)
         {
             try
             {
@@ -151,8 +152,8 @@ namespace Doom_Loader
             string path = FindMintyLauncherFolder();
             return File.ReadAllLines($"{path}{ApplicationVariables.COMPLEVEL_FILE}");
         }
-
-        private void RefreshComplevels(object sender, EventArgs e)
+        
+        private void RefreshComlevelsBox(object sender, EventArgs e)
         {
             // Check if the user already has a complevel selected.
             // Save it for later if they do.
@@ -270,7 +271,6 @@ namespace Doom_Loader
             if (ApplicationVariables.useSourcePortDirectory) replaceWithDirectory = Environment.CurrentDirectory;
             else replaceWithDirectory = Path.GetDirectoryName(ApplicationVariables.sourcePort);
 
-
             // Extra Paramaters
             if (extraParamsTextBox.Text != "")
             {
@@ -351,7 +351,7 @@ namespace Doom_Loader
             CheckPortDatabase();
             if (args.Length == 5)
             {
-                RefreshIWAD(new object(), new EventArgs());
+                RefreshIWADsBox(new object(), new EventArgs());
                 int iwadIndex = -1;
                 for (int i = 0; i < iwadBox.Items.Count; i++)
                 {
@@ -516,7 +516,7 @@ namespace Doom_Loader
         }
 
         // Settings, init complevel ComboBox and tooltips, and check command line arguments.
-        // For --info and -i, check Program.cs
+        // For --info and -i, check the Program.cs file.
         private void AppDataInit(object sender, EventArgs e)
         {
             playButtonUpdateTimer.Start();
@@ -623,6 +623,10 @@ namespace Doom_Loader
             complevelSelector.SelectedIndex = 0;
             #endregion
 
+            RefreshIWADsBox(sender, e);
+            RefreshComlevelsBox(sender, e);
+            RefreshPresetBox(sender, e);
+
             // Check if there is the Default preset.
             if (File.Exists($"{path}Presets\\Default{ApplicationVariables.PRESET_EXTENSION}") && ApplicationVariables.useDefault)
             {
@@ -713,7 +717,7 @@ namespace Doom_Loader
 
                         case "--iwad" or "-w":
                             i++;
-                            RefreshIWAD(sender, e);
+                            RefreshIWADsBox(sender, e);
 
                             int iwadIndex = -1;
                             // Why is x at 0? Well, I wanted the user to be able to specify "None" to outright tell a preset to not use an IWAD.
