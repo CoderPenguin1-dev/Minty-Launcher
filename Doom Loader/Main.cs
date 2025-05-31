@@ -617,14 +617,15 @@ namespace Doom_Loader
             #endregion
 
             #region Complevels
+            // Add contents into the Complevels dropdown.
             string[] complevels = GetComplevels();
             foreach (string complevel in complevels)
                 complevelSelector.Items.Add(complevel.Split(";")[0]);
             complevelSelector.SelectedIndex = 0;
             #endregion
 
+            // Add contents into the other two dropdowns.
             RefreshIWADsBox(sender, e);
-            RefreshComlevelsBox(sender, e);
             RefreshPresetBox(sender, e);
 
             // Check if there is the Default preset.
