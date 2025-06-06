@@ -46,7 +46,8 @@ public static class Generate
             "odamex.exe;Odamex\n" +
             "doomretro.exe;Doom Retro\n" +
             "EDGE.exe;3DGE/EDGE\n" +
-            "Doomsday.exe;Doomsday Engine");
+            "Doomsday.exe;Doomsday Engine\n" +
+            "eternity.exe;Eternity Engine");
     }
 
     public static void Complevel(string path)
