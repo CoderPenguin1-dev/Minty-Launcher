@@ -41,6 +41,7 @@
             textBox1.TabIndex = 0;
             textBox1.TabStop = false;
             textBox1.TextAlign = HorizontalAlignment.Center;
+            textBox1.KeyDown += textBox1_KeyDown;
             // 
             // button1
             // 

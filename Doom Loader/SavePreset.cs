@@ -32,5 +32,19 @@ namespace Doom_Loader
         {
             ApplicationVariables.presetName = string.Empty;
         }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (textBox1.Text.Length > 0)
+                {
+                    string path = $"{Main.FindMintyLauncherFolder()}Presets\\{textBox1.Text}{ApplicationVariables.PRESET_EXTENSION}";
+                    Main.SavePreset(path);
+                    ApplicationVariables.presetName = textBox1.Text;
+                    this.Close();
+                }
+            }
+        }
     }
 }

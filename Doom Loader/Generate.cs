@@ -47,7 +47,16 @@ public static class Generate
             "doomretro.exe;Doom Retro\n" +
             "EDGE.exe;3DGE/EDGE\n" +
             "Doomsday.exe;Doomsday Engine\n" +
-            "eternity.exe;Eternity Engine");
+            "eternity.exe;Eternity Engine\n" +
+            "inter-doom.exe;International Doom\n" +
+            "inter-heretic.exe;International Heretic\n" +
+            "inter-hexen.exe;International Hexen" +
+            "chocolate-heretic.exe;Chocolate Heretic\n" +
+            "chocolate-hexen.exe;Chocolate Hexen\n" +
+            "chocolate-strife.exe;Chocolate Strife\n" +
+            "crispy-heretic.exe;Crispy Heretic\n" +
+            "crispy-hexen.exe;Crispy Hexen\n" +
+            "crispy-strife.exe;Crispy Strife");
     }
 
     public static void Complevel(string path)
