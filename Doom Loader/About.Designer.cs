@@ -40,7 +40,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(41, 3);
+            pictureBox1.Location = new Point(-49, 7);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(228, 203);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -50,16 +50,17 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(113, 202);
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(129, 9);
             label1.Name = "label1";
-            label1.Size = new Size(90, 15);
+            label1.Size = new Size(157, 30);
             label1.TabIndex = 1;
             label1.Text = "Minty Launcher";
             // 
             // version
             // 
             version.AutoSize = true;
-            version.Location = new Point(118, 224);
+            version.Location = new Point(131, 39);
             version.Name = "version";
             version.Size = new Size(75, 15);
             version.TabIndex = 2;
@@ -68,15 +69,15 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(68, 245);
+            label2.Location = new Point(129, 79);
             label2.Name = "label2";
-            label2.Size = new Size(178, 15);
+            label2.Size = new Size(202, 75);
             label2.TabIndex = 3;
-            label2.Text = "Programmed by CoderPenguin1";
+            label2.Text = "A launcher for id Tech 1 source ports,\r\nprimarily vanilla-style ports.\r\n\r\nProgrammed by CoderPenguin1.\r\n\r\n";
             // 
             // button1
             // 
-            button1.Location = new Point(68, 267);
+            button1.Location = new Point(129, 178);
             button1.Name = "button1";
             button1.Size = new Size(178, 23);
             button1.TabIndex = 4;
@@ -88,7 +89,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(311, 302);
+            ClientSize = new Size(339, 213);
             Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(version);
