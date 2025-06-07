@@ -230,7 +230,7 @@ namespace Doom_Loader
                     state = $"{Path.GetFileName(ApplicationVariables.IWAD)}";
                 else
                 {
-                    state = $"{Path.GetFileName(ApplicationVariables.IWAD)} | ";
+                    state = $"{Path.GetFileName(ApplicationVariables.IWAD)} [";
                     state += Path.GetFileName(ApplicationVariables.externalFiles[0]);
                     if (ApplicationVariables.externalFiles.Length > 1)
                     {
@@ -242,12 +242,13 @@ namespace Doom_Loader
                     }
                     if (ApplicationVariables.externalFiles.Length > ApplicationVariables.rpcFilesShown)
                         state += $", + {ApplicationVariables.externalFiles.Length - ApplicationVariables.rpcFilesShown} more";
+                    state += "]";
                 }
 
                 RPCClient.client.SetPresence(new RichPresence()
                 {
                     State = state,
-                    Details = $"Port: {portButton.Text}",
+                    Details = $"Playing in {portButton.Text}",
                     Timestamps = new()
                     {
                         Start = Timestamps.Now.Start,
