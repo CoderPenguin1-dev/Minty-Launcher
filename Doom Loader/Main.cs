@@ -227,7 +227,12 @@ namespace Doom_Loader
                 // State Setup
                 string state;
                 if (ApplicationVariables.rpcFilesShown == 0 || ApplicationVariables.externalFiles.Length == 0)
-                    state = $"{Path.GetFileName(ApplicationVariables.IWAD)}";
+                {
+                    state = $"{Path.GetFileName(ApplicationVariables.IWAD)} ";
+                    // Show that there's no loaded mods only if showing external files is enabled.
+                    if (ApplicationVariables.rpcFilesShown > 0 && ApplicationVariables.externalFiles.Length == 0)
+                        state += " [Vanilla]";
+                }
                 else
                 {
                     state = $"{Path.GetFileName(ApplicationVariables.IWAD)} [";
