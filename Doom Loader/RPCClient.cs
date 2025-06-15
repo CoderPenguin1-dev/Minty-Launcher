@@ -32,12 +32,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-public static class RPCClient
+internal static class RPCClient
 {
-    public static DiscordRpcClient client;
+    internal static DiscordRpcClient client;
 
     //Called when your application first starts. Sets up RPC
-    public static void Initialize()
+    internal static void Initialize()
     {
         client = new DiscordRpcClient(Resources.DiscordAPI)
         {

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Doom_Loader;
 
-public static class Generate
+internal static class Generate
 {
-    public static void Settings(string path)
+    internal static void Settings(string path)
     {
         File.WriteAllLines($"{path}{ApplicationVariables.SETTINGS_FILE}", 
         [ 
@@ -21,7 +21,7 @@ public static class Generate
         ]);
     }
 
-    public static void PortDatabase(string path)
+    internal static void PortDatabase(string path)
     {
         File.WriteAllText($"{path}{ApplicationVariables.PORTDATABASE_FILE}", 
             "crispy-doom.exe;Crispy Doom\n" +
@@ -59,7 +59,7 @@ public static class Generate
             "crispy-strife.exe;Crispy Strife");
     }
 
-    public static void Complevel(string path)
+    internal static void Complevel(string path)
     {
         File.WriteAllText($"{path}{ApplicationVariables.COMPLEVEL_FILE}",
             "Doom v1.9;2\n" +

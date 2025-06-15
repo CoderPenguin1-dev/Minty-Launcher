@@ -40,13 +40,7 @@ namespace Doom_Loader
         /// <returns>Full path of the used config.</returns>
         private static string CheckForWhichConfig()
         {
-            // Try to find the portable settings file.
-            if (Path.Exists("MintyLauncher"))
-                return $"MintyLauncher\\{ApplicationVariables.SETTINGS_FILE}";
-            // If no portable settings file is found in the CWD,
-            // return the settings file found in Minty Launcher's folder in the user's Roaming AppData folder.
-            else
-                return Environment.ExpandEnvironmentVariables($"%appdata%\\MintyLauncher\\{ApplicationVariables.SETTINGS_FILE}");
+            return Main.FindMintyLauncherFolder() + ApplicationVariables.SETTINGS_FILE;
         }
 
         private void Settings_Load(object sender, EventArgs e)
@@ -108,7 +102,7 @@ namespace Doom_Loader
             ApplicationVariables.restart = true;
         }
 
-        public void SetIWADFolder(object sender, EventArgs e)
+        internal void SetIWADFolder(object sender, EventArgs e)
         {
             if (iwadFolderDialog.ShowDialog() != DialogResult.Cancel)
             {

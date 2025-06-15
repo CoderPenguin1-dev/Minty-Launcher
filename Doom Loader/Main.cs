@@ -87,7 +87,7 @@ namespace Doom_Loader
             else portButton.Text = "Select Port";
         }
 
-        public static string FindMintyLauncherFolder()
+        internal static string FindMintyLauncherFolder()
         {
             // Try to find the portable settings folder.
             if (Path.Exists("MintyLauncher"))
@@ -448,7 +448,7 @@ namespace Doom_Loader
             }
         }
 
-        public static void SavePreset(string path)
+        internal static void SavePreset(string path)
         {
             string file = @"";
             file += $"{ApplicationVariables.arguments}\n";
