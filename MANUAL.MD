@@ -94,8 +94,8 @@ These are settings related to being able to more easily use the same executable 
 
 *Use Source Port As CWD*:
 
-	This will use the source port's folder as the working directory when launching it. 
-	This will also have any `*` in the Extra Parameters textbox insert Minty Launcher's folder when this setting is one. It will use the Source Port's folder when it's off.
+	This will use the source port's folder as the port's working directory when launching it. 
+	This will also have any asterisk in the Extra Parameters textbox insert Minty Launcher's working directory when this setting is on. It will use the Source Port's folder when it's off.
 	Recommended to keep this on.
 
 *Make Settings Portable*:
