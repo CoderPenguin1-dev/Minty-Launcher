@@ -66,6 +66,7 @@ namespace Doom_Loader
             toolTips.SetToolTip(iwadFolderButton, ApplicationVariables.IWADFolderPath);
             toolTips.SetToolTip(rpcFilesTrackBar, "Sets how many individual files can be shown on the Discord Activity.");
             toolTips.SetToolTip(label2, "Sets how many individual files can be shown on the Discord Activity.");
+            toolTips.SetToolTip(useSourcePort, "Use the source port's folder as the port's working directory\nWill have any asterisk in the Extra Parameters textbox insert Minty Launcher's working directory.");
             #endregion
         }
 
