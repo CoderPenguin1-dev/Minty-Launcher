@@ -503,8 +503,17 @@ namespace Doom_Loader
                 if (preset.EndsWith(ApplicationVariables.PRESET_EXTENSION))
                     loadPresetBox.Items.Add(Path.GetFileNameWithoutExtension(preset));
             }
-            if (loadPresetBox.Items.Contains(presetName)) loadPresetBox.SelectedItem = presetName;
-            else loadPresetBox.SelectedItem = null;
+
+            // Set the selected item to the previously selected preset.
+            foreach (string preset in loadPresetBox.Items)
+            {
+                if (preset.Equals(presetName, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    loadPresetBox.SelectedItem = preset;
+                    break;
+                }
+                loadPresetBox.SelectedItem = null;
+            }
         }
         #endregion
 
