@@ -153,7 +153,7 @@ namespace Doom_Loader
             return File.ReadAllLines($"{path}{ApplicationVariables.COMPLEVEL_FILE}");
         }
         
-        private void RefreshComlevelsBox(object sender, EventArgs e)
+        private void RefreshComplevelsBox(object sender, EventArgs e)
         {
             // Check if the user already has a complevel selected.
             // Save it for later if they do.

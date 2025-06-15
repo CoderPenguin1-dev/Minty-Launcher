@@ -162,7 +162,7 @@
             complevelSelector.Name = "complevelSelector";
             complevelSelector.Size = new Size(108, 23);
             complevelSelector.TabIndex = 2;
-            complevelSelector.DropDown += RefreshComlevelsBox;
+            complevelSelector.DropDown += RefreshComplevelsBox;
             complevelSelector.SelectedIndexChanged += ComplevelIndexChanged;
             // 
             // iwadBox
