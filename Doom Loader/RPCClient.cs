@@ -1,10 +1,7 @@
-﻿using DiscordRPC.Logging;
-using DiscordRPC;
-using System.Diagnostics;
-using System.Reflection;
+﻿using DiscordRPC;
+using DiscordRPC.Logging;
 using Doom_Loader.Properties;
-using System.Resources;
-using Doom_Loader;
+using System.Diagnostics;
 
 /*
 Code adapted from https://github.com/Lachee/discord-rpc-csharp

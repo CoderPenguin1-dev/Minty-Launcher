@@ -1,13 +1,6 @@
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 using DiscordRPC;
-using System.Linq;
-using System.Windows.Forms;
-using System.Drawing.Imaging.Effects;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace Doom_Loader
 {

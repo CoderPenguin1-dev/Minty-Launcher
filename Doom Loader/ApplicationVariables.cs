@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Doom_Loader;
+﻿namespace Doom_Loader;
 
 internal static class ApplicationVariables
 {
