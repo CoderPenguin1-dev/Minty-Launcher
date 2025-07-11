@@ -7,16 +7,12 @@
 Minty Launcher focuses mainly on user usability and simplicity. The interface is built to be quickly readable and quick to go through.
 The launcher also has Discord Rich Presence support so people can see what you're playing and what source port you're using.
 
-Minty Launcher only targets Windows, and only has been tested on Windows 10 and 11. Minty Launcher through Wine has been unsuccessful.
-
-**NOTICE** Versions of Minty Launcher are receiving false positives. Details in this issue: https://github.com/PENGUINCODER1/Minty-Launcher/issues/2
+Minty Launcher only targets Windows, and only has been tested on Windows 10 and 11. Wine support is mostly untested.
 
 ## Useful Links
 * [Downloads](https://github.com/PENGUINCODER1/Minty-Launcher/releases)
 * [User's Guide](MANUAL.MD)
 * [MIT License](LICENSE.MD)
-
-Although allowed to do so, I do ask you not to sell forks of Minty Launcher and/or restrict access to the source code.
 
 ## Interface
 <details>
