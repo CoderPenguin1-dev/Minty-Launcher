@@ -830,6 +830,7 @@ namespace Doom_Loader
             }
             // Put here to compensate for both the settings being loaded and also the command line arguments.
             if (ApplicationVariables.rpc) RPCClient.Initialize();
+            else rpcIdle = true; // Done to prevent an exception being thrown if the user changes this setting from off to on.
             if (noGUI)
             {
                 Play(sender, e);
