@@ -61,9 +61,9 @@
             rcpBox.CheckState = CheckState.Checked;
             rcpBox.Location = new Point(6, 23);
             rcpBox.Name = "rcpBox";
-            rcpBox.Size = new Size(151, 19);
+            rcpBox.Size = new Size(167, 19);
             rcpBox.TabIndex = 0;
-            rcpBox.Text = "Enable RPC Intergration";
+            rcpBox.Text = "[*] Enable RPC Intergration";
             rcpBox.UseVisualStyleBackColor = true;
             rcpBox.CheckedChanged += DiscordRichPresence;
             // 

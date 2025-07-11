@@ -1,6 +1,7 @@
 using DiscordRPC;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using static System.Windows.Forms.AxHost;
 
 namespace Doom_Loader
 {
@@ -12,6 +13,7 @@ namespace Doom_Loader
         }
 
         private static bool boot = true; // Used for calling LoadPresets() in AppDataInit() to prevent some odd bug.
+        private static bool rpcIdle = false;
 
         private void ComplevelIndexChanged(object sender, EventArgs e)
         {
@@ -216,7 +218,6 @@ namespace Doom_Loader
             #region Discord RPC
             if (ApplicationVariables.rpc)
             {
-                RPCClient.Initialize();
                 // State Setup
                 string state;
                 if (ApplicationVariables.rpcFilesShown == 0 || ApplicationVariables.externalFiles.Length == 0)
@@ -331,7 +332,7 @@ namespace Doom_Loader
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            if (ApplicationVariables.rpc) RPCClient.client.Dispose(); // Kill RPC Connection.
+            if (ApplicationVariables.rpc) rpcIdle = false;
         }
 
         #region Presets
@@ -521,6 +522,28 @@ namespace Doom_Loader
             if (portButton.Text != "Select Port" && ApplicationVariables.IWAD != string.Empty)
                 playButton.Enabled = true;
             else playButton.Enabled = false;
+
+            if (ApplicationVariables.rpc && !rpcIdle)
+            {
+                RPCClient.client.SetPresence(new RichPresence()
+                {
+                    State = "Idle In Launcher",
+                    Timestamps = new()
+                    {
+                        Start = Timestamps.Now.Start,
+                    },
+                    Assets = new()
+                    {
+                        LargeImageKey = "icon",
+                        LargeImageText = $"Minty Launcher v{GetType().Assembly.GetName().Version.Major}.{GetType().Assembly.GetName().Version.Minor}.{GetType().Assembly.GetName().Version.Build}"
+                    },
+                    Buttons =
+                    [
+                        new DiscordRPC.Button() { Label = "View On GitHub", Url = "https://github.com/PENGUINCODER1/Minty-Launcher" }
+                    ]
+                });
+                rpcIdle = true;
+            }
         }
 
         // Settings, init complevel ComboBox and tooltips, and check command line arguments.
@@ -805,6 +828,8 @@ namespace Doom_Loader
                     }
                 }
             }
+            // Put here to compensate for both the settings being loaded and also the command line arguments.
+            if (ApplicationVariables.rpc) RPCClient.Initialize();
             if (noGUI)
             {
                 Play(sender, e);

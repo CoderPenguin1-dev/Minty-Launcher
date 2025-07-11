@@ -9,6 +9,8 @@ namespace Doom_Loader
             InitializeComponent();
         }
 
+        private static bool restart = false;
+
         /// <summary>
         /// Used for rewriting the config file's settings.
         /// </summary>
@@ -69,6 +71,7 @@ namespace Doom_Loader
             if (ApplicationVariables.rpc)
                 rpcFilesTrackBar.Enabled = true;
             else rpcFilesTrackBar.Enabled = false;
+            restart = true;
         }
 
         private void CloseOnPlay(object sender, EventArgs e)
@@ -90,7 +93,7 @@ namespace Doom_Loader
             ApplicationVariables.customPreset = customPresetBox.Checked;
             string path = CheckForWhichConfig();
             RewriteAppDataConfig(path);
-            ApplicationVariables.restart = true;
+            restart = true;
         }
 
         internal void SetIWADFolder(object sender, EventArgs e)
@@ -152,7 +155,7 @@ namespace Doom_Loader
 
         private void Settings_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (ApplicationVariables.restart)
+            if (restart)
             {
                 MessageBox.Show("Minty Launcher will now close due to one of your settings needing Minty Launcher to restart.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 Environment.Exit(0);

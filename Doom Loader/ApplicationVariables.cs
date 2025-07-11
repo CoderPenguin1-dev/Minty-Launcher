@@ -28,5 +28,4 @@ internal static class ApplicationVariables
     internal static bool useDefault = true;
     internal static bool customPreset = false;
     internal static int rpcFilesShown = 2;
-    internal static bool restart = false;
 }
