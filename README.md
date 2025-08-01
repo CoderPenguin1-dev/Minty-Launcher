@@ -48,7 +48,14 @@ Move into build directory:
 cd "Minty-Launcher/Doom Loader"
 ```
 
-Optionally change the Discord Application ID (for RPC):
+Build & Run Debug binary:
+```
+dotnet run
+```
+
+It should open up afterwards. The build will be in `Doom Loader\bin\Debug\net9.0-windows7.0`.
+
+### Optionally change the Discord Application ID
 ```
 cd Properties
 notepad Resources.resx
@@ -59,10 +66,3 @@ Save and close Notepad.
 ```
 cd ..
 ```
-
-Build & Run Debug binary:
-```
-dotnet run
-```
-
-It should open up afterwards. The build will be in `Doom Loader\bin\Debug\net9.0-windows7.0`.
