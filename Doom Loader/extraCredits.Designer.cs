@@ -32,8 +32,6 @@
             label1 = new Label();
             richTextBox1 = new RichTextBox();
             richTextBox2 = new RichTextBox();
-            pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -62,26 +60,15 @@
             richTextBox2.Name = "richTextBox2";
             richTextBox2.ReadOnly = true;
             richTextBox2.ScrollBars = RichTextBoxScrollBars.None;
-            richTextBox2.Size = new Size(439, 189);
+            richTextBox2.Size = new Size(512, 189);
             richTextBox2.TabIndex = 4;
             richTextBox2.Text = resources.GetString("richTextBox2.Text");
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(453, 170);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(158, 174);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
             // 
             // extraCredits
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(623, 356);
-            Controls.Add(pictureBox1);
+            ClientSize = new Size(532, 356);
             Controls.Add(richTextBox2);
             Controls.Add(richTextBox1);
             Controls.Add(label1);
@@ -93,7 +80,6 @@
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Credits And Legal Info";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -102,6 +88,5 @@
         private Label label1;
         private RichTextBox richTextBox1;
         private RichTextBox richTextBox2;
-        private PictureBox pictureBox1;
     }
 }
