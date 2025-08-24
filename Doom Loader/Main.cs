@@ -14,6 +14,7 @@ namespace Doom_Loader
 
         private static bool boot = true; // Used for calling LoadPresets() in AppDataInit() to prevent some odd bug.
         private static bool rpcIdle = false;
+        private static bool appDataInitialized = false;
 
         private void ComplevelIndexChanged(object sender, EventArgs e)
         {
@@ -136,6 +137,7 @@ namespace Doom_Loader
             // either don't have one set or the one set is missing.
             catch
             {
+                iwadBox.SelectedItem = "None";
                 var error = MessageBox.Show("IWADs Folder path missing.\nSet new path now?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                 if (error == DialogResult.Yes) new Settings().SetIWADFolder(sender, e);
                 else if (error == DialogResult.No) MessageBox.Show("Please set new path in settings.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -519,30 +521,33 @@ namespace Doom_Loader
         // Checks to see if the play button should be active.
         private void UpdatePlayButton(object sender, EventArgs e)
         {
-            if (portButton.Text != "Select Port" && ApplicationVariables.IWAD != string.Empty)
-                playButton.Enabled = true;
-            else playButton.Enabled = false;
-
-            if (ApplicationVariables.rpc && !rpcIdle)
+            if (appDataInitialized)
             {
-                RPCClient.client.SetPresence(new RichPresence()
+                if (portButton.Text != "Select Port" && ApplicationVariables.IWAD != string.Empty)
+                    playButton.Enabled = true;
+                else playButton.Enabled = false;
+
+                if (ApplicationVariables.rpc && !rpcIdle)
                 {
-                    State = "Idle In Launcher",
-                    Timestamps = new()
+                    RPCClient.client.SetPresence(new RichPresence()
                     {
-                        Start = Timestamps.Now.Start,
-                    },
-                    Assets = new()
-                    {
-                        LargeImageKey = "icon",
-                        LargeImageText = $"Minty Launcher v{GetType().Assembly.GetName().Version.Major}.{GetType().Assembly.GetName().Version.Minor}.{GetType().Assembly.GetName().Version.Build}"
-                    },
-                    Buttons =
-                    [
-                        new DiscordRPC.Button() { Label = "View On GitHub", Url = "https://github.com/PENGUINCODER1/Minty-Launcher" }
-                    ]
-                });
-                rpcIdle = true;
+                        State = "Idle In Launcher",
+                        Timestamps = new()
+                        {
+                            Start = Timestamps.Now.Start,
+                        },
+                        Assets = new()
+                        {
+                            LargeImageKey = "icon",
+                            LargeImageText = $"Minty Launcher v{GetType().Assembly.GetName().Version.Major}.{GetType().Assembly.GetName().Version.Minor}.{GetType().Assembly.GetName().Version.Build}"
+                        },
+                        Buttons =
+                        [
+                            new DiscordRPC.Button() { Label = "View On GitHub", Url = "https://github.com/PENGUINCODER1/Minty-Launcher" }
+                        ]
+                    });
+                    rpcIdle = true;
+                }
             }
         }
 
@@ -563,11 +568,6 @@ namespace Doom_Loader
                 string folderPath = $"{appdata}\\MintyLauncher\\";
                 Directory.CreateDirectory(folderPath);
                 Generate.Settings(folderPath);
-
-                // Prompt user to select IWADs folder path.
-                var error = MessageBox.Show("IWADs Folder path missing.\nSet new path now?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-                if (error == DialogResult.Yes) new Settings().SetIWADFolder(sender, e);
-                else if (error == DialogResult.No) MessageBox.Show("Please set new path in settings.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Directory.CreateDirectory($"{folderPath}Presets");
                 Generate.PortDatabase(folderPath);
@@ -836,6 +836,7 @@ namespace Doom_Loader
                 Play(sender, e);
                 this.Close();
             }
+            else appDataInitialized = true;
         }
 
         private void ExtraParametersInsertFilePath(object sender, MouseEventArgs e)
