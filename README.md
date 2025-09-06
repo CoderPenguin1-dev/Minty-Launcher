@@ -40,7 +40,7 @@ You should also read the user manual, found at `MANUAL.MD`.
 ## Building Steps
 Clone the repo:
 ```
-git clone https://github.com/PENGUINCODER1/Minty-Launcher.git
+git clone https://github.com/CoderPenguin1-dev/Minty-Launcher.git
 ```
 
 Move into build directory:
