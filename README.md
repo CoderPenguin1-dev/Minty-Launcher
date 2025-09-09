@@ -11,7 +11,7 @@ Minty Launcher only targets Windows, and only has been tested on Windows 10 and 
 
 ## Useful Links
 * [Downloads](https://github.com/PENGUINCODER1/Minty-Launcher/releases)
-* [User's Guide](MANUAL.MD)
+* [User's Manual](MANUAL.MD)
 * [MIT License](LICENSE.MD)
 
 ## Interface
