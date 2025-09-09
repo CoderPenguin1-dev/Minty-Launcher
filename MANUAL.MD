@@ -4,7 +4,7 @@ You can obtain source code for Minty Launcher [here](https://github.com/PENGUINC
 
 To avoid confusion, please read this whole document before opening Minty Launcher for the first time.
 
-Note this manual is updated to the latest commit, not the latest release. Information here may be different than the version you downloaded.
+Note this manual is updated to the latest commit, not the latest release. Information here may be different than the version you downloaded. Please use the version that came with your download alongside a markdown viewer.
 
 ## 0. Definitions
 Just a collection of simple definitions you may see throughout here, the launcher, or in other places relating to Doom.

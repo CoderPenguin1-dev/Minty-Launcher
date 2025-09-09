@@ -28,9 +28,9 @@ Minty Launcher only targets Windows, and only has been tested on Windows 10 and 
 # Downloading
 You can get Win64 and Win32 bins (both Framework-Dependent and Standalone) [here on the repo](https://github.com/PENGUINCODER1/Minty-Launcher/releases). 
 
-If you use the Framework-Dependent version, you'll need to have the .NET 9 Desktop Runtimes installed. You can get there [here](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
+If you use the Framework-Dependent version, you'll need to have the .NET 9 Desktop Runtimes installed. You can get them [here](https://dotnet.microsoft.com/en-us/download/dotnet/9.0).
 
-You should also read the user manual, found at `MANUAL.MD`.
+You should also read the user manual, found at `MANUAL.MD`. Use the one that came with your download and use a markdown reader for the most accurate manual to your version.
 
 # Building
 ## Prerequisites
