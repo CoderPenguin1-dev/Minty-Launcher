@@ -25,9 +25,9 @@ namespace Doom_Loader
                 foreach (string PWAD in ApplicationVariables.externalFiles)
                 {
                     if (PWAD.Contains("<M>"))
-                        pwadList.Items.Add("<M>" + Path.GetFileName(PWAD));
+                        fileList.Items.Add("<M>" + Path.GetFileName(PWAD));
                     else
-                        pwadList.Items.Add(Path.GetFileName(PWAD));
+                        fileList.Items.Add(Path.GetFileName(PWAD));
                 }
 
             // Setup tool tips
@@ -35,7 +35,7 @@ namespace Doom_Loader
             toolTips.SetToolTip(removeItemButton, "Remove File(s).");
             toolTips.SetToolTip(reorderUpButton, "Reorder Selected Item Up.");
             toolTips.SetToolTip(reorderDownButton, "Reorder Selected Item Down.");
-            toolTips.SetToolTip(pwadList, "Right-click to view file paths.");
+            toolTips.SetToolTip(fileList, "Right-click to view file paths.");
         } // Ran at Startup, sets up tooltips and PWAD list
 
         /// <summary>
@@ -44,14 +44,14 @@ namespace Doom_Loader
         /// </summary>
         private void Reload()
         {
-            pwadList.Items.Clear();
+            fileList.Items.Clear();
             foreach (string PWAD in ApplicationVariables.externalFiles)
             {
                 // Make sure the merge indicator stays when removing the filepath.
                 if (PWAD.Contains("<M>"))
-                    pwadList.Items.Add("<M>" + Path.GetFileName(PWAD));
+                    fileList.Items.Add("<M>" + Path.GetFileName(PWAD));
                 else
-                    pwadList.Items.Add(Path.GetFileName(PWAD));
+                    fileList.Items.Add(Path.GetFileName(PWAD));
             }
 
             // Disable reorder buttons and remove button.
@@ -83,9 +83,9 @@ namespace Doom_Loader
         private void RemovePWAD(object sender, EventArgs e)
         {
             List<string> PWADs = new(ApplicationVariables.externalFiles.ToList()); // Turn the original array into a usable list.
-            for (int i = pwadList.Items.Count - 1; i >= 0; i--)
+            for (int i = fileList.Items.Count - 1; i >= 0; i--)
             {
-                if (pwadList.GetSelected(i)) // If the PWAD in the PWAD Listbox is apart of the selected items, remove it.
+                if (fileList.GetSelected(i)) // If the PWAD in the PWAD Listbox is apart of the selected items, remove it.
                 {
                     PWADs.RemoveAt(i);
                 }
@@ -102,20 +102,20 @@ namespace Doom_Loader
             reorderUpButton.Enabled = true;
             reorderDownButton.Enabled = true;
 
-            string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
-            int index = pwadList.SelectedIndex;
+            string data = ApplicationVariables.externalFiles[fileList.SelectedIndex];
+            int index = fileList.SelectedIndex;
             if (index != 0) // Check if the item is not already at the top.
             {
-                List<string> PWADs = new(ApplicationVariables.externalFiles.ToList());
+                List<string> files = [.. ApplicationVariables.externalFiles.ToList()];
                 // Move the item
-                PWADs.RemoveAt(index);
-                PWADs.Insert(index - 1, data);
-                ApplicationVariables.externalFiles = [.. PWADs];
+                files.RemoveAt(index);
+                files.Insert(index - 1, data);
+                ApplicationVariables.externalFiles = [.. files];
                 Reload();
-                pwadList.SelectedIndex = index - 1; // Set the cursor to the new position.
+                fileList.SelectedIndex = index - 1; // Set the cursor to the new position.
 
                 // Disable reorder button if it's at the top.
-                if (pwadList.SelectedIndex == 0)
+                if (fileList.SelectedIndex == 0)
                     reorderUpButton.Enabled = false;
             }
         }
@@ -126,20 +126,20 @@ namespace Doom_Loader
             reorderUpButton.Enabled = true;
             reorderDownButton.Enabled = true;
 
-            string data = ApplicationVariables.externalFiles[pwadList.SelectedIndex];
-            int index = pwadList.SelectedIndex;
-            if (index != pwadList.Items.Count - 1) // Check if the item is not already at the bottom.
+            string data = ApplicationVariables.externalFiles[fileList.SelectedIndex];
+            int index = fileList.SelectedIndex;
+            if (index != fileList.Items.Count - 1) // Check if the item is not already at the bottom.
             {
-                List<string> PWADs = new(ApplicationVariables.externalFiles.ToList());
+                List<string> files = [.. ApplicationVariables.externalFiles.ToList()];
                 // Move the item
-                PWADs.RemoveAt(index);
-                PWADs.Insert(index + 1, data);
-                ApplicationVariables.externalFiles = [.. PWADs];
+                files.RemoveAt(index);
+                files.Insert(index + 1, data);
+                ApplicationVariables.externalFiles = [.. files];
                 Reload();
-                pwadList.SelectedIndex = index + 1; // Set the cursor to the new position.
+                fileList.SelectedIndex = index + 1; // Set the cursor to the new position.
 
                 // Disable reorder button if it's at the bottom.
-                if (pwadList.SelectedIndex == pwadList.Items.Count - 1)
+                if (fileList.SelectedIndex == fileList.Items.Count - 1)
                     reorderDownButton.Enabled = false;
             }
         }
@@ -149,20 +149,20 @@ namespace Doom_Loader
         private void PWADDragDrop(object sender, DragEventArgs e)
         {
             string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
-            List<string> PWADs = new(ApplicationVariables.externalFiles.ToList());
+            List<string> files = [.. ApplicationVariables.externalFiles.ToList()];
             foreach (string item in items)
             {
                 if (Directory.Exists(item)) continue; // Ignore item if it's a folder
                 else
                 {
-                    PWADs.Add(item);
+                    files.Add(item);
                 }
             }
-            ApplicationVariables.externalFiles = PWADs.ToArray();
+            ApplicationVariables.externalFiles = [.. files];
             Reload();
         }
 
-        private void PWADDragOver(object sender, DragEventArgs e)
+        private void FileDragOver(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
             else e.Effect = DragDropEffects.None;
@@ -173,7 +173,7 @@ namespace Doom_Loader
         {
             // Disable reorder buttons if there's more than one or no file selected,
             // or if there's only one file.
-            if (pwadList.SelectedIndices.Count > 1 || pwadList.SelectedIndices.Count == 0 || pwadList.Items.Count == 1)
+            if (fileList.SelectedIndices.Count > 1 || fileList.SelectedIndices.Count == 0 || fileList.Items.Count == 1)
             {
                 reorderUpButton.Enabled = false;
                 reorderDownButton.Enabled = false;
@@ -185,14 +185,14 @@ namespace Doom_Loader
             }
 
             // Enable remove button if any amount of files are selected.
-            if (pwadList.SelectedIndices.Count > 0)
+            if (fileList.SelectedIndices.Count > 0)
                 removeItemButton.Enabled = true;
             else removeItemButton.Enabled = false;
 
             // If the selected index is at the top or bottom, disable the respective reorder button.
-            if (pwadList.SelectedIndex == pwadList.Items.Count - 1)
+            if (fileList.SelectedIndex == fileList.Items.Count - 1)
                 reorderDownButton.Enabled = false;
-            if (pwadList.SelectedIndex == 0)
+            if (fileList.SelectedIndex == 0)
                 reorderUpButton.Enabled = false;
         }
 
@@ -203,9 +203,9 @@ namespace Doom_Loader
                 string output = "";
                 List<string> files = [];
 
-                if (pwadList.SelectedItems.Count > 0)
+                if (fileList.SelectedItems.Count > 0)
                 {
-                    foreach (int item in pwadList.SelectedIndices)
+                    foreach (int item in fileList.SelectedIndices)
                     {
                         files.Add(ApplicationVariables.externalFiles[item]);
                     }

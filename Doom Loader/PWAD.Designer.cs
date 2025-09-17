@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            pwadList = new ListBox();
+            fileList = new ListBox();
             addItemButton = new Button();
             removeItemButton = new Button();
             addPWADDialog = new OpenFileDialog();
@@ -40,18 +40,18 @@
             // 
             // pwadList
             // 
-            pwadList.FormattingEnabled = true;
-            pwadList.HorizontalScrollbar = true;
-            pwadList.IntegralHeight = false;
-            pwadList.Location = new Point(13, 13);
-            pwadList.MaximumSize = new Size(244, 184);
-            pwadList.MinimumSize = new Size(244, 184);
-            pwadList.Name = "pwadList";
-            pwadList.SelectionMode = SelectionMode.MultiExtended;
-            pwadList.Size = new Size(244, 184);
-            pwadList.TabIndex = 0;
-            pwadList.SelectedIndexChanged += CheckAmountSelected;
-            pwadList.MouseDown += ShowExternalFilePaths;
+            fileList.FormattingEnabled = true;
+            fileList.HorizontalScrollbar = true;
+            fileList.IntegralHeight = false;
+            fileList.Location = new Point(13, 13);
+            fileList.MaximumSize = new Size(244, 184);
+            fileList.MinimumSize = new Size(244, 184);
+            fileList.Name = "pwadList";
+            fileList.SelectionMode = SelectionMode.MultiExtended;
+            fileList.Size = new Size(244, 184);
+            fileList.TabIndex = 0;
+            fileList.SelectedIndexChanged += CheckAmountSelected;
+            fileList.MouseDown += ShowExternalFilePaths;
             // 
             // addItemButton
             // 
@@ -121,7 +121,7 @@
             Controls.Add(reorderUpButton);
             Controls.Add(removeItemButton);
             Controls.Add(addItemButton);
-            Controls.Add(pwadList);
+            Controls.Add(fileList);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -132,13 +132,13 @@
             Text = "External File Manager";
             Load += ManagerSetup;
             DragDrop += PWADDragDrop;
-            DragOver += PWADDragOver;
+            DragOver += FileDragOver;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ListBox pwadList;
+        private ListBox fileList;
         private Button addItemButton;
         private Button removeItemButton;
         private OpenFileDialog addPWADDialog;

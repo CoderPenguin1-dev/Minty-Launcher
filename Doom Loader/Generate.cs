@@ -11,7 +11,7 @@ internal static class Generate
             ApplicationVariables.useSourcePortDirectory.ToString(),
             ApplicationVariables.useDefault.ToString(),
             ApplicationVariables.customPreset.ToString(),
-            ApplicationVariables.IWADFolderPath.ToString(),
+            ApplicationVariables.iwadFolderPath.ToString(),
             ApplicationVariables.rpcFilesShown.ToString(),
         ]);
     }

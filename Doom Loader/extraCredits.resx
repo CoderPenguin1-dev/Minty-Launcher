@@ -136,6 +136,10 @@ DiscordRichPresence is under the MIT License.
 Details can be found here: https://github.com/Lachee/discord-rpc-csharp
 
 Discord RPC is under the MIT License.
-Details can be found here: https://github.com/discord/discord-rpc</value>
+Details can be found here: https://github.com/discord/discord-rpc
+
+Feather Icons (used in the External Files Manager) are under the MIT license.
+Details can be found here: https://github.com/feathericons/feather
+</value>
   </data>
 </root>

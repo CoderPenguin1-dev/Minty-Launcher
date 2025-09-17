@@ -100,8 +100,8 @@ namespace Doom_Loader
             try
             {
                 if (iwadBox.SelectedIndex != 0)
-                    ApplicationVariables.IWAD = $"{ApplicationVariables.IWADFolderPath}/{iwadBox.SelectedItem}";
-                else ApplicationVariables.IWAD = string.Empty;
+                    ApplicationVariables.iwad = $"{ApplicationVariables.iwadFolderPath}/{iwadBox.SelectedItem}";
+                else ApplicationVariables.iwad = string.Empty;
             }
             catch { }
         }
@@ -120,7 +120,7 @@ namespace Doom_Loader
                 iwadBox.Items.Clear();
                 iwadBox.Items.Add("None");
 
-                string[] IWADs = Directory.GetFiles(ApplicationVariables.IWADFolderPath);
+                string[] IWADs = Directory.GetFiles(ApplicationVariables.iwadFolderPath);
                 // Find the IWADs from the folder path.
                 foreach (string wad in IWADs)
                 {
@@ -224,14 +224,14 @@ namespace Doom_Loader
                 string state;
                 if (ApplicationVariables.rpcFilesShown == 0 || ApplicationVariables.externalFiles.Length == 0)
                 {
-                    state = $"{Path.GetFileName(ApplicationVariables.IWAD)} ";
+                    state = $"{Path.GetFileName(ApplicationVariables.iwad)} ";
                     // Show that there's no loaded mods only if showing external files is enabled.
                     if (ApplicationVariables.rpcFilesShown > 0 && ApplicationVariables.externalFiles.Length == 0)
                         state += " [Vanilla]";
                 }
                 else
                 {
-                    state = $"{Path.GetFileName(ApplicationVariables.IWAD)} [";
+                    state = $"{Path.GetFileName(ApplicationVariables.iwad)} [";
                     state += Path.GetFileName(ApplicationVariables.externalFiles[0]);
                     if (ApplicationVariables.externalFiles.Length > 1)
                     {
@@ -301,7 +301,7 @@ namespace Doom_Loader
             }
 
             // Check if PWAD was selected
-            portArguments += $"-iwad \"{ApplicationVariables.IWAD}\"";
+            portArguments += $"-iwad \"{ApplicationVariables.iwad}\"";
             if (extFileStore.Count != 0)
             {
                 portArguments += $" -file";
@@ -366,18 +366,18 @@ namespace Doom_Loader
                 if (iwadIndex != -1)
                 {
                     iwadBox.SelectedIndex = iwadIndex;
-                    ApplicationVariables.IWAD = ApplicationVariables.IWADFolderPath + "\\" + args[4];
+                    ApplicationVariables.iwad = ApplicationVariables.iwadFolderPath + "\\" + args[4];
                 }
                 else
                 {
                     iwadBox.SelectedIndex = 0;
-                    ApplicationVariables.IWAD = string.Empty;
+                    ApplicationVariables.iwad = string.Empty;
                 }
             }
             else
             {
                 iwadBox.SelectedIndex = 0;
-                ApplicationVariables.IWAD = string.Empty;
+                ApplicationVariables.iwad = string.Empty;
             }
             #endregion
 
@@ -464,8 +464,8 @@ namespace Doom_Loader
             }
             else file += "\n";
 
-            if (ApplicationVariables.IWAD != null)
-                file += Path.GetFileName(ApplicationVariables.IWAD);
+            if (ApplicationVariables.iwad != null)
+                file += Path.GetFileName(ApplicationVariables.iwad);
             File.WriteAllText(path, file);
         }
 
@@ -523,7 +523,7 @@ namespace Doom_Loader
         {
             if (appDataInitialized)
             {
-                if (portButton.Text != "Select Port" && ApplicationVariables.IWAD != string.Empty)
+                if (portButton.Text != "Select Port" && ApplicationVariables.iwad != string.Empty)
                     playButton.Enabled = true;
                 else playButton.Enabled = false;
 
@@ -643,7 +643,7 @@ namespace Doom_Loader
                 loadPresetBox.Enabled = false;
                 loadPresetBox.Visible = false;
             }
-            ApplicationVariables.IWADFolderPath = settings[5];
+            ApplicationVariables.iwadFolderPath = settings[5];
             ApplicationVariables.rpcFilesShown = int.Parse(settings[6]);
             #endregion
 
@@ -694,7 +694,7 @@ namespace Doom_Loader
                             loadPresetBox.Items.Add("External Preset");
                             loadPresetBox.SelectedItem = "External Preset";
                             LoadPreset(args[i]);
-                            if (ApplicationVariables.IWAD != string.Empty) usedIWAD = true;
+                            if (ApplicationVariables.iwad != string.Empty) usedIWAD = true;
                             usedPreset = true;
                             break;
 
@@ -728,14 +728,14 @@ namespace Doom_Loader
                             }
                             loadPresetBox.SelectedIndex = presetIndex;
                             LoadPreset($"{path}Presets\\{loadPresetBox.SelectedItem}{ApplicationVariables.PRESET_EXTENSION}");
-                            if (ApplicationVariables.IWAD != string.Empty) usedIWAD = true;
+                            if (ApplicationVariables.iwad != string.Empty) usedIWAD = true;
                             usedPreset = true;
                             break;
 
                         case "--iwad-folder":
                             i++;
-                            ApplicationVariables.IWADFolderPath = args[i];
-                            if (!Path.Exists(ApplicationVariables.IWADFolderPath))
+                            ApplicationVariables.iwadFolderPath = args[i];
+                            if (!Path.Exists(ApplicationVariables.iwadFolderPath))
                             {
                                 MessageBox.Show("Given IWAD Folder Path does not exist. Check to see if your capitalization is wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 Environment.Exit(1);

@@ -22,7 +22,7 @@ namespace Doom_Loader
                 ApplicationVariables.useSourcePortDirectory.ToString(),
                 ApplicationVariables.useDefault.ToString(),
                 ApplicationVariables.customPreset.ToString(),
-                ApplicationVariables.IWADFolderPath.ToString(),
+                ApplicationVariables.iwadFolderPath.ToString(),
                 ApplicationVariables.rpcFilesShown.ToString() ]);
         }
 
@@ -55,7 +55,7 @@ namespace Doom_Loader
             toolTips.SetToolTip(closeBox, "Closes Minty Launcher after the port has been closed.");
             toolTips.SetToolTip(customPresetBox, "Provide a file dialog when loading/saving presets.");
             toolTips.SetToolTip(defaultBox, @"Makes an Settings Folder preset titled ""Default"" load on launch of Minty Launcher.");
-            toolTips.SetToolTip(iwadFolderButton, ApplicationVariables.IWADFolderPath);
+            toolTips.SetToolTip(iwadFolderButton, ApplicationVariables.iwadFolderPath);
             toolTips.SetToolTip(rpcFilesTrackBar, "Sets how many individual files can be shown on the Discord Activity.");
             toolTips.SetToolTip(label2, "Sets how many individual files can be shown on the Discord Activity.");
             toolTips.SetToolTip(useSourcePort, "Use the source port's folder as the port's working directory\nWill have any asterisk in the Extra Parameters textbox insert Minty Launcher's working directory.");
@@ -100,10 +100,10 @@ namespace Doom_Loader
         {
             if (iwadFolderDialog.ShowDialog() != DialogResult.Cancel)
             {
-                ApplicationVariables.IWADFolderPath = iwadFolderDialog.SelectedPath;
+                ApplicationVariables.iwadFolderPath = iwadFolderDialog.SelectedPath;
                 string path = CheckForWhichConfig();
                 RewriteAppDataConfig(path);
-                toolTips.SetToolTip(iwadFolderButton, ApplicationVariables.IWADFolderPath);
+                toolTips.SetToolTip(iwadFolderButton, ApplicationVariables.iwadFolderPath);
             }
         }
 

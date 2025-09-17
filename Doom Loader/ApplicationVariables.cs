@@ -5,7 +5,7 @@ internal static class ApplicationVariables
     internal static string presetName = string.Empty; // Used for the SavePreset window to change the Load Preset ComboBox selected item.
     internal static string sourcePort = string.Empty;
     internal static string[] externalFiles = [];
-    internal static string IWAD = string.Empty;
+    internal static string iwad = string.Empty;
     internal static string arguments = "";
     internal static string complevel;
 
@@ -21,7 +21,7 @@ internal static class ApplicationVariables
     internal const int MAX_RPC_FILES_SHOWN = 8;
 
     // Settings
-    internal static string IWADFolderPath = string.Empty;
+    internal static string iwadFolderPath = string.Empty;
     internal static bool closeOnPlay = false;
     internal static bool rpc = true;
     internal static bool useSourcePortDirectory = true;
