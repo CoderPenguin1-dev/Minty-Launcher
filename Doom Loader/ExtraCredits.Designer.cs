@@ -49,18 +49,18 @@
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
             richTextBox1.ScrollBars = RichTextBoxScrollBars.None;
-            richTextBox1.Size = new Size(504, 152);
+            richTextBox1.Size = new Size(504, 122);
             richTextBox1.TabIndex = 3;
             richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // richTextBox2
             // 
             richTextBox2.BorderStyle = BorderStyle.None;
-            richTextBox2.Location = new Point(8, 170);
+            richTextBox2.Location = new Point(8, 140);
             richTextBox2.Name = "richTextBox2";
             richTextBox2.ReadOnly = true;
             richTextBox2.ScrollBars = RichTextBoxScrollBars.None;
-            richTextBox2.Size = new Size(512, 189);
+            richTextBox2.Size = new Size(512, 215);
             richTextBox2.TabIndex = 4;
             richTextBox2.Text = resources.GetString("richTextBox2.Text");
             // 

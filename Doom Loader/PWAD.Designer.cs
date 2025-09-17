@@ -42,7 +42,10 @@
             // 
             pwadList.FormattingEnabled = true;
             pwadList.HorizontalScrollbar = true;
+            pwadList.IntegralHeight = false;
             pwadList.Location = new Point(13, 13);
+            pwadList.MaximumSize = new Size(244, 184);
+            pwadList.MinimumSize = new Size(244, 184);
             pwadList.Name = "pwadList";
             pwadList.SelectionMode = SelectionMode.MultiExtended;
             pwadList.Size = new Size(244, 184);
@@ -53,24 +56,26 @@
             // addItemButton
             // 
             addItemButton.AccessibleName = "";
+            addItemButton.BackgroundImage = Properties.Resources.plus;
+            addItemButton.BackgroundImageLayout = ImageLayout.Center;
             addItemButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             addItemButton.Location = new Point(13, 203);
             addItemButton.Name = "addItemButton";
             addItemButton.Size = new Size(41, 39);
             addItemButton.TabIndex = 1;
-            addItemButton.Text = "+";
             addItemButton.UseVisualStyleBackColor = true;
             addItemButton.MouseDown += AddPWAD;
             // 
             // removeItemButton
             // 
+            removeItemButton.BackgroundImage = Properties.Resources.minus;
+            removeItemButton.BackgroundImageLayout = ImageLayout.Center;
             removeItemButton.Enabled = false;
             removeItemButton.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold);
             removeItemButton.Location = new Point(60, 203);
             removeItemButton.Name = "removeItemButton";
             removeItemButton.Size = new Size(41, 39);
             removeItemButton.TabIndex = 2;
-            removeItemButton.Text = "-";
             removeItemButton.UseVisualStyleBackColor = true;
             removeItemButton.Click += RemovePWAD;
             // 
@@ -82,25 +87,27 @@
             // 
             // reorderUpButton
             // 
+            reorderUpButton.BackgroundImage = Properties.Resources.arrow_up;
+            reorderUpButton.BackgroundImageLayout = ImageLayout.Center;
             reorderUpButton.Enabled = false;
             reorderUpButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             reorderUpButton.Location = new Point(169, 203);
             reorderUpButton.Name = "reorderUpButton";
             reorderUpButton.Size = new Size(41, 39);
             reorderUpButton.TabIndex = 3;
-            reorderUpButton.Text = "↑";
             reorderUpButton.UseVisualStyleBackColor = true;
             reorderUpButton.Click += ReorderItemUp;
             // 
             // reorderDownButton
             // 
+            reorderDownButton.BackgroundImage = Properties.Resources.arrow_down;
+            reorderDownButton.BackgroundImageLayout = ImageLayout.Center;
             reorderDownButton.Enabled = false;
             reorderDownButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             reorderDownButton.Location = new Point(216, 203);
             reorderDownButton.Name = "reorderDownButton";
             reorderDownButton.Size = new Size(41, 39);
             reorderDownButton.TabIndex = 4;
-            reorderDownButton.Text = "↓";
             reorderDownButton.UseVisualStyleBackColor = true;
             reorderDownButton.Click += ReorderItemDown;
             // 
