@@ -1,7 +1,6 @@
 using DiscordRPC;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-using static System.Windows.Forms.AxHost;
 
 namespace Doom_Loader
 {
