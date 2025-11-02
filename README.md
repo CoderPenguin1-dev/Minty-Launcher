@@ -4,6 +4,10 @@
 </div>
 
 # About Minty Launcher
+**NOTICE:** Minty Launcher has been sunset in favor of [MLX](https://github.com/CoderPenguin1-dev/MLX).
+This repository will stay open so I could implement security fixes and/or minor, non-feature additions.
+Otherwise, this project has been finished. MLX would never exist without this.
+
 Minty Launcher focuses mainly on user usability and simplicity. The interface is built to be quickly readable and quick to go through.
 The launcher also has Discord Rich Presence support so people can see what you're playing and what source port you're using.
 
